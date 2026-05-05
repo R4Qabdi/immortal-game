@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://bleayfx05w740"]
+
+[ext_resource type="Script" uid="uid://d2fkifi7vw8p3" path="res://scenes/mainmenu.gd" id="1_r3g3c"]
+[ext_resource type="Texture2D" uid="uid://xf0xph8q5v2f" path="res://assets/mainmenu.png" id="2_3vvtq"]
+[ext_resource type="Texture2D" uid="uid://ca8dl65600mrw" path="res://icon.svg" id="3_s5g8n"]
+
+[sub_resource type="Animation" id="Animation_0e48y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 400)]
+}
+
+[sub_resource type="Animation" id="Animation_epypp"]
+resource_name = "option"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(0.14865094, 2.0705273),
+"update": 0,
+"values": [Vector2(0, 400), Vector2(180, 400)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0hol4"]
+_data = {
+&"RESET": SubResource("Animation_0e48y"),
+&"option": SubResource("Animation_epypp")
+}
+
+[node name="mainmenu" type="Control" unique_id=1751117798]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_r3g3c")
+
+[node name="bg" type="TextureRect" parent="." unique_id=753429153]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.125
+offset_right = -320.0
+offset_bottom = -680.0
+texture = ExtResource("2_3vvtq")
+
+[node name="cam" type="Camera2D" parent="." unique_id=2073716695]
+position = Vector2(0, 400)
+offset = Vector2(180, 320)
+
+[node name="Icon" type="Sprite2D" parent="cam" unique_id=1030751873]
+position = Vector2(15.999999, 8)
+scale = Vector2(0.24999999, 0.12499994)
+texture = ExtResource("3_s5g8n")
+
+[node name="Icon2" type="Sprite2D" parent="cam" unique_id=1535926438]
+position = Vector2(164, 8)
+scale = Vector2(0.24999999, 0.12499994)
+texture = ExtResource("3_s5g8n")
+
+[node name="Icon3" type="Sprite2D" parent="cam" unique_id=554594673]
+position = Vector2(164, 312)
+scale = Vector2(0.24999999, 0.12499994)
+texture = ExtResource("3_s5g8n")
+
+[node name="Icon4" type="Sprite2D" parent="cam" unique_id=1073259394]
+position = Vector2(16, 312)
+scale = Vector2(0.24999999, 0.12499994)
+texture = ExtResource("3_s5g8n")
+
+[node name="animp" type="AnimationPlayer" parent="." unique_id=470351529]
+libraries/ = SubResource("AnimationLibrary_0hol4")
+
+[node name="start" type="Button" parent="." unique_id=976291148]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 592.0
+offset_right = 124.0
+offset_bottom = 616.0
+theme_override_font_sizes/font_size = 10
+text = "start"
+
+[node name="option" type="Button" parent="." unique_id=219593460]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 616.0
+offset_right = 124.0
+offset_bottom = 640.0
+theme_override_font_sizes/font_size = 10
+text = "options"
+
+[node name="credit" type="Button" parent="." unique_id=1046495691]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 640.0
+offset_right = 124.0
+offset_bottom = 664.0
+theme_override_font_sizes/font_size = 10
+text = "credits"
+
+[node name="exit" type="Button" parent="." unique_id=235904621]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 664.0
+offset_right = 124.0
+offset_bottom = 688.0
+theme_override_font_sizes/font_size = 10
+text = "exit"
+
+[node name="backoption" type="Button" parent="." unique_id=1529323259]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 684.0
+offset_right = 312.0
+offset_bottom = 708.0
+theme_override_font_sizes/font_size = 10
+text = "<- back"
+
+[node name="backcredit" type="Button" parent="." unique_id=342616609]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 248.0
+offset_right = 116.0
+offset_bottom = 272.0
+theme_override_font_sizes/font_size = 10
+text = "<- back"
+
+[connection signal="pressed" from="option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="backoption" to="." method="_on_backoption_pressed"]
