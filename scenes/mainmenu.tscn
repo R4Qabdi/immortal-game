@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bleayfx05w740"]
 
 [ext_resource type="Script" uid="uid://d2fkifi7vw8p3" path="res://scenes/mainmenu.gd" id="1_r3g3c"]
-[ext_resource type="Texture2D" uid="uid://xf0xph8q5v2f" path="res://assets/trash/mainmenu.png" id="2_3vvtq"]
+[ext_resource type="Texture2D" uid="uid://dufsgguj54p54" path="res://assets/trash/mainmenu.png" id="2_3vvtq"]
 
 [sub_resource type="Animation" id="Animation_0e48y"]
 length = 0.001
@@ -134,7 +134,7 @@ _data = {
 &"sure": SubResource("Animation_natt5")
 }
 
-[node name="mainmenu" type="Control" unique_id=1751117798]
+[node name="mainmenu" type="Control" unique_id=1751117798 node_paths=PackedStringArray("masterSlider", "musicSlider", "sfxSlider")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -142,6 +142,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r3g3c")
+masterSlider = NodePath("TempMasterSlider")
+musicSlider = NodePath("TempMusicSlider")
+sfxSlider = NodePath("TempSfxSlider")
 
 [node name="bg" type="TextureRect" parent="." unique_id=753429153]
 layout_mode = 1
@@ -258,6 +261,27 @@ offset_bottom = 128.0
 theme_override_font_sizes/font_size = 30
 text = "Let me out"
 
+[node name="TempMasterSlider" type="HSlider" parent="." unique_id=764966304]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 222.0
+offset_right = 648.0
+offset_bottom = 238.0
+
+[node name="TempMusicSlider" type="HSlider" parent="." unique_id=1812874481]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 278.0
+offset_right = 648.0
+offset_bottom = 294.0
+
+[node name="TempSfxSlider" type="HSlider" parent="." unique_id=1844786824]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 334.0
+offset_right = 648.0
+offset_bottom = 350.0
+
 [connection signal="pressed" from="option" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="credit" to="." method="_on_credit_pressed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
@@ -265,3 +289,6 @@ text = "Let me out"
 [connection signal="pressed" from="backcredit" to="." method="_on_backcredit_pressed"]
 [connection signal="pressed" from="sure/no" to="." method="_on_no_pressed"]
 [connection signal="pressed" from="sure/yes" to="." method="_on_yes_pressed"]
+[connection signal="value_changed" from="TempMasterSlider" to="." method="_on_temp_master_slider_value_changed"]
+[connection signal="value_changed" from="TempMusicSlider" to="." method="_on_temp_music_slider_value_changed"]
+[connection signal="value_changed" from="TempSfxSlider" to="." method="_on_temp_sfx_slider_value_changed"]
