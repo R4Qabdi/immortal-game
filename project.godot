@@ -14,6 +14,14 @@ config/name="immortal game"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://qvr00ytrxqa3"
+
+[autoload]
+
+Global="*uid://c24h33eyqq75t"
+
 [display]
 
 window/size/viewport_width=360

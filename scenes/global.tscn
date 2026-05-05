@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c24h33eyqq75t"]
+
+[ext_resource type="Script" uid="uid://djg82eaef2sb" path="res://scripts/global.gd" id="1_4pk28"]
+
+[node name="Global" type="Node" unique_id=333577347 node_paths=PackedStringArray("musicPlayer")]
