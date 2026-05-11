@@ -217,7 +217,7 @@ layout_mode = 0
 offset_left = 80.0
 offset_top = 256.0
 offset_right = 272.0
-offset_bottom = 384.00006
+offset_bottom = 384.00003
 
 [node name="Label" type="Label" parent="sure" unique_id=1024620719]
 layout_mode = 0
