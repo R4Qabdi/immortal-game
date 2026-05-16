@@ -4,10 +4,16 @@ extends Node2D
 
 func _ready() -> void:
 	await wait(2.5)
-	var origin_square = get_node_or_null("../squares/e1").position
-	var newking = king.instantiate()
-	add_child(newking)
-	newking.position = origin_square
+	var origin_position :Vector2
+	var origin_tile = get_node_or_null("../squares/e1")
+	if origin_tile:
+		var newking = king.instantiate()
+		add_child(newking)
+		newking.name = "king"
+		origin_tile.piece = newking 
+		origin_position = origin_tile.position 
+		newking.position = origin_position
+	
 
 func wait(seconds: float):
 	await get_tree().create_timer(seconds).timeout

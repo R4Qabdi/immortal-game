@@ -4,15 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://3joxhe0ko1kt" path="res://assets/temporary/pieces/king-normal.png" id="2_s58gp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s58gp"]
-size = Vector2(16, 32)
+size = Vector2(32, 64)
 
-[node name="piece" type="Node2D" unique_id=1110447361]
-scale = Vector2(2, 2)
+[node name="piece" type="Node2D" unique_id=1114160731]
 script = ExtResource("1_gebih")
 
 [node name="texture" type="Sprite2D" parent="." unique_id=956322192]
-position = Vector2(0, -7.9999995)
-scale = Vector2(0.8888888, 1)
+position = Vector2(0, -24)
+scale = Vector2(2, 2)
 texture = ExtResource("2_s58gp")
 
 [node name="labubu" type="Sprite2D" parent="." unique_id=1376127090]
@@ -22,5 +21,6 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="coll" type="CollisionShape2D" parent="area" unique_id=1385117098]
-position = Vector2(0, -8)
+position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_s58gp")
+debug_color = Color(0.5349519, 0.48069078, 0.8049752, 0.41960785)
