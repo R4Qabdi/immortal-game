@@ -6,17 +6,22 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s58gp"]
 size = Vector2(32, 64)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_s58gp"]
+radius = 64.0
+
 [node name="piece" type="Node2D" unique_id=1114160731]
+z_index = 1
 script = ExtResource("1_gebih")
 
 [node name="texture" type="Sprite2D" parent="." unique_id=956322192]
-position = Vector2(0, -24)
+position = Vector2(0, -16)
 scale = Vector2(2, 2)
 texture = ExtResource("2_s58gp")
 
 [node name="labubu" type="Sprite2D" parent="." unique_id=1376127090]
 
 [node name="area" type="Area2D" parent="." unique_id=1470941840]
+visible = false
 collision_layer = 2
 collision_mask = 0
 
@@ -24,3 +29,48 @@ collision_mask = 0
 position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_s58gp")
 debug_color = Color(0.5349519, 0.48069078, 0.8049752, 0.41960785)
+
+[node name="kingmove" type="Area2D" parent="." unique_id=1364367127]
+visible = false
+collision_mask = 0
+monitorable = false
+
+[node name="circle" type="CollisionShape2D" parent="kingmove" unique_id=26458442]
+y_sort_enabled = true
+shape = SubResource("CircleShape2D_s58gp")
+debug_color = Color(5.0537287e-06, 0.63281465, 0.45084906, 0.41960785)
+
+[node name="qudamove" type="Node2D" parent="." unique_id=202061334]
+visible = false
+
+[node name="kuda1" type="RayCast2D" parent="qudamove" unique_id=2086141982]
+target_position = Vector2(44, -88)
+collide_with_bodies = false
+
+[node name="kuda2" type="RayCast2D" parent="qudamove" unique_id=27533360]
+target_position = Vector2(88, -44)
+collide_with_bodies = false
+
+[node name="kuda3" type="RayCast2D" parent="qudamove" unique_id=416416584]
+target_position = Vector2(88, 44)
+collide_with_bodies = false
+
+[node name="kuda4" type="RayCast2D" parent="qudamove" unique_id=1178091953]
+target_position = Vector2(44, 88)
+collide_with_bodies = false
+
+[node name="kuda5" type="RayCast2D" parent="qudamove" unique_id=35147384]
+target_position = Vector2(-44, 88)
+collide_with_bodies = false
+
+[node name="kuda6" type="RayCast2D" parent="qudamove" unique_id=1945617635]
+target_position = Vector2(-88, 44)
+collide_with_bodies = false
+
+[node name="kuda7" type="RayCast2D" parent="qudamove" unique_id=2145340572]
+target_position = Vector2(-88, -44)
+collide_with_bodies = false
+
+[node name="kuda8" type="RayCast2D" parent="qudamove" unique_id=732485808]
+target_position = Vector2(-44, -88)
+collide_with_bodies = false

@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0thag"]
 size = Vector2(44, 48)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qmd2u"]
+radius = 6.3245554
+
 [node name="square" type="Node2D" unique_id=1963233705]
 script = ExtResource("2_qmd2u")
 
@@ -22,6 +25,11 @@ collision_mask = 0
 
 [node name="coll" type="CollisionShape2D" parent="area" unique_id=1916055235]
 shape = SubResource("RectangleShape2D_0thag")
+
+[node name="dots" type="Area2D" parent="." unique_id=2045681789]
+
+[node name="circle" type="CollisionShape2D" parent="dots" unique_id=1593135644]
+shape = SubResource("CircleShape2D_qmd2u")
 
 [connection signal="mouse_entered" from="area" to="." method="_on_area_mouse_entered"]
 [connection signal="mouse_exited" from="area" to="." method="_on_area_mouse_exited"]
