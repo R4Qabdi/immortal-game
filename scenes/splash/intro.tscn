@@ -1,0 +1,204 @@
+[gd_scene format=3 uid="uid://b02q6orq6yd30"]
+
+[ext_resource type="Script" uid="uid://yllaffxwvlen" path="res://intro.gd" id="1_edcas"]
+[ext_resource type="Texture2D" uid="uid://dgoxh1home17r" path="res://assets/temporary/splash/kkv.png" id="2_xxgml"]
+[ext_resource type="Texture2D" uid="uid://b04o4hjehkmkg" path="res://assets/temporary/random/intro-KITA.png" id="3_86s61"]
+[ext_resource type="Texture2D" uid="uid://drom4igi8eas8" path="res://assets/temporary/random/intro-KALAHKAN.png" id="4_o2xb8"]
+[ext_resource type="Texture2D" uid="uid://b7k8grqqpb68c" path="res://assets/temporary/random/intro-VALORANTanimwashed.png" id="6_3rqno"]
+[ext_resource type="Texture2D" uid="uid://ca8dl65600mrw" path="res://icon.svg" id="6_o2xb8"]
+
+[sub_resource type="Curve" id="Curve_3rqno"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.14767933, 270.35022), 0.0, 0.0, 0, 0, Vector2(0.9324894, -360), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_i4ca4"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.13924052, -200), 0.0, 0.0, 0, 0, Vector2(0.51898736, 200), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_onwud"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.16877638, 200), 0.0, 0.0, 0, 0, Vector2(0.91561186, -173.54086), 0.0, 0.0, 0, 0, Vector2(1, 200), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_ubb7q"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3122363, 200), 0.0, 0.0, 0, 0, Vector2(0.62869203, -80.15564), 0.0, 0.0, 0, 0, Vector2(0.7890296, -200), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_itpci"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.28691986, 61.089493), 0.0, 0.0, 0, 0, Vector2(0.5021097, 15.9533), 0.0, 0.0, 0, 0, Vector2(0.51054853, 100), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_4tvkr"]
+_data = [Vector2(0.48945147, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_38bhq"]
+offsets = PackedFloat32Array(0, 0.2159091, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.056818184, 0.056818184, 0.056818184, 1, 1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ca4"]
+atlas = ExtResource("6_3rqno")
+region = Rect2(0, 0, 292, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onwud"]
+atlas = ExtResource("6_3rqno")
+region = Rect2(292, 0, 292, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubb7q"]
+atlas = ExtResource("6_3rqno")
+region = Rect2(584, 0, 292, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itpci"]
+atlas = ExtResource("6_3rqno")
+region = Rect2(876, 0, 292, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tvkr"]
+atlas = ExtResource("6_3rqno")
+region = Rect2(1168, 0, 292, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38bhq"]
+atlas = ExtResource("6_3rqno")
+region = Rect2(1460, 0, 292, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjp16"]
+atlas = ExtResource("6_3rqno")
+region = Rect2(1752, 0, 292, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbwgs"]
+atlas = ExtResource("6_3rqno")
+region = Rect2(2044, 0, 292, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r55wh"]
+atlas = ExtResource("6_3rqno")
+region = Rect2(2336, 0, 292, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwpfs"]
+atlas = ExtResource("6_3rqno")
+region = Rect2(2628, 0, 292, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mwdv"]
+atlas = ExtResource("6_3rqno")
+region = Rect2(2920, 0, 292, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy4yi"]
+atlas = ExtResource("6_3rqno")
+region = Rect2(3212, 0, 292, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ouc5"]
+atlas = ExtResource("6_3rqno")
+region = Rect2(3504, 0, 292, 86)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p3xqj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ca4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onwud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubb7q")
+}],
+"loop": false,
+"name": &"lit",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itpci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tvkr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38bhq")
+}],
+"loop": true,
+"name": &"loop",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjp16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbwgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r55wh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwpfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mwdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy4yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ouc5")
+}],
+"loop": false,
+"name": &"washed",
+"speed": 12.0
+}]
+
+[node name="intro" type="CanvasLayer" unique_id=1390418059]
+script = ExtResource("1_edcas")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=884211079]
+position = Vector2(187, 329)
+amount = 16
+texture = ExtResource("6_o2xb8")
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 260.0
+angular_velocity_curve = SubResource("Curve_3rqno")
+orbit_velocity_max = 1.0
+linear_accel_min = -20.0
+linear_accel_max = 7.2
+linear_accel_curve = SubResource("Curve_i4ca4")
+radial_accel_max = 10.15
+radial_accel_curve = SubResource("Curve_onwud")
+tangential_accel_curve = SubResource("Curve_ubb7q")
+damping_curve = SubResource("Curve_itpci")
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.2
+scale_amount_max = 0.8
+scale_amount_curve = SubResource("Curve_4tvkr")
+color_ramp = SubResource("Gradient_38bhq")
+
+[node name="main" type="Sprite2D" parent="." unique_id=1351188193]
+visible = false
+position = Vector2(180, 320)
+texture = ExtResource("2_xxgml")
+
+[node name="kita" type="Sprite2D" parent="." unique_id=877147972]
+position = Vector2(91, 298)
+texture = ExtResource("3_86s61")
+
+[node name="kalahkan" type="Sprite2D" parent="." unique_id=1696661781]
+position = Vector2(225, 298)
+texture = ExtResource("4_o2xb8")
+
+[node name="valorant" type="AnimatedSprite2D" parent="." unique_id=407413763]
+position = Vector2(180, 347)
+sprite_frames = SubResource("SpriteFrames_p3xqj")
+animation = &"washed"
+
+[node name="fade" type="ColorRect" parent="." unique_id=476344780]
+modulate = Color(0, 0, 0, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

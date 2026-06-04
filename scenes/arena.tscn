@@ -23,4 +23,5 @@ texture = ExtResource("1_e05a3")
 script = ExtResource("3_olpmc")
 
 [node name="pieces" type="Node2D" parent="." unique_id=1922379074]
+y_sort_enabled = true
 script = ExtResource("4_xdvfk")

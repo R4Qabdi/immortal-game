@@ -258,6 +258,7 @@ offset_bottom = 128.0
 theme_override_font_sizes/font_size = 30
 text = "Let me out"
 
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="option" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="credit" to="." method="_on_credit_pressed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

@@ -30,6 +30,11 @@ func tween_anim_modulate(target,duration,easing):
 	tween.set_ease(easing)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(target,"modulate:a", 1.0,duration)
+func tween_to_move(target, to, duration, easing, trans):
+	var tween = create_tween()
+	tween.set_ease(easing)
+	tween.set_trans(trans)
+	tween.tween_property(target,"position", to, duration)
 
 func select_toggle():
 	is_selected = !is_selected
@@ -40,3 +45,23 @@ func select_toggle():
 
 func deselect():
 	is_selected = false
+	texture.texture=load("res://assets/temporary/pieces/"+type+"-normal.png")
+
+func dragging():
+	texture.scale = Vector2(3,3)
+	var viewportsize = get_viewport_rect().size
+	var mouse_pos = get_global_mouse_position()
+	print (viewportsize)
+	var clamp_y = clamp(mouse_pos.y, 36, viewportsize.y-36)
+	var clamp_x = clamp(mouse_pos.x, 36, viewportsize.x-36)
+	texture.global_position = Vector2(clamp_x,clamp_y)
+	
+	#print(get_global_mouse_position())
+
+func dropping(to):
+	print(to)
+	tween_to_move(self, to, 0.2, Tween.EASE_OUT,Tween.TRANS_SPRING)
+	#tween_to_move(self.texture, to, 1, Tween.EASE_OUT,Tween.TRANS_SPRING)
+	texture.position = Vector2(0,-16)
+	texture.scale = Vector2(2,2)
+	deselect()

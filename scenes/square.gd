@@ -6,15 +6,30 @@ class_name Square
 var is_hovered :bool= false
 var piece :Node2D
 
+func blabla() -> void :
+	pass
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed() and is_hovered:
+			print(self.name)
+			get_parent().selected_piece = piece
 			if piece:
 				print(piece.name)
 				piece.select_toggle()
+				get_parent().deselect_last_square_with(self)
 			else:
 				print("gaada")
-				
+				get_parent().deselect_last_square_with(self)
+		if event.is_released() and is_hovered :
+			if piece == null :
+				if get_parent().unaffected_selected_square != self:
+					#print(str(get_parent().unaffected_selected_square)+str(self))
+					get_parent().dropped_square = self
+					get_parent().is_dropping = true
+					piece = get_parent().unaffected_selected_square.piece
+			else: 
+				pass
 
 func _ready() -> void:
 	tile.modulate.a = 0
@@ -24,6 +39,8 @@ func _ready() -> void:
 	#tween_anim_spawn(self, 2, Tween.EASE_IN_OUT)
 	#tween_egolegol(3)
 	hyper_elastic_move(tile,tile.position)
+
+
 
 func wait(seconds: float):
 	await get_tree().create_timer(seconds).timeout

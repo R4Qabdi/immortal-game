@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="immortal game"
-run/main_scene="uid://bysxcdkbkme7y"
+run/main_scene="uid://b02q6orq6yd30"
 config/features=PackedStringArray("4.6", "Mobile")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://dgoxh1home17r"
 config/icon="uid://ngtb3c5v2bld"
 
 [autoload]
@@ -39,3 +41,4 @@ theme/custom_font="uid://cn0gkpavqq1a8"
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

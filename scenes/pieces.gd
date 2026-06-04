@@ -1,16 +1,7 @@
 extends Node2D
 
 @onready var piece = preload("res://scenes/piece.tscn")
-var matrix_pieces : Array = [
-	[null,null,null,null,null,null,null,null],
-	[null,null,null,null,null,null,null,null],
-	[null,null,null,null,null,null,null,null],
-	[null,null,null,null,null,null,null,null],
-	[null,null,null,null,null,null,null,null],
-	[null,null,null,null,null,null,null,null],
-	[null,null,null,null,null,null,null,null],
-	[null,null,null,null,null,null,null,null]
-]
+var matrix_pieces : Array = []
 #ingfo tentang matrix
 # 0 = kosong
 # 1 = raja 
@@ -78,6 +69,18 @@ func _ready() -> void:
 	origin_tile = get_node_or_null("../squares/h2")
 	if origin_tile:
 		add_piece("pawn", origin_tile, false)
+	
+	update_matrix()
+
+func update_matrix():
+	matrix_pieces.clear()
+	var temp:Array
+	var index:int = 0
+	for i in get_parent().get_node("squares").matrix_board:
+		matrix_pieces.append([])
+		for j in i:
+			matrix_pieces[index].append(j.piece)
+		index += 1
 
 func add_piece(type : String, which_square, is_enemy : bool):
 	

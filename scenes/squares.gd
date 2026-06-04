@@ -1,11 +1,23 @@
 extends Node2D
 class_name Board
+
+## Squares.gd ini yang bakalan jadi main manager buat pergerakan dari pieces, 
+#pieces.gd itu fungsinya buat manage state dari piecesnya
+#bingung juga sih, boleh aja dipindah fungsi drag and drop piece dari sini ke pieces.gd
+
+
 const dark = preload("res://assets/temporary/darksquare.png")
 const light = preload("res://assets/temporary/lightsquare.png")
 const MOUSE_RAYCAST_MASK = 1
 
 @onready var square = preload("res://scenes/square.tscn")
 
+var dropped_square: Square
+var selected_square: Square
+var unaffected_selected_square: Square
+var selected_piece: Piece
+var is_dragging: bool
+var is_dropping: bool
 var matrix_board: Array=[
 	[],
 	[],
@@ -16,6 +28,19 @@ var matrix_board: Array=[
 	[],
 	[]
 ]
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_left"):
+		print_matrix_pretty()
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			is_dragging = true
+		elif not event.pressed and is_dragging:
+			is_dragging = false
+
+func print_matrix_pretty():
+	for i in range(8):
+		print(matrix_board[i])
 # RUSAK BANGET RAYCASTNYA BANGKE< AKU GABISA FIX
 # NANTI AJALAH KONTOL
 #func mouse_raycast():
@@ -42,6 +67,21 @@ var matrix_board: Array=[
 func _ready() -> void:
 	boardspawn()
 	#legacy_boardspawn()
+
+func deselect_last_square_with(square):
+	var is_same_piece: bool=false
+	if selected_square != null:
+		if selected_square.piece != null:
+			if selected_square.piece == square.piece:
+				is_same_piece= true
+			selected_square.piece.deselect()
+	unaffected_selected_square = square
+	selected_square = square
+	if is_same_piece:
+		print("same")
+		
+		selected_square = null
+		is_same_piece=false
 
 func legacy_boardspawn():
 	const squaresize = 44
@@ -93,7 +133,7 @@ func boardspawn():
 			row += -1
 			col += -1
 			pos += Vector2(-squaresize, squaresize)
-			tilespawn(pos, is_white, int_to_ascii(col) + str(row))
+			tilespawn(pos, is_white, int_to_ascii(col) + str(row), 8-row)
 			
 		if i == 8 : 
 			ganti_pokoknya = true
@@ -107,13 +147,14 @@ func boardspawn():
 			pos = posawal + Vector2(squaresize*7, squaresize*(9-i))
 		is_white = !is_white
 
-func tilespawn(location : Vector2, texture : bool, tname : String):
+func tilespawn(location : Vector2, texture : bool, tname : String, row : int):
 	var newsquare: Square = square.instantiate()
 	add_child(newsquare)
 	newsquare.position = location
 	newsquare.name = tname
 	if texture : newsquare.tile.texture = light
 	else : newsquare.tile.texture = dark
+	matrix_board[row].append(newsquare)
 
 func int_to_ascii(index : int):
 	return char(96+index)
@@ -121,5 +162,18 @@ func int_to_ascii(index : int):
 func wait(seconds: float):
 	await get_tree().create_timer(seconds).timeout
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	if is_dragging:
+		if selected_piece:
+			selected_piece.dragging()
+	elif is_dropping:
+		if selected_piece:
+			selected_piece.dropping(dropped_square.position)
+			validation()
+			if unaffected_selected_square:
+				if unaffected_selected_square.piece:
+					unaffected_selected_square.piece = null
+		is_dropping = false
+
+func validation():
 	pass
