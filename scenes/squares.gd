@@ -29,6 +29,8 @@ var matrix_board: Array=[
 	[]
 ]
 
+
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_left"):
 		print_matrix_pretty()
@@ -168,12 +170,16 @@ func _process(_delta: float) -> void:
 			selected_piece.dragging()
 	elif is_dropping:
 		if selected_piece:
-			selected_piece.dropping(dropped_square.position)
-			validation()
-			if unaffected_selected_square:
-				if unaffected_selected_square.piece:
-					unaffected_selected_square.piece = null
+			if validation():
+				selected_piece.dropping(dropped_square.position)
+			else:
+				selected_piece.reset()
+			#if unaffected_selected_square:
+				#if unaffected_selected_square.piece:
+					#unaffected_selected_square.piece = null
 		is_dropping = false
 
 func validation():
-	pass
+	var valid: bool = false
+	
+	return valid

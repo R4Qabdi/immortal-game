@@ -84,10 +84,11 @@ func update_matrix():
 
 func add_piece(type : String, which_square, is_enemy : bool):
 	
-	var newpiece = piece.instantiate()
+	var newpiece: Piece = piece.instantiate()
 	add_child(newpiece)
 	newpiece.name = type
 	newpiece.type = type
+	newpiece.current_square = which_square
 	which_square.piece = newpiece
 	var origin_position = which_square.position 
 	newpiece.position = origin_position

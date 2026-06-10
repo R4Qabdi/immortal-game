@@ -5,6 +5,8 @@ class_name Piece
 var type :String
 var is_selected :bool = false
 var hp : int 
+var current_square : Node2D
+
 
 func _ready() -> void:
 	texture.modulate.a=0
@@ -51,7 +53,7 @@ func dragging():
 	texture.scale = Vector2(3,3)
 	var viewportsize = get_viewport_rect().size
 	var mouse_pos = get_global_mouse_position()
-	print (viewportsize)
+	#print (viewportsize)
 	var clamp_y = clamp(mouse_pos.y, 36, viewportsize.y-36)
 	var clamp_x = clamp(mouse_pos.x, 36, viewportsize.x-36)
 	texture.global_position = Vector2(clamp_x,clamp_y)
@@ -59,9 +61,14 @@ func dragging():
 	#print(get_global_mouse_position())
 
 func dropping(to):
-	print(to)
+	#print(to)
 	tween_to_move(self, to, 0.2, Tween.EASE_OUT,Tween.TRANS_SPRING)
 	#tween_to_move(self.texture, to, 1, Tween.EASE_OUT,Tween.TRANS_SPRING)
 	texture.position = Vector2(0,-16)
 	texture.scale = Vector2(2,2)
 	deselect()
+
+func reset():
+	texture.position = Vector2(0,-16)
+	texture.scale = Vector2(2,2)
+	select_toggle()
