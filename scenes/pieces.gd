@@ -1,102 +1,49 @@
 extends Node2D
 
 @onready var piece = preload("res://scenes/piece.tscn")
-var matrix_pieces : Array = []
-#ingfo tentang matrix
-# 0 = kosong
-# 1 = raja 
-# 2 = pion
-# 3 = kuda
-# 4 = peluncur
-# 5 = benteng
-# 6 = ratu
-# enemy pieces itu dalam bentuk negatif
+var matrix_pieces: Array = []
 
 func _ready() -> void:
 	await wait(1.5)
-	var origin_tile = get_node_or_null("../squares/e1")
-	if origin_tile:
-		add_piece("king", origin_tile, false)
-	origin_tile = get_node_or_null("../squares/d1")
-	if origin_tile:
-		add_piece("queen", origin_tile, false)
-	await wait(0.1)
-	origin_tile = get_node_or_null("../squares/c1")
-	if origin_tile:
-		add_piece("bishop", origin_tile, false)
-	origin_tile = get_node_or_null("../squares/f1")
-	if origin_tile:
-		add_piece("bishop", origin_tile, false)
-	await wait(0.1)
-	origin_tile = get_node_or_null("../squares/b1")
-	if origin_tile:
-		add_piece("knight", origin_tile, false)
-	origin_tile = get_node_or_null("../squares/g1")
-	if origin_tile:
-		add_piece("knight", origin_tile, false)
-	await wait(0.1)
-	origin_tile = get_node_or_null("../squares/a1")
-	if origin_tile:
-		add_piece("rook", origin_tile, false)
-	origin_tile = get_node_or_null("../squares/h1")
-	if origin_tile:
-		add_piece("rook", origin_tile, false)
-	await wait(0.1)
-	origin_tile = get_node_or_null("../squares/e2")
-	if origin_tile:
-		add_piece("pawn", origin_tile, false)
-	origin_tile = get_node_or_null("../squares/d2")
-	if origin_tile:
-		add_piece("pawn", origin_tile, false)
-	await wait(0.1)
-	origin_tile = get_node_or_null("../squares/c2")
-	if origin_tile:
-		add_piece("pawn", origin_tile, false)
-	origin_tile = get_node_or_null("../squares/f2")
-	if origin_tile:
-		add_piece("pawn", origin_tile, false)
-	await wait(0.1)
-	origin_tile = get_node_or_null("../squares/b2")
-	if origin_tile:
-		add_piece("pawn", origin_tile, false)
-	origin_tile = get_node_or_null("../squares/g2")
-	if origin_tile:
-		add_piece("pawn", origin_tile, false)
-	await wait(0.1)
-	origin_tile = get_node_or_null("../squares/a2")
-	if origin_tile:
-		add_piece("pawn", origin_tile, false)
-	origin_tile = get_node_or_null("../squares/h2")
-	if origin_tile:
-		add_piece("pawn", origin_tile, false)
+	setup_initial_pieces()
+
+func setup_initial_pieces():
+	var layout = {
+		"e1": "king", "d1": "queen", "c1": "bishop", "f1": "bishop",
+		"b1": "knight", "g1": "knight", "a1": "rook", "h1": "rook",
+		"a2": "pawn", "b2": "pawn", "c2": "pawn", "d2": "pawn",
+		"e2": "pawn", "f2": "pawn", "g2": "pawn", "h2": "pawn", "e3": "pawn"
+	}
 	
+	for tile_name in layout:
+		var origin_tile = get_node_or_null("../squares/" + tile_name)
+		if origin_tile:
+			add_piece(layout[tile_name], origin_tile, false)
+			await wait(0.05)
+			
 	update_matrix()
 
 func update_matrix():
 	matrix_pieces.clear()
-	var temp:Array
-	var index:int = 0
-	for i in get_parent().get_node("squares").matrix_board:
+	var board_node = get_parent().get_node_or_null("squares")
+	if not board_node:
+		return
+		
+	var index: int = 0
+	for i in board_node.matrix_board:
 		matrix_pieces.append([])
 		for j in i:
 			matrix_pieces[index].append(j.piece)
 		index += 1
 
-func add_piece(type : String, which_square, is_enemy : bool):
-	
+func add_piece(type: String, which_square: Square, _is_enemy: bool):
 	var newpiece: Piece = piece.instantiate()
 	add_child(newpiece)
 	newpiece.name = type
 	newpiece.type = type
 	newpiece.current_square = which_square
 	which_square.piece = newpiece
-	var origin_position = which_square.position 
-	newpiece.position = origin_position
-	
+	newpiece.global_position = which_square.global_position
 
 func wait(seconds: float):
 	await get_tree().create_timer(seconds).timeout
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

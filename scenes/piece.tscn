@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://3joxhe0ko1kt" path="res://assets/temporary/pieces/king-normal.png" id="2_s58gp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s58gp"]
-size = Vector2(32, 64)
+size = Vector2(32, 56)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s58gp"]
 radius = 64.0
@@ -25,12 +25,12 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="coll" type="CollisionShape2D" parent="area" unique_id=1385117098]
-position = Vector2(0, -24)
+position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_s58gp")
 debug_color = Color(0.5349519, 0.48069078, 0.8049752, 0.41960785)
 
 [node name="kingmove" type="Area2D" parent="." unique_id=1364367127]
-visible = false
+modulate = Color(1, 1, 1, 0)
 collision_mask = 0
 monitorable = false
 
