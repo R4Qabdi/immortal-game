@@ -116,7 +116,8 @@ func FillData(itemID:String, cd:float):
 	#picked = true
 #
 func _on_continue_pressed() -> void:
-	get_tree().change_scene_to_file(nextScene)
+	#get_tree().paused = false
+	queue_free()
 
 func _on_upgrade_pressed() -> void:
 	pass # Replace with function body.

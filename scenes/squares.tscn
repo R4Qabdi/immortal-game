@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ds2p8p50rbii"]
 
-[ext_resource type="Script" uid="uid://b7skmkskq3ypu" path="res://scenes/squares.gd" id="1_lqolf"]
+[ext_resource type="Script" uid="uid://b7skmkskq3ypu" path="res://scripts/squares.gd" id="1_lqolf"]
 [ext_resource type="Texture2D" uid="uid://ca8dl65600mrw" path="res://icon.svg" id="2_hj0g4"]
 
 [node name="squares" type="Node2D" unique_id=1421516623]
