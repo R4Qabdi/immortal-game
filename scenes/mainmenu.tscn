@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bleayfx05w740"]
 
-[ext_resource type="Script" uid="uid://d2fkifi7vw8p3" path="res://scenes/mainmenu.gd" id="1_r3g3c"]
+[ext_resource type="Script" uid="uid://d2fkifi7vw8p3" path="res://scripts/mainmenu.gd" id="1_r3g3c"]
 [ext_resource type="Texture2D" uid="uid://xf0xph8q5v2f" path="res://assets/trash/mainmenu.png" id="2_3vvtq"]
 
 [sub_resource type="Animation" id="Animation_0e48y"]
@@ -190,6 +190,7 @@ offset_left = -76.0
 offset_top = 480.0
 offset_right = 68.0
 offset_bottom = 528.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "credits"
 
@@ -202,6 +203,7 @@ offset_left = -76.0
 offset_top = 528.0
 offset_right = 68.0
 offset_bottom = 576.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "exit"
 
@@ -227,6 +229,7 @@ offset_left = -92.0
 offset_top = -296.0
 offset_right = 44.0
 offset_bottom = -256.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "<- back"
 
