@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dxhwsnsreygqk"]
+
+[ext_resource type="Texture2D" uid="uid://bfatys6kjqmgf" path="res://assets/bg/card bg.png" id="1_nr37t"]
+[ext_resource type="Texture2D" uid="uid://dl6fiolycce6f" path="res://assets/bg/card bg on.png" id="2_v8r38"]
+[ext_resource type="Texture2D" uid="uid://71fs56v8f1s2" path="res://assets/bg/card bg hover.png" id="3_albav"]
+[ext_resource type="Script" uid="uid://drmkbleys8s1n" path="res://scripts/shopcard.gd" id="4_elywt"]
+[ext_resource type="Texture2D" uid="uid://bqhomiav4d5mo" path="res://assets/icons/item card 2.png" id="4_nk1h8"]
+[ext_resource type="Script" uid="uid://cq03ason3faul" path="res://scripts/label.gd" id="5_v8r38"]
+[ext_resource type="FontFile" uid="uid://cn0gkpavqq1a8" path="res://assets/font/Pixelit-Regular.ttf" id="6_4k1ke"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_albav"]
+font = ExtResource("6_4k1ke")
+font_size = 12
+font_color = Color(0.1764706, 0.11372549, 0.05490196, 1)
+
+[node name="TextureButton" type="TextureButton" unique_id=966986450]
+anchors_preset = -1
+offset_right = 54.0
+offset_bottom = 68.0
+texture_normal = ExtResource("1_nr37t")
+texture_pressed = ExtResource("2_v8r38")
+texture_hover = ExtResource("3_albav")
+stretch_mode = 0
+script = ExtResource("4_elywt")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1138835344]
+layout_mode = 0
+offset_right = 54.0
+offset_bottom = 58.0
+texture = ExtResource("4_nk1h8")
+
+[node name="Label" type="Label" parent="." unique_id=1008182819]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.85300004
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.0040016174
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.1764706, 0.11372549, 0.05490196, 1)
+theme_override_font_sizes/font_size = 12
+text = "name"
+label_settings = SubResource("LabelSettings_albav")
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 0
+uppercase = true
+script = ExtResource("5_v8r38")
