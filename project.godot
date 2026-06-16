@@ -25,9 +25,8 @@ global="*uid://bh26gtf4mm7g7"
 
 window/size/viewport_width=360
 window/size/viewport_height=640
-window/size/mode=3
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_width"
 
 [gui]
 

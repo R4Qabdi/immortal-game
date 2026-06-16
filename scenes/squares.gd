@@ -33,9 +33,9 @@ func deselect_last_square_with(target_square: Square):
 	if selected_square != null:
 		if selected_square.piece != null and selected_square.piece == target_square.piece:
 			is_same_piece = true
-		if selected_square.piece:
+		if selected_square.piece and not is_same_piece:
 			selected_square.piece.deselect()
-			
+			#pass
 	unaffected_selected_square = target_square
 	selected_square = target_square
 	
@@ -93,6 +93,7 @@ func wait(seconds: float):
 func _process(_delta: float) -> void:
 	if is_dragging and selected_piece:
 		selected_piece.dragging()
+
 func execute_drop():
 	is_dragging = false
 	if not selected_piece:
@@ -112,23 +113,14 @@ func execute_drop():
 		square_lama.piece = null
 		square_baru.piece = selected_piece
 		
-		# 3. KELOLA COLLISION LAYER SQUARE (Lama & Baru)
-		# Square lama sekarang kosong -> kembalikan ke Layer 2
-		if square_lama.has_node("Area2D"): 
-			square_lama.get_node("Area2D").collision_layer = 2
-			
-		# Square baru sekarang ada isinya -> ubah ke Layer 3 (atau sesuaikan dengan bitmask kamu)
-		if square_baru.has_node("Area2D"):
-			square_baru.get_node("Area2D").collision_layer = 4 # Catatan: Di kodemu Layer 3 itu nilainya 4 dalam desimal bitmask (1=layer1, 2=layer2, 4=layer3)
-
 		# 4. Jalankan animasi perpindahan visual
-		selected_piece.dropping(square_baru)
+		selected_piece.dropping(square_lama, square_baru)
 		
 		# Update matrix piece data
 		var pieces_manager = get_parent().get_node_or_null("pieces")
 		if pieces_manager:
 			pieces_manager.update_matrix()
-			
+		
 	selected_piece = null
 	dropped_square = null
 

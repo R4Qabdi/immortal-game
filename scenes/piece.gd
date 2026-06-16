@@ -13,6 +13,8 @@ var current_square: Square
 var movecount : int = 0
 var is_enemy: bool = false
 var debug_lines: Array[Dictionary] = []
+var previous_valid_squares: Array[Square]
+var current_valid_squares: Array[Square]
 
 func _ready() -> void:
 	texture.modulate.a = 0
@@ -44,26 +46,38 @@ func tween_to_move(target, to, duration, easing, trans):
 	tween.set_trans(trans)
 	tween.tween_property(target, "position", to, duration)
 
-func select_toggle():
-	is_selected = !is_selected
-	if is_selected: 
+func select_texture(it_is_selected : bool):
+	if it_is_selected: 
 		texture.texture = load("res://assets/temporary/pieces/" + type + "-selected.png")
 	else:
 		texture.texture = load("res://assets/temporary/pieces/" + type + "-normal.png")
 
+func select_toggle():
+	is_selected = !is_selected
+	#check_valid_square()
+	update_show_valid_moves()
+	
+
 func deselect():
 	is_selected = false
+	print("deselected")
+	
 	texture.texture = load("res://assets/temporary/pieces/" + type + "-normal.png")
 
 func dragging():
+	select_texture(false)
 	texture.scale = Vector2(3, 3)
 	var viewportsize = get_viewport_rect().size
-	var mouse_pos = get_global_mouse_position()
+	const Y_OFFSET = -18
+	var mouse_pos = get_global_mouse_position()+Vector2(0,Y_OFFSET)
 	var clamp_y = clamp(mouse_pos.y, 36, viewportsize.y - 36)
 	var clamp_x = clamp(mouse_pos.x, 36, viewportsize.x - 36)
 	texture.global_position = Vector2(clamp_x, clamp_y)
 
-func dropping(to_square: Square):
+func dropping(from_square:Square, to_square: Square):
+	previous_square = from_square
+	is_selected = false
+	#print("new square")
 	current_square = to_square
 	
 	# Pindahkan posisi root Node2D milik piece ke square baru
@@ -79,9 +93,10 @@ func dropping(to_square: Square):
 	#update layer square
 	update_my_square_layer(true)
 	
-	deselect()
 
 func reset():
+	select_toggle()
+	select_texture(is_selected)
 	# Pulangkan offset texture lokal ke (0, -16) di dalam current_square semula
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
@@ -89,7 +104,7 @@ func reset():
 	tween.tween_property(texture, "position", Vector2(0, -16), 0.15)
 	
 	texture.scale = Vector2(2, 2)
-	deselect()
+	#deselect()
 
 func _draw() -> void:
 	# Gambar semua garis yang terdaftar
@@ -110,26 +125,39 @@ func update_my_square_layer(is_occupied: bool = true):
 		else:
 			square_area.collision_layer = 2 # Set ke Layer 2 (Kosong)
 	if previous_square:
-		var square_area = current_square.dots
+		print(previous_square)
+		var square_area = previous_square.dots
 		square_area.collision_layer = 2 # Set ke Layer 2 (Kosong)
 
 # =========================================================================
 # UTAMA: DISTRIBUSI VALIDASI BERDASARKAN TIPE BIDAK
 # =========================================================================
 func check_valid_square() -> Array[Square]:
-	var moves: Array[Square] = []
-	match type:
-		"pawn": moves = valid_pawn_moves(movecount < 1)
-		#"rook": moves = valid_rook_moves()
-		#"bishop": moves = valid_bishop_moves()
-		#"queen": moves = valid_queen_moves()
-		#"knight", "horse": moves = valid_knight_moves()
-		#"king": moves = valid_king_moves()
 	
-	print("Bidak: ", type, " | Jumlah Langkah Valid Ditemukan: ", moves.size())
-	print(moves)
-	return moves
+	current_square.dots.collision_layer = 0
+	match type:
+		"pawn": valid_pawn_moves(movecount < 1)
+		#"rook": valid_rook_moves()
+		#"bishop": valid_bishop_moves()
+		#"queen": alid_queen_moves()
+		#"knight": valid_knight_moves()
+		#"king": valid_king_moves()
+	current_square.dots.collision_layer = 0b110
+	
+	print("Bidak: ", type, " | Jumlah Langkah Valid Ditemukan: ", current_valid_squares.size())
+	print(current_valid_squares)
+	return current_valid_squares
 
+func update_show_valid_moves():
+	if is_selected:
+		for valid_square in current_valid_squares:
+			valid_square.labubu.visible = true
+	else:
+		if previous_valid_squares:
+			for previous_valid_square in previous_valid_squares:
+				print("previous square"+str(previous_valid_square))
+				previous_valid_square.labubu.visible = false
+	previous_valid_squares = current_valid_squares
 
 # =========================================================================
 # UTILITY: MENCOCOL SQUARE DI KOORDINAT TERTENTU SAAT RAYCAST KOSONG
@@ -148,107 +176,58 @@ func cari_square_di_posisi(posisi_target: Vector2) -> Square:
 # =========================================================================
 # PAWN MOVES (Pion)
 # =========================================================================
-func valid_pawn_moves(is_first_move: bool) -> Array[Square]:
+func valid_pawn_moves(is_first_move: bool) -> void:
 	var valid_moves: Array[Square] = []
-	var space_state = get_world_2d().direct_space_state
-	
-	debug_lines.clear()
-	var start_pos = global_position
-	
-	# --- LANGKAH 1 (Maju 1 Kotak / sejauh 44 pixel) ---
-	var target_langkah_1 = start_pos + Vector2(0, -44)
-	var query_1 = PhysicsRayQueryParameters2D.create(start_pos, target_langkah_1)
-	query_1.collision_mask = 6 
-	query_1.collide_with_areas = true
-	query_1.collide_with_bodies = false
-	
-	var result_1 = space_state.intersect_ray(query_1)
-	var jalan_1_terblokir: bool = false
-	var warna_1 = Color.GREEN
-	
-	if result_1.size() > 0:
-		var collider = result_1.collider
-		if collider.collision_layer & 2 and collider.owner is Square:
-			var sq1 = collider.owner as Square
-			if sq1.piece == null:
-				valid_moves.append(sq1)
-			else:
-				jalan_1_terblokir = true
-				warna_1 = Color.RED
-		elif collider.collision_layer & 4:
-			jalan_1_terblokir = true
-			warna_1 = Color.RED
-	else:
-		# PERBAIKAN: Jika raycast kosong, cari object Square-nya secara manual
-		var objek_di_target = cari_square_di_posisi(target_langkah_1)
-		if objek_di_target and objek_di_target.piece == null:
-			valid_moves.append(objek_di_target)
-			warna_1 = Color.GREEN
-		else:
-			warna_1 = Color.RED
-		
-	tambah_debug_line(start_pos, target_langkah_1, warna_1)
-
-	# --- LANGKAH 2 (Maju 2 Kotak, Hanya untuk Langkah Pertama) ---
-	if is_first_move and not jalan_1_terblokir:
-		var target_langkah_2 = start_pos + Vector2(0, -88)
-		var query_2 = PhysicsRayQueryParameters2D.create(target_langkah_1, target_langkah_2)
-		query_2.collision_mask = 6
-		query_2.collide_with_areas = true
-		query_2.collide_with_bodies = false
-		
-		var result_2 = space_state.intersect_ray(query_2)
-		var warna_2 = Color.GREEN
-		
-		if result_2.size() > 0:
-			var collider = result_2.collider
-			if collider.collision_layer & 2 and collider.owner is Square:
-				var sq2 = collider.owner as Square
-				if sq2.piece == null:
-					valid_moves.append(sq2)
-				else:
-					warna_2 = Color.RED
-			elif collider.collision_layer & 4:
-				warna_2 = Color.RED
-		else:
-			# PERBAIKAN: Cari objek Square secara manual jika raycast kosong
-			var objek_di_target_2 = cari_square_di_posisi(target_langkah_2)
-			if objek_di_target_2 and objek_di_target_2.piece == null:
-				valid_moves.append(objek_di_target_2)
-				warna_2 = Color.GREEN
-			else:
-				warna_2 = Color.RED
+	if is_first_move : 
+		var direction = global_position+ Vector2(0,-88)
+		var space_state = get_world_2d().direct_space_state
+		var excluded = []
+		while true:
+			var query = PhysicsRayQueryParameters2D.create(global_position,direction)
+			query.exclude = excluded
+			query.collide_with_areas = true
+			query.collision_mask = 0b110
+			var results = space_state.intersect_ray(query)
+			if results.is_empty():
+				break
 			
-		tambah_debug_line(target_langkah_1, target_langkah_2, warna_2)
-
-	# --- SERANGAN DIAGONAL ---
-	var arah_makan = [Vector2(-44, -44), Vector2(44, -44)]
+			if results["collider"].collision_layer & (1 << 2):  # detect a piece
+				#commented because pawn cannot capture forward
+				#if results["collider"].collision_layer & (1 << 1):  # is an enemy piece
+					#valid_moves.append(results["collider"].get_parent())  # valid capture
+					#excluded.append(results["rid"])
+				break  # stop either way
+			
+			valid_moves.append(results["collider"].get_parent())
+			excluded.append(results["rid"])
+	else :
+		var direction = global_position+ Vector2(0,-44)
+		var space_state = get_world_2d().direct_space_state
+		var excluded = []
+		while true:
+			var query = PhysicsRayQueryParameters2D.create(global_position,direction)
+			query.exclude = excluded
+			query.collide_with_areas = true
+			query.collision_mask = 0b110
+			var results = space_state.intersect_ray(query)
+			if results.is_empty():
+				break
+			
+			if results["collider"].collision_layer & (1 << 2):  # detect a piece
+				#commented because pawn cannot capture forward
+				#if results["collider"].collision_layer & (1 << 1):  # is an enemy piece
+					#valid_moves.append(results["collider"].get_parent())  # valid capture
+					#excluded.append(results["rid"])
+				break  # stop either way
+			
+			valid_moves.append(results["collider"].get_parent())
+			excluded.append(results["rid"])
+	#-------
+	#capture logic
+	#-------
 	
-	for arah in arah_makan:
-		var target_diagonal = start_pos + arah
-		var query_diag = PhysicsRayQueryParameters2D.create(start_pos, target_diagonal)
-		query_diag.collision_mask = 2 
-		query_diag.collide_with_areas = true
-		query_diag.collide_with_bodies = false
-		
-		var result_diag = space_state.intersect_ray(query_diag)
-		var warna_diag = Color.BLUE
-		
-		if result_diag.size() > 0:
-			var collider = result_diag.collider
-			if collider.owner is Square:
-				var target_square = collider.owner as Square
-				if target_square.piece and target_square.piece.is_enemy != self.is_enemy:
-					valid_moves.append(target_square)
-					warna_diag = Color.RED
-				else:
-					warna_diag = Color.ORANGE
-		else:
-			warna_diag = Color.BLUE
-					
-		tambah_debug_line(start_pos, target_diagonal, warna_diag)
-		
-	return valid_moves
+	current_valid_squares = valid_moves
+
 
 # =========================================================================
 # QUEEN MOVES (Ratu)

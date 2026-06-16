@@ -157,55 +157,75 @@ texture = ExtResource("2_3vvtq")
 libraries/ = SubResource("AnimationLibrary_0hol4")
 
 [node name="start" type="Button" parent="." unique_id=976291148]
-layout_mode = 0
-offset_left = 104.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.0
 offset_top = 384.0
-offset_right = 248.0
+offset_right = 68.0
 offset_bottom = 432.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "start"
 
 [node name="option" type="Button" parent="." unique_id=219593460]
-layout_mode = 0
-offset_left = 104.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.0
 offset_top = 432.0
-offset_right = 248.0
+offset_right = 68.0
 offset_bottom = 480.0
 theme_override_font_sizes/font_size = 30
 text = "options"
 
 [node name="credit" type="Button" parent="." unique_id=1046495691]
-layout_mode = 0
-offset_left = 104.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.0
 offset_top = 480.0
-offset_right = 248.0
+offset_right = 68.0
 offset_bottom = 528.0
 theme_override_font_sizes/font_size = 30
 text = "credits"
 
 [node name="exit" type="Button" parent="." unique_id=235904621]
-layout_mode = 0
-offset_left = 104.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.0
 offset_top = 528.0
-offset_right = 248.0
+offset_right = 68.0
 offset_bottom = 576.0
 theme_override_font_sizes/font_size = 30
 text = "exit"
 
 [node name="backoption" type="Button" parent="." unique_id=1529323259]
-layout_mode = 0
-offset_left = 488.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.5330001
+anchor_right = 1.5330001
+offset_left = -63.880066
 offset_top = 576.0
-offset_right = 616.0
+offset_right = 64.119934
 offset_bottom = 616.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "<- back"
 
 [node name="backcredit" type="Button" parent="." unique_id=342616609]
-layout_mode = 0
-offset_left = 88.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -92.0
 offset_top = -296.0
-offset_right = 224.0
+offset_right = 44.0
 offset_bottom = -256.0
 theme_override_font_sizes/font_size = 30
 text = "<- back"
@@ -220,11 +240,16 @@ offset_right = 272.0
 offset_bottom = 384.00003
 
 [node name="Label" type="Label" parent="sure" unique_id=1024620719]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 8.0
-offset_right = 175.0
-offset_bottom = 30.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.518
+anchor_top = -2.0
+anchor_right = 0.518
+anchor_bottom = -2.0
+offset_left = -75.456
+offset_top = 264.00006
+offset_right = 75.544
+offset_bottom = 286.00006
 theme_override_font_sizes/font_size = 30
 text = "Are you sure?"
 horizontal_alignment = 1
