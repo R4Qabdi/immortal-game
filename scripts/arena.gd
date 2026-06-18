@@ -37,3 +37,11 @@ func _on_texture_button_pressed() -> void:
 	shopOverlayLayer.add_child(menu)
 	get_tree().root.add_child(shopOverlayLayer)
 	#get_tree().paused = true
+
+#func newSelect():
+	#newSquare
+	##validasi if baru ada piece
+	#if selected.piece: #validasi jika udah pernah ada select piece
+		#selected.unselect()
+	#selected = newSquare
+	#selected.select()

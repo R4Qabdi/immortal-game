@@ -1,8 +1,10 @@
 extends Control
-
+var viewport_size
 
 func _ready() -> void:
-	
+	viewport_size = get_viewport_rect()
+	print("viewport siz :: "+str(viewport_size))
+	print("viewport transform:::"+str(get_global_rect()))
 	#play the songs, load settings, and load the fucking assets, also load the save files
 	print(DisplayServer.get_display_safe_area())
 

@@ -153,8 +153,23 @@ animations = [{
 [node name="intro" type="CanvasLayer" unique_id=1390418059]
 script = ExtResource("1_edcas")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=884211079]
-position = Vector2(187, 329)
+[node name="fade" type="ColorRect" parent="." unique_id=476344780]
+modulate = Color(0, 0, 0, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="center" type="Control" parent="." unique_id=873881392]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="center" unique_id=1114937825]
+position = Vector2(0, 329)
 amount = 16
 texture = ExtResource("6_o2xb8")
 direction = Vector2(1, 1)
@@ -177,28 +192,19 @@ scale_amount_max = 0.8
 scale_amount_curve = SubResource("Curve_4tvkr")
 color_ramp = SubResource("Gradient_38bhq")
 
-[node name="main" type="Sprite2D" parent="." unique_id=1351188193]
-visible = false
-position = Vector2(180, 320)
+[node name="main" type="Sprite2D" parent="center" unique_id=630861449]
+position = Vector2(0, 320)
 texture = ExtResource("2_xxgml")
 
-[node name="kita" type="Sprite2D" parent="." unique_id=877147972]
-position = Vector2(91, 298)
+[node name="kita" type="Sprite2D" parent="center" unique_id=1971862705]
+position = Vector2(-89, 298)
 texture = ExtResource("3_86s61")
 
-[node name="kalahkan" type="Sprite2D" parent="." unique_id=1696661781]
-position = Vector2(225, 298)
+[node name="kalahkan" type="Sprite2D" parent="center" unique_id=390198248]
+position = Vector2(45, 298)
 texture = ExtResource("4_o2xb8")
 
-[node name="valorant" type="AnimatedSprite2D" parent="." unique_id=407413763]
-position = Vector2(180, 347)
+[node name="valorant" type="AnimatedSprite2D" parent="center" unique_id=538206173]
+position = Vector2(0, 347)
 sprite_frames = SubResource("SpriteFrames_p3xqj")
 animation = &"washed"
-
-[node name="fade" type="ColorRect" parent="." unique_id=476344780]
-modulate = Color(0, 0, 0, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2

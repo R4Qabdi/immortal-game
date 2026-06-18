@@ -8,11 +8,11 @@ func _input(event: InputEvent) -> void:
 		change_scene()
 
 func _ready() -> void:
-	$valorant.play("lit")
+	$center/valorant.play("lit")
 	await wait(0.25)
-	$valorant.play("loop")
+	$center/valorant.play("loop")
 	await wait(1)
-	$valorant.play("washed")
+	$center/valorant.play("washed")
 	await wait(0.583)
 	
 	change_scene()

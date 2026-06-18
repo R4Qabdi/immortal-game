@@ -26,9 +26,8 @@ ShopInstructions="*uid://c4c4bivdrwd3"
 
 window/size/viewport_width=360
 window/size/viewport_height=640
-window/size/mode=3
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_width"
 
 [gui]
 
