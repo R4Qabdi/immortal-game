@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://ds7wntlpsc06s"]
+
+[ext_resource type="Texture2D" uid="uid://pfhe3cm7ivum" path="res://assets/bg/shop bg.png" id="2_0df5h"]
+[ext_resource type="Texture2D" uid="uid://thpom1248vpp" path="res://assets/icons/reroll off.png" id="4_brsb2"]
+[ext_resource type="Texture2D" uid="uid://bh2rimlm4u7qu" path="res://assets/icons/reroll on.png" id="5_nq6oc"]
+[ext_resource type="Texture2D" uid="uid://b3k82dv6i7gcd" path="res://assets/icons/reroll hover.png" id="6_k86sa"]
+[ext_resource type="Texture2D" uid="uid://dtdda2cd25euk" path="res://assets/icons/upgrade off.png" id="7_40feg"]
+[ext_resource type="Texture2D" uid="uid://5wpmfmb83kls" path="res://assets/icons/upgrade on.png" id="8_tla8l"]
+[ext_resource type="Texture2D" uid="uid://dgxkbn4rmd334" path="res://assets/icons/upgrade hover.png" id="9_w24ly"]
+[ext_resource type="Texture2D" uid="uid://lel7agywnavw" path="res://assets/icons/continue off.png" id="10_ohgsq"]
+[ext_resource type="Texture2D" uid="uid://csgpque31gat" path="res://assets/icons/continue on.png" id="11_j8d85"]
+[ext_resource type="Texture2D" uid="uid://cvw7xf6ufi037" path="res://assets/icons/continue hover.png" id="12_5mlvw"]
+
+[node name="Inventory" type="Control" unique_id=1769513913]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 180.0
+offset_bottom = 320.0
+
+[node name="Inventory BG" type="TextureRect" parent="." unique_id=1118894434]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.68700004
+offset_bottom = 0.1599884
+scale = Vector2(2, 2)
+texture = ExtResource("2_0df5h")
+
+[node name="Contents Container" type="VBoxContainer" parent="Inventory BG" unique_id=823323091]
+layout_mode = 0
+offset_top = 14.0
+offset_right = 168.0
+offset_bottom = 104.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Inventory BG/Contents Container" unique_id=1765740354]
+layout_mode = 2
+
+[node name="Cards Container" type="HBoxContainer" parent="Inventory BG/Contents Container/ScrollContainer" unique_id=1476853250]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Buttons Container" type="HBoxContainer" parent="Inventory BG/Contents Container" unique_id=1474990988]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Reroll" type="TextureButton" parent="Inventory BG/Contents Container/Buttons Container" unique_id=92552553]
+layout_mode = 2
+texture_normal = ExtResource("4_brsb2")
+texture_pressed = ExtResource("5_nq6oc")
+texture_hover = ExtResource("6_k86sa")
+
+[node name="Upgrade" type="TextureButton" parent="Inventory BG/Contents Container/Buttons Container" unique_id=416961903]
+layout_mode = 2
+texture_normal = ExtResource("7_40feg")
+texture_pressed = ExtResource("8_tla8l")
+texture_hover = ExtResource("9_w24ly")
+
+[node name="Continue" type="TextureButton" parent="Inventory BG/Contents Container/Buttons Container" unique_id=1137613987]
+layout_mode = 2
+texture_normal = ExtResource("10_ohgsq")
+texture_pressed = ExtResource("11_j8d85")
+texture_hover = ExtResource("12_5mlvw")

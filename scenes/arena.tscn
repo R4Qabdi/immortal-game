@@ -2,13 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://d2ib50mkugwco" path="res://assets/trash/gameplay.png" id="1_e05a3"]
 [ext_resource type="Script" uid="uid://c2qggr70uvx02" path="res://scripts/arena.gd" id="1_wl4x5"]
-[ext_resource type="Script" uid="uid://b7skmkskq3ypu" path="res://scripts/squares.gd" id="3_olpmc"]
 [ext_resource type="Script" uid="uid://cq055jw1bjncn" path="res://scripts/pieces.gd" id="4_xdvfk"]
 [ext_resource type="Texture2D" uid="uid://b67s7frs3eb31" path="res://assets/icons/health bar.png" id="5_oexds"]
 [ext_resource type="Texture2D" uid="uid://csurb754qni1q" path="res://assets/bg/main bg.png" id="6_naajo"]
 [ext_resource type="Texture2D" uid="uid://ng41sm8iq81p" path="res://assets/icons/item card use.png" id="7_41jku"]
 [ext_resource type="Texture2D" uid="uid://k034w3sl384" path="res://assets/icons/SHOP on.png" id="8_k1k1x"]
-
 
 [sub_resource type="GDScript" id="GDScript_olpmc"]
 script/source = "extends Node2D
