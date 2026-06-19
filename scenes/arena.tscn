@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cq055jw1bjncn" path="res://scripts/pieces.gd" id="4_xdvfk"]
 [ext_resource type="Texture2D" uid="uid://b67s7frs3eb31" path="res://assets/icons/health bar.png" id="5_oexds"]
 [ext_resource type="Texture2D" uid="uid://csurb754qni1q" path="res://assets/bg/main bg.png" id="6_naajo"]
+[ext_resource type="Script" uid="uid://c2j24fhd6lrl4" path="res://scripts/inventory.gd" id="6_oexds"]
 [ext_resource type="Texture2D" uid="uid://ng41sm8iq81p" path="res://assets/icons/item card use.png" id="7_41jku"]
 [ext_resource type="Texture2D" uid="uid://k034w3sl384" path="res://assets/icons/SHOP on.png" id="8_k1k1x"]
 
@@ -191,6 +192,7 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 2
+script = ExtResource("6_oexds")
 
 [node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer" unique_id=796889430]
 layout_mode = 2
