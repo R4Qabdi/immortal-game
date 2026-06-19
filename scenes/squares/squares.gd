@@ -4,7 +4,7 @@ class_name Board
 const dark = preload("res://assets/temporary/darksquare.png")
 const light = preload("res://assets/temporary/lightsquare.png")
 
-@onready var square = preload("res://scenes/square.tscn")
+@onready var square = preload("res://scenes/squares/square.tscn")
 
 var dropped_square: Square
 var selected_square: Square
@@ -34,6 +34,7 @@ func deselect_last_square_with(target_square: Square):
 		if selected_square.piece != null and selected_square.piece == target_square.piece:
 			is_same_piece = true
 		if selected_square.piece and not is_same_piece:
+			#print("same piece")
 			selected_square.piece.deselect()
 			#pass
 	unaffected_selected_square = target_square
@@ -41,6 +42,7 @@ func deselect_last_square_with(target_square: Square):
 	
 	if is_same_piece:
 		selected_square = null
+		#selected_piece = null
 
 func boardspawn():
 	const squaresize = 44
@@ -114,6 +116,7 @@ func execute_drop():
 		square_baru.piece = selected_piece
 		
 		# 4. Jalankan animasi perpindahan visual
+		selected_piece.is_dragging = false
 		selected_piece.dropping(square_lama, square_baru)
 		
 		# Update matrix piece data

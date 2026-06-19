@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://d2ib50mkugwco" path="res://assets/trash/gameplay.png" id="1_e05a3"]
 [ext_resource type="Script" uid="uid://c2qggr70uvx02" path="res://scenes/arena.gd" id="1_wl4x5"]
-[ext_resource type="Script" uid="uid://b7skmkskq3ypu" path="res://scenes/squares.gd" id="3_olpmc"]
-[ext_resource type="Script" uid="uid://cq055jw1bjncn" path="res://scenes/pieces.gd" id="4_xdvfk"]
+[ext_resource type="Script" uid="uid://b7skmkskq3ypu" path="res://scenes/squares/squares.gd" id="3_xdvfk"]
+[ext_resource type="Script" uid="uid://cq055jw1bjncn" path="res://scenes/pieces/pieces.gd" id="4_xdvfk"]
 
 [node name="arena" type="Node2D" unique_id=491694569]
 script = ExtResource("1_wl4x5")
@@ -20,7 +20,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("1_e05a3")
 
 [node name="squares" type="Node2D" parent="." unique_id=9374824]
-script = ExtResource("3_olpmc")
+script = ExtResource("3_xdvfk")
 
 [node name="pieces" type="Node2D" parent="." unique_id=1922379074]
 y_sort_enabled = true

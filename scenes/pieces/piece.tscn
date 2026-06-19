@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bl7ydommgmkm2"]
 
-[ext_resource type="Script" uid="uid://de10jfokj35pk" path="res://scenes/piece.gd" id="1_gebih"]
+[ext_resource type="Script" uid="uid://de10jfokj35pk" path="res://scenes/pieces/piece.gd" id="1_gebih"]
 [ext_resource type="Texture2D" uid="uid://3joxhe0ko1kt" path="res://assets/temporary/pieces/king-normal.png" id="2_s58gp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s58gp"]
@@ -19,6 +19,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_s58gp")
 
 [node name="labubu" type="Sprite2D" parent="." unique_id=1376127090]
+visible = false
 
 [node name="area" type="Area2D" parent="." unique_id=1470941840]
 visible = false
@@ -32,7 +33,8 @@ debug_color = Color(0.5349519, 0.48069078, 0.8049752, 0.41960785)
 
 [node name="kingmove" type="Area2D" parent="." unique_id=1364367127]
 modulate = Color(1, 1, 1, 0)
-collision_mask = 0
+collision_layer = 0
+collision_mask = 6
 monitorable = false
 
 [node name="circle" type="CollisionShape2D" parent="kingmove" unique_id=26458442]

@@ -34,6 +34,7 @@ func _input(event: InputEvent) -> void:
 			if piece:
 				board.selected_piece = piece
 				board.is_dragging = true
+				piece.on_click()
 				#piece.select_toggle()
 				board.deselect_last_square_with(self)
 			else:
