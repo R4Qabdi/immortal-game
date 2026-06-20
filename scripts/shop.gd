@@ -100,6 +100,14 @@ func FillData(itemID:String, cd:float):
 		"CDs": cd
 	}
 
+func on_card_bought(type:int, card:String):
+	if type == 0:
+		InventoryInstructions.playerUnits.append(card)
+	else:
+		InventoryInstructions.playerItems.append(card)
+	
+	FillData(card, 0.0)
+
 #func _on_card_1_pressed() -> void:
 	#play_select_sound()
 	#FillData(selected[0], selectedCDs[0])
@@ -120,7 +128,26 @@ func _on_continue_pressed() -> void:
 	queue_free()
 
 func _on_upgrade_pressed() -> void:
-	pass # Replace with function body.
+	hide()
+	InventoryInstructions.change_inventory.emit(1)
 
 func _on_reroll_pressed() -> void:
 	setup(ShopInstructions.data)
+
+func _on_item_card_1_pressed() -> void:
+	on_card_bought(0, IC1.cardName)
+
+func _on_item_card_2_pressed() -> void:
+	on_card_bought(0, IC2.cardName)
+
+func _on_item_card_3_pressed() -> void:
+	on_card_bought(0, IC3.cardName)
+
+func _on_unit_card_1_pressed() -> void:
+	on_card_bought(1, UC1.cardName)
+
+func _on_unit_card_2_pressed() -> void:
+	on_card_bought(1, UC2.cardName)
+
+func _on_unit_card_3_pressed() -> void:
+	on_card_bought(1, UC3.cardName)

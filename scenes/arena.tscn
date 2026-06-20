@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://b67s7frs3eb31" path="res://assets/icons/health bar.png" id="5_oexds"]
 [ext_resource type="Texture2D" uid="uid://csurb754qni1q" path="res://assets/bg/main bg.png" id="6_naajo"]
 [ext_resource type="Script" uid="uid://c2j24fhd6lrl4" path="res://scripts/inventory.gd" id="6_oexds"]
-[ext_resource type="Texture2D" uid="uid://ng41sm8iq81p" path="res://assets/icons/item card use.png" id="7_41jku"]
 [ext_resource type="Texture2D" uid="uid://k034w3sl384" path="res://assets/icons/SHOP on.png" id="8_k1k1x"]
 
 [sub_resource type="GDScript" id="GDScript_olpmc"]
@@ -187,42 +186,20 @@ scale = Vector2(2, 2)
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=964230619]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=2113650546]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer" unique_id=964230619]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 2
 script = ExtResource("6_oexds")
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer" unique_id=796889430]
-layout_mode = 2
-texture_normal = ExtResource("7_41jku")
-
-[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/HBoxContainer" unique_id=384316346]
-layout_mode = 2
-texture_normal = ExtResource("7_41jku")
-
-[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/HBoxContainer" unique_id=2045634325]
-layout_mode = 2
-texture_normal = ExtResource("7_41jku")
-
-[node name="TextureButton4" type="TextureButton" parent="VBoxContainer/HBoxContainer" unique_id=905604299]
-layout_mode = 2
-texture_normal = ExtResource("7_41jku")
-
-[node name="TextureButton5" type="TextureButton" parent="VBoxContainer/HBoxContainer" unique_id=1780263848]
-layout_mode = 2
-texture_normal = ExtResource("7_41jku")
-
-[node name="TextureButton6" type="TextureButton" parent="VBoxContainer/HBoxContainer" unique_id=1813103169]
-layout_mode = 2
-texture_normal = ExtResource("7_41jku")
-
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=111009348]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 50
-alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1574054708]
 layout_mode = 2
@@ -232,10 +209,13 @@ text = "WAVE: "
 layout_mode = 2
 text = "COIN: "
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer" unique_id=1451436530]
-layout_mode = 2
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1451436530]
+offset_top = 584.0
+offset_right = 180.0
+offset_bottom = 612.0
+scale = Vector2(2, 2)
 texture_normal = ExtResource("8_k1k1x")
 texture_pressed = ExtResource("8_k1k1x")
 texture_hover = ExtResource("8_k1k1x")
 
-[connection signal="pressed" from="VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

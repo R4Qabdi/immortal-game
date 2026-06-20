@@ -90,6 +90,12 @@ texture_normal = ExtResource("10_pqync")
 texture_pressed = ExtResource("11_yuijs")
 texture_hover = ExtResource("12_aa4hd")
 
+[connection signal="pressed" from="Shop BG/Items Container/Item Card1" to="." method="_on_item_card_1_pressed"]
+[connection signal="pressed" from="Shop BG/Items Container/Item Card2" to="." method="_on_item_card_2_pressed"]
+[connection signal="pressed" from="Shop BG/Items Container/Item Card3" to="." method="_on_item_card_3_pressed"]
+[connection signal="pressed" from="Shop BG/Units Container/Unit Card1" to="." method="_on_unit_card_1_pressed"]
+[connection signal="pressed" from="Shop BG/Units Container/Unit Card2" to="." method="_on_unit_card_2_pressed"]
+[connection signal="pressed" from="Shop BG/Units Container/Unit Card3" to="." method="_on_unit_card_3_pressed"]
 [connection signal="pressed" from="Shop BG/HBoxContainer/Reroll" to="." method="_on_reroll_pressed"]
 [connection signal="pressed" from="Shop BG/HBoxContainer/Upgrade" to="." method="_on_upgrade_pressed"]
 [connection signal="pressed" from="Shop BG/HBoxContainer/Continue" to="." method="_on_continue_pressed"]
