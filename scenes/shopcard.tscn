@@ -38,6 +38,7 @@ anchor_bottom = 1.0
 offset_top = -0.0040016174
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.1764706, 0.11372549, 0.05490196, 1)
 theme_override_font_sizes/font_size = 12
 text = "name"
@@ -45,5 +46,8 @@ label_settings = SubResource("LabelSettings_albav")
 horizontal_alignment = 1
 vertical_alignment = 1
 justification_flags = 0
+clip_text = true
 uppercase = true
 script = ExtResource("5_v8r38")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

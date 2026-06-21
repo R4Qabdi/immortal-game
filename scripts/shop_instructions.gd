@@ -2,5 +2,6 @@ extends Node
 
 var data:Dictionary = {}
 var playerData:Dictionary = {}
-var playerDetail:Dictionary = {}
-var playerPerks:Array = []
+
+signal reroll_cards()
+signal shop_exit()

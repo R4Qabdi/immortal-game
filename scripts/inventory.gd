@@ -2,6 +2,7 @@ extends HBoxContainer
 
 func _ready() -> void:
 	InventoryInstructions.change_inventory.connect(_on_inventory_change)
+	redrawInv(InventoryInstructions.playerItems, 0)
 
 func redrawInv(ownedCards:Array, type:int):
 	var card = load("res://scenes/invcard.tscn")

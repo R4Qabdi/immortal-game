@@ -10,7 +10,7 @@
 
 [sub_resource type="GDScript" id="GDScript_olpmc"]
 script/source = "extends Node2D
-class_name Board
+#class_name Board
 
 const dark = preload(\"res://assets/temporary/darksquare.png\")
 const light = preload(\"res://assets/temporary/lightsquare.png\")
@@ -55,7 +55,7 @@ func deselect_last_square_with(target_square: Square):
 
 func boardspawn():
 	const squaresize = 44
-	const posawal = Vector2(64+6, 100)
+	const posawal = Vector2(64+6, 60)
 	await wait(0.01)
 	var is_white: bool = true
 	var ganti_pokoknya: bool = false

@@ -8,6 +8,7 @@ var shopMenu
 func _ready() -> void:
 	shopOverlayLayer = CanvasLayer.new()
 	shopMenu = load("res://scenes/shop.tscn")
+	ShopInstructions.shop_exit.connect(_on_shop_exit)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -20,8 +21,11 @@ func _on_texture_button_pressed() -> void:
 	}
 	var menu = shopMenu.instantiate()
 	shopOverlayLayer.add_child(menu)
-	get_tree().root.add_child(shopOverlayLayer)
+	add_child(shopOverlayLayer)
 	#get_tree().paused = true
+
+func _on_shop_exit():
+	shopOverlayLayer.queue_free()
 
 #func newSelect():
 	#newSquare
