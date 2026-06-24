@@ -17,12 +17,15 @@ func _ready() -> void:
 	hyper_elastic_move(tile, tile.position)
 
 func _input(event: InputEvent) -> void:
+	#if event is InputEventScreenDrag
 	if not board:
 		return
 	if event is InputEventKey and event.pressed and not event.is_echo():
 		# ini khusus buat debug ajaqq
 		if event.keycode == KEY_Q and is_hovered:
 			print(dots.collision_layer)
+			if piece:
+				piece.check_valid_square()
 			if piece and piece.type == "pawn":
 				if piece.movecount == 0:
 					piece.valid_pawn_moves(true)
@@ -32,11 +35,12 @@ func _input(event: InputEvent) -> void:
 		if event.is_pressed() and is_hovered:
 			# START DRAG: Hanya jalan kalau di atas petak yang ada pionnya
 			if piece:
-				board.selected_piece = piece
-				board.is_dragging = true
-				piece.on_click()
-				#piece.select_toggle()
-				board.deselect_last_square_with(self)
+				if piece.is_enemy==false:
+					board.selected_piece = piece
+					board.is_dragging = true
+					piece.on_click()
+					#piece.select_toggle()
+					board.deselect_last_square_with(self)
 			else:
 				board.deselect_last_square_with(self)
 		elif not event.is_pressed() and board.is_dragging:

@@ -25,12 +25,17 @@ global="*uid://bh26gtf4mm7g7"
 
 window/size/viewport_width=360
 window/size/viewport_height=640
+window/size/mode=4
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_width"
 
 [gui]
 
 theme/custom_font="uid://cn0gkpavqq1a8"
+
+[input_devices]
+
+pointing/android/enable_long_press_as_right_click=true
 
 [physics]
 
@@ -41,4 +46,5 @@ theme/custom_font="uid://cn0gkpavqq1a8"
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
