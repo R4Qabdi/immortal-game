@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var piece = preload("res://scenes/piece.tscn")
+@onready var piece = preload("res://scenes/pieces/piece.tscn")
 var matrix_pieces: Array = []
 
 func _ready() -> void:
@@ -20,7 +20,16 @@ func setup_initial_pieces():
 		if origin_tile:
 			add_piece(layout[tile_name], origin_tile, false)
 			await wait(0.05)
-			
+	var enemy_layout = {
+		"a7" : "pawn", 
+		"b4" : "pawn", 
+		"c3" : "pawn"
+	}
+	for tile_name in enemy_layout:
+		var origin_tile = get_node_or_null("../squares/" + tile_name)
+		if origin_tile:
+			add_piece(enemy_layout[tile_name], origin_tile, true)
+			await wait(0.05)
 	update_matrix()
 
 func update_matrix():
@@ -36,12 +45,13 @@ func update_matrix():
 			matrix_pieces[index].append(j.piece)
 		index += 1
 
-func add_piece(type: String, which_square: Square, _is_enemy: bool):
+func add_piece(type: String, which_square: Square, is_enemy: bool):
 	var newpiece: Piece = piece.instantiate()
 	add_child(newpiece)
 	newpiece.name = type
 	newpiece.type = type
 	newpiece.current_square = which_square
+	newpiece.is_enemy = is_enemy
 	which_square.piece = newpiece
 	newpiece.global_position = which_square.global_position
 
