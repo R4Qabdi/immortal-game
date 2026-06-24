@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bl7ydommgmkm2"]
 
-[ext_resource type="Script" uid="uid://de10jfokj35pk" path="res://scripts/piece.gd" id="1_gebih"]
+[ext_resource type="Script" uid="uid://de10jfokj35pk" path="res://scenes/pieces/piece.gd" id="1_gebih"]
 [ext_resource type="Texture2D" uid="uid://3joxhe0ko1kt" path="res://assets/temporary/pieces/king-normal.png" id="2_s58gp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s58gp"]

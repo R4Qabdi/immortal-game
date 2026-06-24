@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d2ib50mkugwco" path="res://assets/trash/gameplay.png" id="1_e05a3"]
 [ext_resource type="Script" uid="uid://c2qggr70uvx02" path="res://scripts/arena.gd" id="1_wl4x5"]
-[ext_resource type="Script" uid="uid://cq055jw1bjncn" path="res://scripts/pieces.gd" id="4_xdvfk"]
+[ext_resource type="Script" uid="uid://cq055jw1bjncn" path="res://scenes/pieces/pieces.gd" id="4_xdvfk"]
 [ext_resource type="Texture2D" uid="uid://b67s7frs3eb31" path="res://assets/icons/health bar.png" id="5_oexds"]
 [ext_resource type="Texture2D" uid="uid://csurb754qni1q" path="res://assets/bg/main bg.png" id="6_naajo"]
 [ext_resource type="Script" uid="uid://c2j24fhd6lrl4" path="res://scripts/inventory.gd" id="6_oexds"]
