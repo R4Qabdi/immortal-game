@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bav7r2liosw8n"
-path="res://.godot/imported/unit card 4.png-3419a8fc6edee12a5d96860813b284a0.ctex"
+uid="uid://k8mlf7g4aw3s"
+path="res://.godot/imported/astral projection.png-0a846ca2bfbd1e075a9c68b5a8cfeda4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/unit card 4.png"
-dest_files=["res://.godot/imported/unit card 4.png-3419a8fc6edee12a5d96860813b284a0.ctex"]
+source_file="res://assets/icons/astral projection.png"
+dest_files=["res://.godot/imported/astral projection.png-0a846ca2bfbd1e075a9c68b5a8cfeda4.ctex"]
 
 [params]
 

@@ -21,17 +21,17 @@ const items:Array = [
 	"voodoo", "cowardice", "black hole", "life insurance"
 	]
 const unitIcons:Array = [
-	"res://assets/icons/unit card 2.png", "res://assets/icons/unit card 3.png", 
-	"res://assets/icons/unit card 4.png", "res://assets/icons/unit card 5.png", 
-	"res://assets/icons/unit card 6.png", "res://assets/icons/unit card 7.png", 
-	"res://assets/icons/unit card 8.png", "res://assets/icons/unit card 9.png"
+	"res://assets/icons/queen.png", "res://assets/icons/rook.png", 
+	"res://assets/icons/bishop.png", "res://assets/icons/knight.png", 
+	"res://assets/icons/pawn.png", "res://assets/icons/guards.png", 
+	"res://assets/icons/wizard.png", "res://assets/icons/wall.png"
 	]
 const itemIcons:Array = [
-	"res://assets/icons/itme card 1.png", "res://assets/icons/item card 2.png",
-	"res://assets/icons/itme card 3.png", "res://assets/icons/item card 4.png",
-	"res://assets/icons/itme card 5.png", "res://assets/icons/item card 6.png",
-	"res://assets/icons/itme card 7.png", "res://assets/icons/item card 8.png",
-	"res://assets/icons/itme card 9.png"
+	"res://assets/icons/astral projection.png", "res://assets/icons/berserk.png",
+	"res://assets/icons/I can't stop.png", "res://assets/icons/oops.png",
+	"res://assets/icons/skipped leg day.png", "res://assets/icons/voodoo.png",
+	"res://assets/icons/cowardice.png", "res://assets/icons/black hole.png",
+	"res://assets/icons/life insurance.png"
 	]
 
 func _ready() -> void:

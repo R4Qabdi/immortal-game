@@ -12,7 +12,7 @@ func redrawInv(ownedCards:Array, type:int):
 		#var
 	
 	while spawned < len(ownedCards):
-		var spawnedCard = card.instatiate()
+		var spawnedCard = card.instantiate()
 		add_child(spawnedCard)
 		spawnedCard.setup(ownedCards[spawned])
 		spawned += 1

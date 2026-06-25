@@ -1,4 +1,5 @@
 extends TextureButton
+class_name InventoryCard
 
 @onready var itemName:Label = $Label
 @onready var itemIcon:TextureRect = $Icon
