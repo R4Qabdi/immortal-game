@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du54oyxjc4as0"
-path="res://.godot/imported/item card 9.png-d7b263701b64ff38b3406896375c2c62.ctex"
+uid="uid://bqhomiav4d5mo"
+path="res://.godot/imported/berserk.png-02b01537c7ce4f4e294e191a4c1d9bfb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/item card 9.png"
-dest_files=["res://.godot/imported/item card 9.png-d7b263701b64ff38b3406896375c2c62.ctex"]
+source_file="res://assets/icons/berserk.png"
+dest_files=["res://.godot/imported/berserk.png-02b01537c7ce4f4e294e191a4c1d9bfb.ctex"]
 
 [params]
 

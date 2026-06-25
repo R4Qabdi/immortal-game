@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5bxgye1vsug5"
-path="res://.godot/imported/item card 6.png-20c1816d11b1919c99521db8c4d45ec4.ctex"
+path="res://.godot/imported/voodoo.png-e4fc8e74e25bbaf1a963d10abc0f7e60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/item card 6.png"
-dest_files=["res://.godot/imported/item card 6.png-20c1816d11b1919c99521db8c4d45ec4.ctex"]
+source_file="res://assets/icons/voodoo.png"
+dest_files=["res://.godot/imported/voodoo.png-e4fc8e74e25bbaf1a963d10abc0f7e60.ctex"]
 
 [params]
 

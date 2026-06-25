@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clmdebnmrtekv"
-path="res://.godot/imported/unit card 7.png-5f53e7e67cd85f5ccc0b863976ee0fc7.ctex"
+uid="uid://baxhql6bj7rdd"
+path="res://.godot/imported/I can't stop.png-4458c09bfb07981882b235efb56d7193.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/unit card 7.png"
-dest_files=["res://.godot/imported/unit card 7.png-5f53e7e67cd85f5ccc0b863976ee0fc7.ctex"]
+source_file="res://assets/icons/I can't stop.png"
+dest_files=["res://.godot/imported/I can't stop.png-4458c09bfb07981882b235efb56d7193.ctex"]
 
 [params]
 

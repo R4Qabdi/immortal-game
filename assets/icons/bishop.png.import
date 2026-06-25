@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxr4ua100fxyo"
-path="res://.godot/imported/unit card 2.png-889da037b6c03844d237adf051ef5317.ctex"
+uid="uid://bav7r2liosw8n"
+path="res://.godot/imported/bishop.png-a669a204b3b1bcfcccd114802d731794.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/unit card 2.png"
-dest_files=["res://.godot/imported/unit card 2.png-889da037b6c03844d237adf051ef5317.ctex"]
+source_file="res://assets/icons/bishop.png"
+dest_files=["res://.godot/imported/bishop.png-a669a204b3b1bcfcccd114802d731794.ctex"]
 
 [params]
 

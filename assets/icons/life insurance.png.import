@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://barmldp1ibi4y"
-path="res://.godot/imported/unit card 9.png-0c8b3b55230558efc27f8d45a92d159c.ctex"
+uid="uid://du54oyxjc4as0"
+path="res://.godot/imported/life insurance.png-ff0452f285644ff6539382085fc2baf6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/unit card 9.png"
-dest_files=["res://.godot/imported/unit card 9.png-0c8b3b55230558efc27f8d45a92d159c.ctex"]
+source_file="res://assets/icons/life insurance.png"
+dest_files=["res://.godot/imported/life insurance.png-ff0452f285644ff6539382085fc2baf6.ctex"]
 
 [params]
 
