@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://csurb754qni1q" path="res://assets/bg/main bg.png" id="6_naajo"]
 [ext_resource type="Script" uid="uid://c2j24fhd6lrl4" path="res://scripts/inventory.gd" id="6_oexds"]
 [ext_resource type="Texture2D" uid="uid://k034w3sl384" path="res://assets/icons/SHOP on.png" id="8_k1k1x"]
+[ext_resource type="Texture2D" uid="uid://dcbd28nh0wciq" path="res://assets/icons/return to shop.png" id="9_naajo"]
 
 [node name="arena" type="Node2D" unique_id=491694569]
 script = ExtResource("1_wl4x5")
@@ -48,21 +49,23 @@ expand_mode = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=204507945]
 offset_top = 446.0
 offset_right = 180.0
-offset_bottom = 543.0
+offset_bottom = 514.0
 scale = Vector2(2, 2)
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 8
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=964230619]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 0
+size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 2
 script = ExtResource("6_oexds")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=111009348]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_constants/separation = 50
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1574054708]
@@ -73,13 +76,24 @@ text = "WAVE: "
 layout_mode = 2
 text = "COIN: "
 
-[node name="TextureButton" type="TextureButton" parent="." unique_id=1451436530]
+[node name="shop button" type="TextureButton" parent="." unique_id=1451436530]
 offset_top = 584.0
-offset_right = 180.0
+offset_right = 77.0
 offset_bottom = 612.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("8_k1k1x")
 texture_pressed = ExtResource("8_k1k1x")
 texture_hover = ExtResource("8_k1k1x")
 
-[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[node name="Back to Shop" type="TextureButton" parent="." unique_id=1124430086]
+offset_left = 206.0
+offset_top = 584.0
+offset_right = 283.0
+offset_bottom = 612.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("9_naajo")
+texture_pressed = ExtResource("9_naajo")
+texture_hover = ExtResource("9_naajo")
+
+[connection signal="pressed" from="shop button" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Back to Shop" to="." method="_on_back_to_shop"]
