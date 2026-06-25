@@ -87,9 +87,9 @@ func FillData(itemID:String, cd:float):
 
 func on_card_bought(type:int, card:String):
 	if type == 0:
-		InventoryInstructions.playerUnits.append(card)
-	else:
 		InventoryInstructions.playerItems.append(card)
+	else:
+		InventoryInstructions.playerUnits.append(card)
 	
 	FillData(card, 0.0)
 
@@ -100,6 +100,8 @@ func _on_continue_pressed() -> void:
 func _on_upgrade_pressed() -> void:
 	hide()
 	InventoryInstructions.change_inventory.emit(1)
+	print_debug(InventoryInstructions.playerUnits)
+	print_debug(InventoryInstructions.playerItems)
 
 func _on_reroll_pressed() -> void:
 	setup(ShopInstructions.data)

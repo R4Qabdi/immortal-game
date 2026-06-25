@@ -10,3 +10,4 @@ func setup(title:String):
 	texture_hover = load("res://assets/bg/card bg hover.png")
 	itemName.text = title
 	itemIcon.texture = load("res://assets/icons/"+title+".png")
+	

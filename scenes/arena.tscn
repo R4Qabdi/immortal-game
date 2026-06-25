@@ -53,10 +53,7 @@ scale = Vector2(2, 2)
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=2113650546]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer" unique_id=964230619]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=964230619]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
