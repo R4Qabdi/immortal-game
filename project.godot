@@ -27,11 +27,11 @@ window/size/viewport_width=360
 window/size/viewport_height=640
 window/size/mode=4
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_width"
+window/stretch/aspect="expand"
 
 [gui]
 
-theme/custom_font="uid://cn0gkpavqq1a8"
+theme/custom_font="uid://dkd6vlihcnxfl"
 
 [input_devices]
 
