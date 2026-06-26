@@ -50,7 +50,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.6735428, 0.5844284, 0.26523337, 1)
 
-[node name="Panel" type="Panel" parent="hud/bottom" unique_id=572385707]
+[node name="info" type="Panel" parent="hud/bottom" unique_id=572385707]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -58,7 +58,7 @@ offset_top = 8.0
 offset_bottom = 48.0
 grow_horizontal = 2
 
-[node name="endturn" type="Button" parent="hud/bottom/Panel" unique_id=789679873]
+[node name="endturn" type="Button" parent="hud/bottom/info" unique_id=789679873]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -69,7 +69,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 text = "end turn"
 
-[node name="wave" type="Panel" parent="hud/bottom/Panel" unique_id=1893306733]
+[node name="wave" type="Panel" parent="hud/bottom/info" unique_id=1893306733]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -78,7 +78,7 @@ offset_left = -92.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="Label" type="Label" parent="hud/bottom/Panel/wave" unique_id=1161583678]
+[node name="Label" type="Label" parent="hud/bottom/info/wave" unique_id=1161583678]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,7 +89,7 @@ text = "Wave : 1/3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="move" type="Panel" parent="hud/bottom/Panel" unique_id=813565085]
+[node name="move" type="Panel" parent="hud/bottom/info" unique_id=813565085]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -98,7 +98,7 @@ offset_right = 100.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="Label" type="Label" parent="hud/bottom/Panel/move" unique_id=1290962076]
+[node name="Label" type="Label" parent="hud/bottom/info/move" unique_id=1290962076]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,7 +109,7 @@ text = "moves : 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="currency" type="Panel" parent="hud/bottom/Panel" unique_id=1373063987]
+[node name="currency" type="Panel" parent="hud/bottom/info" unique_id=1373063987]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -119,7 +119,7 @@ offset_right = -92.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="Label" type="Label" parent="hud/bottom/Panel/currency" unique_id=1956581553]
+[node name="Label" type="Label" parent="hud/bottom/info/currency" unique_id=1956581553]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -157,26 +157,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 1, 0, 1)
 
-[node name="pause" type="Control" parent="hud" unique_id=49474777]
-modulate = Color(1, 1, 1, 0.47058824)
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -64.0
-offset_bottom = 64.0
-grow_horizontal = 0
-
-[node name="TextureButton" type="TextureButton" parent="hud/pause" unique_id=484575945]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("6_0juc1")
-stretch_mode = 0
-
 [node name="disabled" type="Control" parent="hud" unique_id=1188326275]
 visible = false
 layout_mode = 3
@@ -185,3 +165,86 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="shop" type="Control" parent="hud" unique_id=66304168]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -232.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="ColorRect" parent="hud/shop" unique_id=1988703659]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6509804, 0.43529412, 0.16470589, 1)
+
+[node name="header" type="Label" parent="hud/shop" unique_id=214791283]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="itemlabel" type="Label" parent="hud/shop" unique_id=2032045667]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="itemcontainer" type="HBoxContainer" parent="hud/shop" unique_id=1108176941]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 64.0
+offset_bottom = 112.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="hud/shop/itemcontainer" unique_id=770200403]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="hud/shop/itemcontainer" unique_id=1048847338]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control3" type="Control" parent="hud/shop/itemcontainer" unique_id=85424150]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="pause" type="Control" parent="hud" unique_id=49474777]
+modulate = Color(1, 1, 1, 0.47058824)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_bottom = 48.0
+grow_horizontal = 0
+
+[node name="TextureButton" type="TextureButton" parent="hud/pause" unique_id=484575945]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_0juc1")
+stretch_mode = 0

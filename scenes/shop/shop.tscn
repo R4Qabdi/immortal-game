@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://6kmekswssdej"]
+
+[ext_resource type="Texture2D" uid="uid://pfhe3cm7ivum" path="res://assets/bg/shop bg.png" id="1_lx5au"]
+[ext_resource type="Script" uid="uid://1a5gh8adbw7b" path="res://scenes/shop/shop.gd" id="1_xfvoa"]
+[ext_resource type="PackedScene" uid="uid://dxhwsnsreygqk" path="res://scenes/cards/shopcard.tscn" id="3_1l46r"]
+[ext_resource type="Texture2D" uid="uid://thpom1248vpp" path="res://assets/icons/reroll off.png" id="4_44xle"]
+[ext_resource type="Texture2D" uid="uid://bh2rimlm4u7qu" path="res://assets/icons/reroll on.png" id="5_24it5"]
+[ext_resource type="Texture2D" uid="uid://b3k82dv6i7gcd" path="res://assets/icons/reroll hover.png" id="6_7mqwv"]
+[ext_resource type="Texture2D" uid="uid://dtdda2cd25euk" path="res://assets/icons/upgrade off.png" id="7_gobkm"]
+[ext_resource type="Texture2D" uid="uid://5wpmfmb83kls" path="res://assets/icons/upgrade on.png" id="8_j14q8"]
+[ext_resource type="Texture2D" uid="uid://dgxkbn4rmd334" path="res://assets/icons/upgrade hover.png" id="9_5u241"]
+[ext_resource type="Texture2D" uid="uid://lel7agywnavw" path="res://assets/icons/continue off.png" id="10_pqync"]
+[ext_resource type="Texture2D" uid="uid://csgpque31gat" path="res://assets/icons/continue on.png" id="11_yuijs"]
+[ext_resource type="Texture2D" uid="uid://cvw7xf6ufi037" path="res://assets/icons/continue hover.png" id="12_aa4hd"]
+
+[node name="Shop" type="Control" unique_id=1769513913]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 180.0
+offset_bottom = 320.0
+script = ExtResource("1_xfvoa")
+
+[node name="Shop BG" type="TextureRect" parent="." unique_id=1118894434]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.68700004
+offset_bottom = 0.1599884
+scale = Vector2(2, 2)
+texture = ExtResource("1_lx5au")
+
+[node name="Items Container" type="HBoxContainer" parent="Shop BG" unique_id=319970298]
+layout_mode = 0
+offset_top = 14.0
+offset_right = 180.0
+offset_bottom = 100.0
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Item Card1" parent="Shop BG/Items Container" unique_id=966986450 instance=ExtResource("3_1l46r")]
+layout_mode = 2
+
+[node name="Item Card2" parent="Shop BG/Items Container" unique_id=535850910 instance=ExtResource("3_1l46r")]
+layout_mode = 2
+
+[node name="Item Card3" parent="Shop BG/Items Container" unique_id=1857649010 instance=ExtResource("3_1l46r")]
+layout_mode = 2
+
+[node name="Units Container" type="HBoxContainer" parent="Shop BG" unique_id=1476853250]
+layout_mode = 0
+offset_top = 114.0
+offset_right = 180.0
+offset_bottom = 200.0
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Unit Card1" parent="Shop BG/Units Container" unique_id=1928445743 instance=ExtResource("3_1l46r")]
+layout_mode = 2
+
+[node name="Unit Card2" parent="Shop BG/Units Container" unique_id=1328264535 instance=ExtResource("3_1l46r")]
+layout_mode = 2
+
+[node name="Unit Card3" parent="Shop BG/Units Container" unique_id=899062800 instance=ExtResource("3_1l46r")]
+layout_mode = 2
+
+[node name="Buttons Container" type="HBoxContainer" parent="Shop BG" unique_id=1635239192]
+layout_mode = 0
+offset_top = 206.0
+offset_right = 180.0
+offset_bottom = 216.0
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Reroll" type="TextureButton" parent="Shop BG/Buttons Container" unique_id=1063479622]
+layout_mode = 2
+texture_normal = ExtResource("4_44xle")
+texture_pressed = ExtResource("5_24it5")
+texture_hover = ExtResource("6_7mqwv")
+
+[node name="Upgrade" type="TextureButton" parent="Shop BG/Buttons Container" unique_id=43319480]
+layout_mode = 2
+texture_normal = ExtResource("7_gobkm")
+texture_pressed = ExtResource("8_j14q8")
+texture_hover = ExtResource("9_5u241")
+
+[node name="Continue" type="TextureButton" parent="Shop BG/Buttons Container" unique_id=1208856024]
+layout_mode = 2
+texture_normal = ExtResource("10_pqync")
+texture_pressed = ExtResource("11_yuijs")
+texture_hover = ExtResource("12_aa4hd")
+
+[connection signal="pressed" from="Shop BG/Items Container/Item Card1" to="." method="_on_item_card_1_pressed"]
+[connection signal="pressed" from="Shop BG/Items Container/Item Card2" to="." method="_on_item_card_2_pressed"]
+[connection signal="pressed" from="Shop BG/Items Container/Item Card3" to="." method="_on_item_card_3_pressed"]
+[connection signal="pressed" from="Shop BG/Units Container/Unit Card1" to="." method="_on_unit_card_1_pressed"]
+[connection signal="pressed" from="Shop BG/Units Container/Unit Card2" to="." method="_on_unit_card_2_pressed"]
+[connection signal="pressed" from="Shop BG/Units Container/Unit Card3" to="." method="_on_unit_card_3_pressed"]
+[connection signal="pressed" from="Shop BG/Buttons Container/Reroll" to="." method="_on_reroll_pressed"]
+[connection signal="pressed" from="Shop BG/Buttons Container/Upgrade" to="." method="_on_upgrade_pressed"]
+[connection signal="pressed" from="Shop BG/Buttons Container/Continue" to="." method="_on_continue_pressed"]
