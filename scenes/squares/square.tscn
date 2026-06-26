@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bkkm0b2fqvdfo" path="res://scenes/squares/square.gd" id="2_qmd2u"]
 [ext_resource type="Texture2D" uid="uid://dsg8ab7mq46su" path="res://assets/temporary/labubu.png" id="3_0thag"]
+[ext_resource type="Script" uid="uid://blidm4b7jsv4" path="res://scenes/squares/square_control.gd" id="3_v6fib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0thag"]
 size = Vector2(44, 48)
@@ -33,6 +34,15 @@ collision_mask = 0
 
 [node name="circle" type="CollisionShape2D" parent="dots" unique_id=1593135644]
 shape = SubResource("CircleShape2D_qmd2u")
+
+[node name="Control" type="Control" parent="." unique_id=864981877]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -21.0
+offset_top = -23.0
+offset_right = 22.0
+offset_bottom = 24.0
+script = ExtResource("3_v6fib")
 
 [connection signal="mouse_entered" from="area" to="." method="_on_area_mouse_entered"]
 [connection signal="mouse_exited" from="area" to="." method="_on_area_mouse_exited"]
