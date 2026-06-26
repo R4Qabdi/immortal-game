@@ -18,7 +18,7 @@ func redrawInv(ownedCards:Array, type:int):
 		var spawnedCard:InventoryCard = card.instantiate()
 		add_child(spawnedCard)
 		spawnedCard.name = ownedCards[spawned]
-		spawnedCard.setup(ownedCards[spawned])
+		spawnedCard.setup(ownedCards[spawned], type)
 		spawned += 1
 
 func clearInv():

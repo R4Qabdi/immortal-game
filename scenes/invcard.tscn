@@ -17,6 +17,7 @@ font_color = Color(0.1764706, 0.11372549, 0.05490196, 1)
 anchors_preset = -1
 offset_right = 54.0
 offset_bottom = 68.0
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("1_mmthk")
 texture_pressed = ExtResource("2_rpyal")
 texture_hover = ExtResource("3_ion5y")

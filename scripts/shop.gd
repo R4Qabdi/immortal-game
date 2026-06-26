@@ -10,6 +10,7 @@ class_name Shop
 @onready var IC2:TextureButton = $"Shop BG/Items Container/Item Card2"
 @onready var IC3:TextureButton = $"Shop BG/Items Container/Item Card3"
 
+var cards
 var picked:bool
 var nextScene:String
 var selected:Array = []
@@ -37,6 +38,8 @@ const itemIcons:Array = [
 func _ready() -> void:
 	setup(ShopInstructions.data)
 	ShopInstructions.back_to_shop.connect(_on_back_to_shop)
+	cards = ShopCard.new()
+	cards.buy_Card.connect(_on_card_bought)
 
 func setup(instructions:Dictionary) -> void:
 	nextScene = "res://scenes/" + instructions["next"] + ".tscn"
@@ -55,9 +58,9 @@ func setup(instructions:Dictionary) -> void:
 			selectedCDs.append(0)
 			selectedIcons.append(unitIcons[index])
 	
-	UC1.setup(selected[0], selectedIcons[0])
-	UC2.setup(selected[1], selectedIcons[1])
-	UC3.setup(selected[2], selectedIcons[2])
+	UC1.setup(1, selected[0], selectedIcons[0])
+	UC2.setup(1, selected[1], selectedIcons[1])
+	UC3.setup(1, selected[2], selectedIcons[2])
 	selected = []
 	selectedCDs = []
 	selectedIcons = []
@@ -70,10 +73,9 @@ func setup(instructions:Dictionary) -> void:
 			selectedCDs.append(0)
 			selectedIcons.append(itemIcons[index])
 	
-	IC1.setup(selected[0], selectedIcons[0])
-	IC2.setup(selected[1], selectedIcons[1])
-	IC3.setup(selected[2], selectedIcons[2])
-	
+	IC1.setup(0, selected[0], selectedIcons[0])
+	IC2.setup(0, selected[1], selectedIcons[1])
+	IC3.setup(0, selected[2], selectedIcons[2])
 
 func _process(_delta: float) -> void:
 	pass
@@ -86,7 +88,7 @@ func FillData(itemID:String, cd:float):
 		"CDs": cd
 	}
 
-func on_card_bought(type:int, card:String):
+func _on_card_bought(type:int, card:String):
 	if type == 0:
 		InventoryInstructions.playerItems.append(card)
 	else:
@@ -109,21 +111,3 @@ func _on_reroll_pressed() -> void:
 func _on_back_to_shop():
 	show()
 	InventoryInstructions.change_inventory.emit(0)
-
-func _on_item_card_1_pressed() -> void:
-	on_card_bought(0, IC1.cardName)
-
-func _on_item_card_2_pressed() -> void:
-	on_card_bought(0, IC2.cardName)
-
-func _on_item_card_3_pressed() -> void:
-	on_card_bought(0, IC3.cardName)
-
-func _on_unit_card_1_pressed() -> void:
-	on_card_bought(1, UC1.cardName)
-
-func _on_unit_card_2_pressed() -> void:
-	on_card_bought(1, UC2.cardName)
-
-func _on_unit_card_3_pressed() -> void:
-	on_card_bought(1, UC3.cardName)
