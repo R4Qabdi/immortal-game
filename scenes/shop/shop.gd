@@ -38,8 +38,7 @@ const itemIcons:Array = [
 func _ready() -> void:
 	setup(ShopInstructions.data)
 	ShopInstructions.back_to_shop.connect(_on_back_to_shop)
-	cards = ShopCard.new()
-	cards.buy_Card.connect(_on_card_bought)
+	ShopInstructions.buy_card.connect(_on_card_bought)
 
 func setup(instructions:Dictionary) -> void:
 	nextScene = "res://scenes/" + instructions["next"] + ".tscn"
@@ -111,21 +110,3 @@ func _on_reroll_pressed() -> void:
 func _on_back_to_shop():
 	show()
 	InventoryInstructions.change_inventory.emit(0)
-
-func _on_item_card_1_pressed() -> void:
-	_on_card_bought(0, IC1.cardName)
-
-func _on_item_card_2_pressed() -> void:
-	_on_card_bought(0, IC2.cardName)
-
-func _on_item_card_3_pressed() -> void:
-	_on_card_bought(0, IC3.cardName)
-
-func _on_unit_card_1_pressed() -> void:
-	_on_card_bought(1, UC1.cardName)
-
-func _on_unit_card_2_pressed() -> void:
-	_on_card_bought(1, UC2.cardName)
-
-func _on_unit_card_3_pressed() -> void:
-	_on_card_bought(1, UC3.cardName)
