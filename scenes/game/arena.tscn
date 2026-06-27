@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://cq055jw1bjncn" path="res://scenes/pieces/pieces.gd" id="4_lunqa"]
 [ext_resource type="Theme" uid="uid://d4ni16kjtgx7c" path="res://theme/temp.tres" id="5_r0xth"]
 [ext_resource type="Texture2D" uid="uid://bwc1hujwwwbpw" path="res://assets/temporary/UI/pause.png" id="6_0juc1"]
+[ext_resource type="Script" uid="uid://bc440fymnmgld" path="res://scenes/shop/inventory.gd" id="7_cehcd"]
+[ext_resource type="Texture2D" uid="uid://k034w3sl384" path="res://assets/icons/SHOP on.png" id="8_k1k1x"]
+[ext_resource type="Texture2D" uid="uid://dcbd28nh0wciq" path="res://assets/icons/return to shop.png" id="9_naajo"]
 [ext_resource type="Script" uid="uid://0ed3x38vroe1" path="res://scenes/game/inputsystem.gd" id="7_lunqa"]
 
 [node name="arena" type="Node2D" unique_id=491694569]
@@ -306,5 +309,38 @@ grow_vertical = 2
 texture_normal = ExtResource("6_0juc1")
 stretch_mode = 0
 
+[node name="HBoxContainer" type="HBoxContainer" parent="hud" unique_id=304956678]
+custom_minimum_size = Vector2(180, 40)
+offset_top = 460.0
+offset_right = 180.0
+offset_bottom = 500.0
+scale = Vector2(2, 2)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 2
+script = ExtResource("7_cehcd")
+
+[node name="shop button" type="TextureButton" parent="hud" unique_id=22855814]
+offset_top = 584.0
+offset_right = 77.0
+offset_bottom = 612.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("8_k1k1x")
+texture_pressed = ExtResource("8_k1k1x")
+texture_hover = ExtResource("8_k1k1x")
+
+[node name="Back to Shop" type="TextureButton" parent="hud" unique_id=355116378]
+offset_left = 206.0
+offset_top = 584.0
+offset_right = 283.0
+offset_bottom = 612.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("9_naajo")
+texture_pressed = ExtResource("9_naajo")
+texture_hover = ExtResource("9_naajo")
+
+[connection signal="pressed" from="hud/shop button" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="hud/Back to Shop" to="." method="_on_back_to_shop"]
 [node name="inputsystem" type="Node2D" parent="." unique_id=1966660112]
 script = ExtResource("7_lunqa")

@@ -1,6 +1,5 @@
 extends Control
-class_name Shop
-
+#esa's
 @onready var wSelectionBG:TextureRect = $"Shop BG"
 @onready var nextButton:BaseButton = $"Shop BG/Buttons Container/Continue"
 @onready var UC1:TextureButton = $"Shop BG/Units Container/Unit Card1"

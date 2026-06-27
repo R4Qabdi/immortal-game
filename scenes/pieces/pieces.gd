@@ -1,4 +1,5 @@
 extends Node2D
+class_name Pieces
 
 @onready var piece = preload("res://scenes/pieces/piece.tscn")
 @onready var squares = $"../squares"
@@ -15,6 +16,7 @@ func _ready() -> void:
 	
 	await wait(1.5)
 	setup_initial_pieces()
+	global.piece_requested.connect(_on_piece_requested)
 
 func setup_initial_pieces():
 	var layout = {
@@ -66,3 +68,8 @@ func add_piece(type: String, which_square: Square, is_enemy: bool):
 
 func wait(seconds: float):
 	await get_tree().create_timer(seconds).timeout
+
+func _on_piece_requested(type: String, which_square: Square, is_enemy: bool):
+	add_piece(type, which_square, is_enemy)
+	update_matrix()
+	global.piece_added.emit(type, which_square, is_enemy)

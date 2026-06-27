@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://71fs56v8f1s2" path="res://assets/bg/card bg hover.png" id="3_albav"]
 [ext_resource type="Script" uid="uid://b1p8jf73rqx4v" path="res://scenes/cards/shopcard.gd" id="4_elywt"]
 [ext_resource type="Texture2D" uid="uid://bqhomiav4d5mo" path="res://assets/icons/berserk.png" id="4_nk1h8"]
+[ext_resource type="Script" uid="uid://cq03ason3faul" path="res://scripts/label.gd" id="5_v8r38"]
 [ext_resource type="FontFile" uid="uid://cn0gkpavqq1a8" path="res://assets/font/Pixelit-Regular.ttf" id="6_4k1ke"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_albav"]
@@ -47,5 +48,6 @@ vertical_alignment = 1
 justification_flags = 0
 clip_text = true
 uppercase = true
+script = ExtResource("5_v8r38")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

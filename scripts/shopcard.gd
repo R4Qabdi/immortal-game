@@ -1,5 +1,5 @@
 extends TextureButton
-class_name ShopCard
+#esa's
 
 @onready var itemName:Label = $Label
 @onready var itemIcon:TextureRect = $Icon
@@ -15,9 +15,6 @@ func _ready() -> void:
 	
 
 func setup(type:int ,title:String, icon:String):
-	texture_normal = load("res://assets/bg/card bg.png")
-	texture_pressed = load("res://assets/bg/card bg on.png")
-	texture_hover = load("res://assets/bg/card bg hover.png")
 	cardName = title
 	cardType = type
 	itemName.text = title
