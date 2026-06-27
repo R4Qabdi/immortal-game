@@ -36,6 +36,7 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_qmd2u")
 
 [node name="Control" type="Control" parent="." unique_id=864981877]
+process_mode = 4
 layout_mode = 3
 anchors_preset = 0
 offset_left = -21.0

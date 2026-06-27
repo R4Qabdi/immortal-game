@@ -3,8 +3,8 @@ extends Node2D
 var tile
 var shopOverlayLayer
 var shopMenu = load("res://scenes/shop/shop.tscn")
-@onready var shopButton:TextureButton = $"shop button"
-@onready var shopBack:TextureButton = $"Back to Shop"
+@onready var shopButton:TextureButton = $"hud/shop button"
+@onready var shopBack:TextureButton = $"hud/Back to Shop"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
