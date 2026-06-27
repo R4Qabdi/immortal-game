@@ -253,6 +253,7 @@ texture_normal = ExtResource("6_0juc1")
 stretch_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=204507945]
+visible = false
 offset_top = 446.0
 offset_right = 180.0
 offset_bottom = 514.0
@@ -283,6 +284,7 @@ layout_mode = 2
 text = "COIN: "
 
 [node name="shop button" type="TextureButton" parent="." unique_id=1451436530]
+visible = false
 offset_top = 584.0
 offset_right = 77.0
 offset_bottom = 612.0
@@ -292,6 +294,7 @@ texture_pressed = ExtResource("8_k1k1x")
 texture_hover = ExtResource("8_k1k1x")
 
 [node name="Back to Shop" type="TextureButton" parent="." unique_id=1124430086]
+visible = false
 offset_left = 206.0
 offset_top = 584.0
 offset_right = 283.0

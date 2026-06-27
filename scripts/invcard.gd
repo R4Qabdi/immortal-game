@@ -1,6 +1,5 @@
 extends TextureButton
-class_name InventoryCard
-
+#ESA'S
 @onready var itemName:Label = $Label
 @onready var itemIcon:TextureRect = $Icon
 @onready var card: InventoryCard = $"."

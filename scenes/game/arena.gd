@@ -2,7 +2,7 @@ extends Node2D
 
 var tile
 var shopOverlayLayer
-var shopMenu = load("res://scenes/shop.tscn")
+var shopMenu = load("res://scenes/shop/shop.tscn")
 @onready var shopButton:TextureButton = $"shop button"
 @onready var shopBack:TextureButton = $"Back to Shop"
 

@@ -1,5 +1,5 @@
 extends TextureButton
-class_name ShopCard
+#esa's
 
 @onready var itemName:Label = $Label
 @onready var itemIcon:TextureRect = $Icon
