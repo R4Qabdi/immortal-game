@@ -1,8 +1,25 @@
 extends Control
+
 var viewport_size
+var settings : Dictionary = {
+	"masterv" = 1.0,
+	"musicv" = 1.0,
+	"sfxv" = 1.0,
+}
+
 @onready var transition = %transition
 
+const settings_path = "user://settings.save"
+
+
 func _ready() -> void:
+	if FileAccess.file_exists(settings_path):
+		var file = FileAccess.open(settings_path,FileAccess.READ)
+		settings = file.get_var()
+	$optionpanel/container/masterv.value = settings["masterv"]
+	$optionpanel/container/musicv.value = settings["musicv"]
+	$optionpanel/container/sfxv.value = settings["sfxv"]
+	
 	%audioplayer.stream=preload("res://assets/audio/music/rynos-theme.ogg")
 	%audioplayer.play()
 	viewport_size = get_viewport_rect()
@@ -45,10 +62,13 @@ func _on_yes_pressed() -> void:
 
 
 func _on_sfxv_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_linear(2, value)
+	#AudioServer.set_bus_volume_linear(2, value)
+	$"../../UI/pause/optionpanel/container/sfxv".value = value
 
 func _on_musicv_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_linear(1, value)
+	#AudioServer.set_bus_volume_linear(1, value)
+	$"../../UI/pause/optionpanel/container/musicv".value = value
 
 func _on_masterv_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_linear(0, value)
+	#AudioServer.set_bus_volume_linear(0, value)
+	$"../../UI/pause/optionpanel/container/masterv".value = value

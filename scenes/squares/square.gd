@@ -31,25 +31,25 @@ func _input(event: InputEvent) -> void:
 					piece.valid_pawn_moves(true)
 				else :
 					piece.valid_pawn_moves(false)
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.is_pressed() and is_hovered:
-			# START DRAG: Hanya jalan kalau di atas petak yang ada pionnya
-			if piece:
-				if piece.is_enemy==false:
-					board.selected_piece = piece
-					board.is_dragging = true
-					piece.on_click()
-					#piece.select_toggle()
-					board.deselect_last_square_with(self)
-			else:
-				board.deselect_last_square_with(self)
-		elif not event.is_pressed() and board.is_dragging:
-			# STOP DRAG (RELEASED): Jika dilepas, suruh Board cek hovered_square terakhir
-			if board.hovered_square:
-				board.dropped_square = board.hovered_square
-			else:
-				board.dropped_square = null
-			board.execute_drop()
+	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		#if event.is_pressed() and is_hovered:
+			## START DRAG: Hanya jalan kalau di atas petak yang ada pionnya
+			#if piece:
+				#if piece.is_enemy==false:
+					#board.selected_piece = piece
+					#board.is_dragging = true
+					#piece.on_click()
+					##piece.select_toggle()
+					#board.deselect_last_square_with(self)
+			#else:
+				#board.deselect_last_square_with(self)
+		#elif not event.is_pressed() and board.is_dragging:
+			## STOP DRAG (RELEASED): Jika dilepas, suruh Board cek hovered_square terakhir
+			#if board.hovered_square:
+				#board.dropped_square = board.hovered_square
+			#else:
+				#board.dropped_square = null
+			#board.execute_drop()
 		
 
 func wait(seconds: float):

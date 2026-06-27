@@ -5,6 +5,8 @@ class_name Piece
 @onready var labubu = $labubu
 @onready var king_area = $kingmove
 
+const SCALE = Vector2(2.0,2.0)
+
 var type: String
 var is_selected: bool = false
 var is_dragging: bool = false
@@ -19,12 +21,13 @@ var current_valid_squares: Array[Square]
 
 func _ready() -> void:
 	texture.modulate.a = 0
+	texture.scale = SCALE
 	await wait(0.1)
 	update_my_square_layer()
 	if !is_enemy:
-		texture.texture = load("res://assets/temporary/pieces/" + type + "-normal.png")
+		texture.texture = load("res://assets/arts/pieces/" + type + "-normal.png")
 	else : 
-		texture.texture = load("res://assets/temporary/pieces/" + type + "-normal.png")
+		texture.texture = load("res://assets/arts/pieces/" + type + "-normal.png")
 		texture.modulate = Color.BLACK
 	
 	texture.position -= Vector2(0, 64)
@@ -55,10 +58,10 @@ func tween_to_move(target, to, duration, easing, trans):
 func select_texture(it_is_selected : bool):
 	if it_is_selected: 
 		#print("select texture")
-		texture.texture = load("res://assets/temporary/pieces/" + type + "-selected.png")
+		texture.texture = load("res://assets/arts/pieces/" + type + "-selected.png")
 	else:
 		#print("deselect texture")
-		texture.texture = load("res://assets/temporary/pieces/" + type + "-normal.png")
+		texture.texture = load("res://assets/arts/pieces/" + type + "-normal.png")
 
 func select_toggle():
 	is_selected = !is_selected
@@ -81,7 +84,8 @@ func deselect():
 
 func dragging():
 	#select_texture(false)
-	texture.scale = Vector2(3, 3)
+	texture.scale = SCALE*2
+	texture.z_index = 10
 	var viewportsize = get_viewport_rect().size
 	const Y_OFFSET = -18
 	var mouse_pos = get_global_mouse_position()+Vector2(0,Y_OFFSET)
@@ -103,7 +107,8 @@ func dropping(from_square:Square, to_square: Square):
 	
 	# Kembalikan offset texture secara lokal
 	texture.position = Vector2(0, -16)
-	texture.scale = Vector2(2, 2)
+	texture.z_index = 0
+	texture.scale = SCALE
 	update_my_square_layer()
 	deselect()
 
@@ -116,7 +121,7 @@ func reset():
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(texture, "position", Vector2(0, -16), 0.15)
 	
-	texture.scale = Vector2(2, 2)
+	texture.scale = SCALE
 	deselect()
 
 func _draw() -> void:
