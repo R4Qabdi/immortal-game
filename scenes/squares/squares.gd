@@ -22,8 +22,15 @@ func _input(event: InputEvent) -> void:
 		print_matrix_pretty()
 
 func print_matrix_pretty():
-	for i in range(8):
-		print(matrix_board[i])
+	var matrix_board_name_row : Array
+	#var matrix_board_name : Array
+	for i in matrix_board:
+		for j in i:
+			matrix_board_name_row.append(j.name)
+		#matrix_board_name.append(matrix_board_name_row)
+		print(matrix_board_name_row)
+		matrix_board_name_row.clear()
+		#print(matrix_board[i])
 
 func _ready() -> void:
 	boardspawn()

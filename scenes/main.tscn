@@ -2,7 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bleayfx05w740" path="res://scenes/menus/mainmenu.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dwb4ajhnkwd58" path="res://scenes/transition.gd" id="2_0wfyh"]
+[ext_resource type="Theme" uid="uid://d4ni16kjtgx7c" path="res://theme/temp.tres" id="2_jyhfs"]
 [ext_resource type="AudioStream" uid="uid://dcj71gct16tmt" path="res://assets/audio/music/rynos-theme.ogg" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://bhfapy2w0w57o" path="res://scenes/menus/pause.gd" id="3_tbgi4"]
 
 [node name="main" type="Node2D" unique_id=1654676378]
 
@@ -20,6 +22,158 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_jyhfs")
+script = ExtResource("3_tbgi4")
+
+[node name="paused" type="Panel" parent="UI/pause" unique_id=313991458]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -184.0
+offset_right = 108.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/pause/paused" unique_id=823607084]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="buttons" type="VBoxContainer" parent="UI/pause/paused" unique_id=1827486396]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = 64.0
+offset_right = -48.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="return" type="Button" parent="UI/pause/paused/buttons" unique_id=1468096572]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "return"
+
+[node name="options" type="Button" parent="UI/pause/paused/buttons" unique_id=289494008]
+layout_mode = 2
+text = "options"
+
+[node name="library" type="Button" parent="UI/pause/paused/buttons" unique_id=303744290]
+layout_mode = 2
+text = "library"
+
+[node name="exitmenu" type="Button" parent="UI/pause/paused/buttons" unique_id=1025892288]
+layout_mode = 2
+text = "exit"
+
+[node name="optionpanel" type="Panel" parent="UI/pause" unique_id=155959178]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -184.0
+offset_right = 108.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_jyhfs")
+
+[node name="title" type="Label" parent="UI/pause/optionpanel" unique_id=1628874813]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -68.0
+offset_top = 32.0
+offset_right = 69.0
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "OPTIONS"
+vertical_alignment = 1
+
+[node name="container" type="VBoxContainer" parent="UI/pause/optionpanel" unique_id=2020085798]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 128.0
+offset_right = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="masterv" type="HSlider" parent="UI/pause/optionpanel/container" unique_id=133136147]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Label" type="Label" parent="UI/pause/optionpanel/container/masterv" unique_id=409498737]
+layout_mode = 0
+offset_top = -12.0
+offset_right = 40.0
+text = "Master Volume "
+
+[node name="musicv" type="HSlider" parent="UI/pause/optionpanel/container" unique_id=1136702248]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Label" type="Label" parent="UI/pause/optionpanel/container/musicv" unique_id=716216797]
+layout_mode = 0
+offset_top = -12.0
+offset_right = 40.0
+text = "Music Volume "
+
+[node name="sfxv" type="HSlider" parent="UI/pause/optionpanel/container" unique_id=187852274]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Label" type="Label" parent="UI/pause/optionpanel/container/sfxv" unique_id=900195916]
+layout_mode = 0
+offset_top = -12.0
+offset_right = 40.0
+text = "SFX Volume "
+
+[node name="backoption" type="Button" parent="UI/pause/optionpanel" unique_id=1828561547]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -68.0
+offset_right = 56.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "<- back"
 
 [node name="transition" type="ColorRect" parent="UI" unique_id=175916464]
 unique_name_in_owner = true
@@ -39,3 +193,7 @@ script = ExtResource("2_0wfyh")
 unique_name_in_owner = true
 stream = ExtResource("3_sugp2")
 bus = &"music"
+
+[connection signal="value_changed" from="UI/pause/optionpanel/container/masterv" to="UI/pause" method="_on_masterv_value_changed"]
+[connection signal="value_changed" from="UI/pause/optionpanel/container/musicv" to="UI/pause" method="_on_musicv_value_changed"]
+[connection signal="value_changed" from="UI/pause/optionpanel/container/sfxv" to="UI/pause" method="_on_sfxv_value_changed"]

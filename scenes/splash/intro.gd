@@ -16,10 +16,12 @@ func _ready() -> void:
 	await wait(0.583)
 	
 	change_scene()
+
 func change_scene():
 	tween_fade_modulate()
 	await wait(0.25)
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	if is_inside_tree():
+		get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 func tween_fade_modulate():
 	var tween = create_tween()
