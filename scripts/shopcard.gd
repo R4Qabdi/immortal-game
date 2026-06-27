@@ -6,11 +6,12 @@ class_name ShopCard
 var cardName:String
 var cardType:int
 var desc:String
+var detailsOverlayLayer
 var descWindow = load("res://scenes/card_details.tscn")
-signal buy_Card(type:int, card:String)
 
 func _ready() -> void:
 	ShopInstructions.reroll_cards.connect(_on_reroll)
+	detailsOverlayLayer = CanvasLayer.new()
 	
 
 func setup(type:int ,title:String, icon:String):
@@ -21,8 +22,11 @@ func setup(type:int ,title:String, icon:String):
 
 func _on_pressed() -> void:
 	var details:CardDetails = descWindow.instantiate()
-	add_child(details)
+	detailsOverlayLayer.add_child(details)
+	add_child(detailsOverlayLayer)
 	details.setup(cardType, cardName, desc, 1)
+	detailsOverlayLayer.layer = 100
+	details.position = position
 
 func _on_reroll():
 	disabled = false
