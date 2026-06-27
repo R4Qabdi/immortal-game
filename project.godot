@@ -22,6 +22,7 @@ config/icon="uid://ngtb3c5v2bld"
 global="*uid://bh26gtf4mm7g7"
 ShopInstructions="*uid://c4c4bivdrwd3"
 InventoryInstructions="*uid://cibkyhoia1q27"
+<<<<<<<HEADShopInstructions="*uid://c4c4bivdrwd3"
 
 [display]
 
