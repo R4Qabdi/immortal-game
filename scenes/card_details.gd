@@ -20,7 +20,7 @@ func setup(type:int, card:String, desc:String, where:int):
 	cardType = type
 
 func _on_buy_button_pressed() -> void:
-	get_parent().buy_Card.emit(cardType, cardName)
+	ShopInstructions.buy_card.emit(cardType, cardName.text)
 	queue_free()
 
 func _on_use_button_pressed() -> void:

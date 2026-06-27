@@ -37,8 +37,7 @@ const itemIcons:Array = [
 func _ready() -> void:
 	setup(ShopInstructions.data)
 	ShopInstructions.back_to_shop.connect(_on_back_to_shop)
-	cards = ShopCard.new()
-	cards.buy_Card.connect(_on_card_bought)
+	ShopInstructions.buy_card.connect(_on_card_bought)
 
 func setup(instructions:Dictionary) -> void:
 	nextScene = "res://scenes/" + instructions["next"] + ".tscn"
