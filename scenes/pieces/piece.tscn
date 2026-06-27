@@ -41,38 +41,3 @@ monitorable = false
 y_sort_enabled = true
 shape = SubResource("CircleShape2D_s58gp")
 debug_color = Color(5.0537287e-06, 0.63281465, 0.45084906, 0.41960785)
-
-[node name="qudamove" type="Node2D" parent="." unique_id=202061334]
-visible = false
-
-[node name="kuda1" type="RayCast2D" parent="qudamove" unique_id=2086141982]
-target_position = Vector2(44, -88)
-collide_with_bodies = false
-
-[node name="kuda2" type="RayCast2D" parent="qudamove" unique_id=27533360]
-target_position = Vector2(88, -44)
-collide_with_bodies = false
-
-[node name="kuda3" type="RayCast2D" parent="qudamove" unique_id=416416584]
-target_position = Vector2(88, 44)
-collide_with_bodies = false
-
-[node name="kuda4" type="RayCast2D" parent="qudamove" unique_id=1178091953]
-target_position = Vector2(44, 88)
-collide_with_bodies = false
-
-[node name="kuda5" type="RayCast2D" parent="qudamove" unique_id=35147384]
-target_position = Vector2(-44, 88)
-collide_with_bodies = false
-
-[node name="kuda6" type="RayCast2D" parent="qudamove" unique_id=1945617635]
-target_position = Vector2(-88, 44)
-collide_with_bodies = false
-
-[node name="kuda7" type="RayCast2D" parent="qudamove" unique_id=2145340572]
-target_position = Vector2(-88, -44)
-collide_with_bodies = false
-
-[node name="kuda8" type="RayCast2D" parent="qudamove" unique_id=732485808]
-target_position = Vector2(-44, -88)
-collide_with_bodies = false

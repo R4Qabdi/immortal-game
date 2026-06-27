@@ -1,138 +1,7 @@
 [gd_scene format=3 uid="uid://bleayfx05w740"]
 
+[ext_resource type="Theme" uid="uid://d4ni16kjtgx7c" path="res://theme/temp.tres" id="1_ogrbc"]
 [ext_resource type="Script" uid="uid://d2fkifi7vw8p3" path="res://scenes/menus/mainmenu.gd" id="1_r3g3c"]
-[ext_resource type="Texture2D" uid="uid://xf0xph8q5v2f" path="res://assets/trash/mainmenu.png" id="2_3vvtq"]
-
-[sub_resource type="Animation" id="Animation_0e48y"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sure:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("sure:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(80, 256)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("sure:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_r3g3c"]
-resource_name = "credit"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1.5, 0.6666),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 780)]
-}
-
-[sub_resource type="Animation" id="Animation_epypp"]
-resource_name = "option"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1.5, 0.666),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-360, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_natt5"]
-resource_name = "sure"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sure:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.01, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sure:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(80, 256), Vector2(80, 224)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("sure:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0hol4"]
-_data = {
-&"RESET": SubResource("Animation_0e48y"),
-&"credit": SubResource("Animation_r3g3c"),
-&"option": SubResource("Animation_epypp"),
-&"sure": SubResource("Animation_natt5")
-}
 
 [node name="mainmenu" type="Control" unique_id=1751117798]
 layout_mode = 3
@@ -141,156 +10,434 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ogrbc")
 script = ExtResource("1_r3g3c")
 
-[node name="bg" type="TextureRect" parent="." unique_id=753429153]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1604807875]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 1.125
-offset_top = -800.0
-offset_bottom = -800.0
-scale = Vector2(2, 2)
-texture = ExtResource("2_3vvtq")
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6, 0.5529412, 0.57254905, 1)
 
-[node name="animp" type="AnimationPlayer" parent="." unique_id=470351529]
-libraries/ = SubResource("AnimationLibrary_0hol4")
+[node name="animp" type="AnimationPlayer" parent="." unique_id=1351031817]
 
-[node name="start" type="Button" parent="." unique_id=976291148]
+[node name="Label" type="Label" parent="." unique_id=1362697340]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -76.0
-offset_top = 384.0
-offset_right = 68.0
-offset_bottom = 432.0
+offset_left = -136.0
+offset_top = 128.0
+offset_right = 144.0
+offset_bottom = 248.00003
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "IMMORTAL
+KING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="start" type="Button" parent="." unique_id=976291148]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = 32.0
+offset_right = 108.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "start"
 
 [node name="option" type="Button" parent="." unique_id=219593460]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -76.0
-offset_top = 432.0
-offset_right = 68.0
-offset_bottom = 480.0
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = 160.0
+offset_right = 108.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "options"
 
 [node name="credit" type="Button" parent="." unique_id=1046495691]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -76.0
-offset_top = 480.0
-offset_right = 68.0
-offset_bottom = 528.0
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = 224.0
+offset_right = 12.0
+offset_bottom = 272.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "credits"
 
+[node name="library" type="Button" parent="." unique_id=858207330]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = 96.0
+offset_right = 108.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "library"
+
 [node name="exit" type="Button" parent="." unique_id=235904621]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -76.0
-offset_top = 528.0
-offset_right = 68.0
-offset_bottom = 576.0
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = 224.0
+offset_right = 108.0
+offset_bottom = 272.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "exit"
 
-[node name="backoption" type="Button" parent="." unique_id=1529323259]
+[node name="sure" type="Panel" parent="." unique_id=564377118]
+visible = false
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.5330001
-anchor_right = 1.5330001
-offset_left = -63.880066
-offset_top = 576.0
-offset_right = 64.119934
-offset_bottom = 616.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -64.0
+offset_right = 108.0
+offset_bottom = 164.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 30
-text = "<- back"
+grow_vertical = 2
 
-[node name="backcredit" type="Button" parent="." unique_id=342616609]
+[node name="title" type="Label" parent="sure" unique_id=1024620719]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -92.0
-offset_top = -296.0
-offset_right = 44.0
-offset_bottom = -256.0
+offset_left = -100.0
+offset_top = 32.0
+offset_right = 100.0
+offset_bottom = 64.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
-text = "<- back"
-
-[node name="sure" type="Panel" parent="." unique_id=564377118]
-visible = false
-modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 80.0
-offset_top = 256.0
-offset_right = 272.0
-offset_bottom = 384.00003
-
-[node name="Label" type="Label" parent="sure" unique_id=1024620719]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.518
-anchor_top = -2.0
-anchor_right = 0.518
-anchor_bottom = -2.0
-offset_left = -75.456
-offset_top = 264.00006
-offset_right = 75.544
-offset_bottom = 286.00006
-theme_override_font_sizes/font_size = 30
-text = "Are you sure?"
+text = "Are you sure"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="sure" unique_id=1885670689]
-layout_mode = 0
-offset_top = 32.0
-offset_right = 200.0
-offset_bottom = 54.0
+[node name="subtitle" type="Label" parent="sure" unique_id=1885670689]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 64.0
+offset_right = 100.0
+offset_bottom = 96.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 text = "you want to leave?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="no" type="Button" parent="sure" unique_id=1754770612]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 64.0
-offset_right = 176.0
-offset_bottom = 96.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 100.0
+offset_right = 80.0
+offset_bottom = 140.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "I don't wanna"
 
 [node name="yes" type="Button" parent="sure" unique_id=533819497]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 96.0
-offset_right = 176.0
-offset_bottom = 128.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 156.0
+offset_right = 80.0
+offset_bottom = 196.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "Let me out"
+
+[node name="optionpanel" type="Panel" parent="." unique_id=1893058438]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -192.0
+offset_right = 108.0
+offset_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ogrbc")
+
+[node name="title" type="Label" parent="optionpanel" unique_id=1984000760]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -68.0
+offset_top = 32.0
+offset_right = 69.0
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "OPTIONS"
+vertical_alignment = 1
+
+[node name="container" type="VBoxContainer" parent="optionpanel" unique_id=1263664053]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 96.0
+offset_right = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="masterv" type="HSlider" parent="optionpanel/container" unique_id=412949794]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Label" type="Label" parent="optionpanel/container/masterv" unique_id=1218330675]
+layout_mode = 0
+offset_top = -12.0
+offset_right = 40.0
+text = "Master Volume "
+
+[node name="musicv" type="HSlider" parent="optionpanel/container" unique_id=499622794]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Label" type="Label" parent="optionpanel/container/musicv" unique_id=564287927]
+layout_mode = 0
+offset_top = -12.0
+offset_right = 40.0
+text = "Music Volume "
+
+[node name="sfxv" type="HSlider" parent="optionpanel/container" unique_id=933013367]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Label" type="Label" parent="optionpanel/container/sfxv" unique_id=795154627]
+layout_mode = 0
+offset_top = -12.0
+offset_right = 40.0
+text = "SFX Volume "
+
+[node name="backoption" type="Button" parent="optionpanel" unique_id=1529323259]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = 176.0
+offset_right = 52.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "<- back"
+
+[node name="librarypanel" type="Panel" parent="." unique_id=1309247482]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -192.0
+offset_right = 108.0
+offset_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="librarypanel" unique_id=647994340]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.0
+offset_top = 48.0
+offset_right = 76.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "UNDER 
+CONSTRUCTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="backlibrary" type="Button" parent="librarypanel" unique_id=507973039]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 372.0
+offset_right = 188.0
+offset_bottom = 448.0
+text = "<- back"
+
+[node name="creditspanel" type="Panel" parent="." unique_id=917592258]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -192.0
+offset_right = 108.0
+offset_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="RichTextLabel" parent="creditspanel" unique_id=1675735378]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 64.0
+offset_right = -16.0
+offset_bottom = -304.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Abdi 
+Rakhe 
+Wayan 
+Kendrick 
+Esa
+Aldi
+Tsurya"
+
+[node name="role" type="RichTextLabel" parent="creditspanel" unique_id=218027028]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 64.0
+offset_right = -16.0
+offset_bottom = -304.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "lead programmer
+pixel artist
+game designer
+programmer
+programmer
+game tester
+game tester"
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="creditspanel" unique_id=1514754325]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49100003
+anchor_right = 0.49100003
+offset_left = -90.05601
+offset_top = 8.0
+offset_right = 89.94399
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 32
+text = "CREDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="plugins" type="RichTextLabel" parent="creditspanel" unique_id=584958541]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 160.0
+offset_right = -16.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Addons used : 
+ - Dialogic
+ - Beehave
+ - Phantom Camera
+ - Aseprite Wizard
+
+Assets used : 
+ - "
+
+[node name="backcredit" type="Button" parent="creditspanel" unique_id=342616609]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = 176.0
+offset_right = 68.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "<- back"
 
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="option" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="credit" to="." method="_on_credit_pressed"]
+[connection signal="pressed" from="library" to="." method="_on_library_pressed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="backoption" to="." method="_on_backoption_pressed"]
-[connection signal="pressed" from="backcredit" to="." method="_on_backcredit_pressed"]
 [connection signal="pressed" from="sure/no" to="." method="_on_no_pressed"]
 [connection signal="pressed" from="sure/yes" to="." method="_on_yes_pressed"]
+[connection signal="value_changed" from="optionpanel/container/masterv" to="." method="_on_masterv_value_changed"]
+[connection signal="value_changed" from="optionpanel/container/musicv" to="." method="_on_musicv_value_changed"]
+[connection signal="value_changed" from="optionpanel/container/sfxv" to="." method="_on_sfxv_value_changed"]
+[connection signal="pressed" from="optionpanel/backoption" to="." method="_on_backoption_pressed"]
+[connection signal="pressed" from="librarypanel/backlibrary" to="." method="_on_backlibrary_pressed"]
+[connection signal="pressed" from="creditspanel/backcredit" to="." method="_on_backcredit_pressed"]

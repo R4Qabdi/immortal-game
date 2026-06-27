@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://bysxcdkbkme7y"]
 
-[ext_resource type="Texture2D" uid="uid://d2ib50mkugwco" path="res://assets/trash/gameplay.png" id="1_e05a3"]
-[ext_resource type="Script" uid="uid://c2qggr70uvx02" path="res://scenes/scenes/game/arena.gd" id="1_wl4x5"]
-[ext_resource type="Script" uid="uid://b7skmkskq3ypu" path="res://scenes/squares/squares.gd" id="3_xdvfk"]
-[ext_resource type="Script" uid="uid://cq055jw1bjncn" path="res://scenes/pieces/pieces.gd" id="4_xdvfk"]
-[ext_resource type="Texture2D" uid="uid://b67s7frs3eb31" path="res://assets/icons/health bar.png" id="5_oexds"]
-[ext_resource type="Texture2D" uid="uid://csurb754qni1q" path="res://assets/bg/main bg.png" id="6_naajo"]
+[ext_resource type="Script" uid="uid://c2qggr70uvx02" path="res://scenes/game/arena.gd" id="1_x680a"]
+[ext_resource type="Texture2D" uid="uid://d2ib50mkugwco" path="res://assets/trash/gameplay.png" id="2_r0xth"]
+[ext_resource type="Script" uid="uid://b7skmkskq3ypu" path="res://scenes/squares/squares.gd" id="3_0juc1"]
+[ext_resource type="Script" uid="uid://cq055jw1bjncn" path="res://scenes/pieces/pieces.gd" id="4_lunqa"]
+[ext_resource type="Theme" uid="uid://d4ni16kjtgx7c" path="res://theme/temp.tres" id="5_r0xth"]
+[ext_resource type="Texture2D" uid="uid://bwc1hujwwwbpw" path="res://assets/temporary/UI/pause.png" id="6_0juc1"]
 [ext_resource type="Script" uid="uid://c2j24fhd6lrl4" path="res://scripts/inventory.gd" id="6_oexds"]
 [ext_resource type="Texture2D" uid="uid://k034w3sl384" path="res://assets/icons/SHOP on.png" id="8_k1k1x"]
 [ext_resource type="Texture2D" uid="uid://dcbd28nh0wciq" path="res://assets/icons/return to shop.png" id="9_naajo"]
 
 [node name="arena" type="Node2D" unique_id=491694569]
-script = ExtResource("1_wl4x5")
+script = ExtResource("1_x680a")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1684475174]
 offset = Vector2(180, 320)
@@ -22,29 +22,235 @@ offset_left = -360.0
 offset_right = 180.0
 offset_bottom = 320.0
 scale = Vector2(2, 2)
-texture = ExtResource("1_e05a3")
+texture = ExtResource("2_r0xth")
 
 [node name="squares" type="Node2D" parent="." unique_id=9374824]
-script = ExtResource("3_xdvfk")
+script = ExtResource("3_0juc1")
 
 [node name="pieces" type="Node2D" parent="." unique_id=1922379074]
 y_sort_enabled = true
-script = ExtResource("4_xdvfk")
+script = ExtResource("4_lunqa")
 
-[node name="Health Bar" type="TextureRect" parent="." unique_id=1151452739]
-offset_top = 440.0
-offset_right = 180.0
-offset_bottom = 443.0
-scale = Vector2(2, 2)
-texture = ExtResource("5_oexds")
+[node name="hud" type="CanvasLayer" parent="." unique_id=777665772]
 
-[node name="Bottom BG" type="TextureRect" parent="." unique_id=1940492192]
-offset_top = 446.0
+[node name="bottom" type="Control" parent="hud" unique_id=103004502]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -232.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("5_r0xth")
+
+[node name="bg" type="ColorRect" parent="hud/bottom" unique_id=548809897]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6735428, 0.5844284, 0.26523337, 1)
+
+[node name="info" type="Panel" parent="hud/bottom" unique_id=572385707]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 8.0
+offset_bottom = 48.0
+grow_horizontal = 2
+
+[node name="endturn" type="Button" parent="hud/bottom/info" unique_id=789679873]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 100.0
 offset_right = 180.0
-offset_bottom = 543.0
-scale = Vector2(2, 2)
-texture = ExtResource("6_naajo")
-expand_mode = 1
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "end turn"
+
+[node name="wave" type="Panel" parent="hud/bottom/info" unique_id=1893306733]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -92.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="hud/bottom/info/wave" unique_id=1161583678]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Wave : 1/3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="move" type="Panel" parent="hud/bottom/info" unique_id=813565085]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_right = 100.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="hud/bottom/info/move" unique_id=1290962076]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "moves : 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="currency" type="Panel" parent="hud/bottom/info" unique_id=1373063987]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_right = -92.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="hud/bottom/info/currency" unique_id=1956581553]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "coins : 123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cardhandler" type="Control" parent="hud/bottom" unique_id=896933450]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="hpbar" type="ColorRect" parent="hud/bottom" unique_id=589049928]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+color = Color(1, 0, 0, 1)
+
+[node name="hpvalue" type="ColorRect" parent="hud/bottom/hpbar" unique_id=547814614]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 1)
+
+[node name="disabled" type="Control" parent="hud" unique_id=1188326275]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="shop" type="Control" parent="hud" unique_id=66304168]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -232.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="ColorRect" parent="hud/shop" unique_id=1988703659]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6509804, 0.43529412, 0.16470589, 1)
+
+[node name="header" type="Label" parent="hud/shop" unique_id=214791283]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="itemlabel" type="Label" parent="hud/shop" unique_id=2032045667]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="itemcontainer" type="HBoxContainer" parent="hud/shop" unique_id=1108176941]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 64.0
+offset_bottom = 112.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="hud/shop/itemcontainer" unique_id=770200403]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="hud/shop/itemcontainer" unique_id=1048847338]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control3" type="Control" parent="hud/shop/itemcontainer" unique_id=85424150]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="pause" type="Control" parent="hud" unique_id=49474777]
+modulate = Color(1, 1, 1, 0.47058824)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_bottom = 48.0
+grow_horizontal = 0
+
+[node name="TextureButton" type="TextureButton" parent="hud/pause" unique_id=484575945]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 16.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_0juc1")
+stretch_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=204507945]
 offset_top = 446.0

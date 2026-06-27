@@ -4,7 +4,15 @@ class_name Pieces
 @onready var piece = preload("res://scenes/pieces/piece.tscn")
 var matrix_pieces: Array = []
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.is_echo():
+		# ini khusus buat debug ajaqq
+		if event.keycode == KEY_Q:
+			print(matrix_pieces)
+		
+
 func _ready() -> void:
+	
 	await wait(1.5)
 	setup_initial_pieces()
 	global.piece_requested.connect(_on_piece_requested)

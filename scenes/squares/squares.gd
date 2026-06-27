@@ -46,7 +46,7 @@ func deselect_last_square_with(target_square: Square):
 
 func boardspawn():
 	const squaresize = 44
-	const posawal = Vector2(64+6, 50)
+	const posawal = Vector2(64+6, 32)
 	await wait(0.01)
 	var is_white: bool = true
 	var ganti_pokoknya: bool = false

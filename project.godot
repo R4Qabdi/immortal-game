@@ -20,20 +20,23 @@ config/icon="uid://ngtb3c5v2bld"
 [autoload]
 
 global="*uid://bh26gtf4mm7g7"
-ShopInstructions="*uid://c4c4bivdrwd3"
-InventoryInstructions="*uid://cibkyhoia1q27"
-<<<<<<<HEADShopInstructions="*uid://c4c4bivdrwd3"
+InventoryInstructions="*uid://cf8nne7meg3jq"
+ShopInstructions="*uid://54kadjohm03o"
 
 [display]
 
 window/size/viewport_width=360
 window/size/viewport_height=640
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_width"
+window/stretch/aspect="expand"
 
 [gui]
 
-theme/custom_font="uid://cn0gkpavqq1a8"
+theme/custom_font="uid://dkd6vlihcnxfl"
+
+[input_devices]
+
+pointing/android/enable_long_press_as_right_click=true
 
 [physics]
 
@@ -44,4 +47,5 @@ theme/custom_font="uid://cn0gkpavqq1a8"
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
