@@ -8,6 +8,9 @@ var shopMenu = load("res://scenes/shop/shop.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#var pick:global.unitCards = global.unitCards.keys().pick_random()
+	#print_debug(pick)
+	#print_debug(typeof(pick))
 	shopOverlayLayer = CanvasLayer.new()
 	ShopInstructions.shop_exit.connect(_on_shop_exit)
 	shopBack.disabled = true
@@ -18,10 +21,6 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_texture_button_pressed() -> void:
-	ShopInstructions.data = {
-		"type": 0,
-		"next": "arena",
-	}
 	var menu = shopMenu.instantiate()
 	shopOverlayLayer.add_child(menu)
 	add_child(shopOverlayLayer)

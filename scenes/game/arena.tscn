@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://0ed3x38vroe1" path="res://scenes/game/inputsystem.gd" id="7_lunqa"]
 [ext_resource type="Texture2D" uid="uid://k034w3sl384" path="res://assets/icons/SHOP on.png" id="8_k1k1x"]
 [ext_resource type="Texture2D" uid="uid://dcbd28nh0wciq" path="res://assets/icons/return to shop.png" id="9_naajo"]
-[ext_resource type="Script" uid="uid://di3k2qnjmnrr0" path="res://scenes/game/item_effects.gd" id="11_1x72x"]
 
 [node name="arena" type="Node2D" unique_id=491694569]
 script = ExtResource("1_x680a")
@@ -343,9 +342,6 @@ texture_hover = ExtResource("9_naajo")
 
 [node name="inputsystem" type="Node2D" parent="." unique_id=1966660112]
 script = ExtResource("7_lunqa")
-
-[node name="Node2D" type="Node2D" parent="." unique_id=923979247]
-script = ExtResource("11_1x72x")
 
 [connection signal="pressed" from="hud/shop button" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="hud/Back to Shop" to="." method="_on_back_to_shop"]

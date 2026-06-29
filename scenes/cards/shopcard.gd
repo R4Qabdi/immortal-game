@@ -3,8 +3,9 @@ class_name ShopCard
 
 @onready var itemName:Label = $Label
 @onready var itemIcon:TextureRect = $Icon
-var cardName:String
-var cardType: global.cardType
+var cardName
+var cardType:global.cardType
+var strTitle
 var desc:String
 var detailsOverlayLayer
 var descWindow = load("res://scenes/card_details.tscn")
@@ -14,14 +15,15 @@ func _ready() -> void:
 	detailsOverlayLayer = CanvasLayer.new()
 	
 
-func setup(type:global.cardType ,title:String, icon:String):
-	texture_normal = load("res://assets/bg/card bg.png")
-	texture_pressed = load("res://assets/bg/card bg on.png")
-	texture_hover = load("res://assets/bg/card bg hover.png")
+func setup(type:global.cardType, title:Variant, icon:String):
+	if type == global.cardType.ITEM:
+		strTitle = global.ItemsData[title].name
+	else:
+		strTitle = global.UnitsData[title].name
 	cardName = title
 	cardType = type
-	itemName.text = title
-	itemIcon.texture = load(icon)
+	itemName.text = strTitle
+	#itemIcon.texture = load(icon)
 
 func _on_pressed() -> void:
 	var details:CardDetails = descWindow.instantiate()

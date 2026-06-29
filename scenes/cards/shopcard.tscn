@@ -24,6 +24,7 @@ stretch_mode = 0
 script = ExtResource("4_elywt")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=1138835344]
+custom_minimum_size = Vector2(54, 58)
 layout_mode = 0
 offset_right = 54.0
 offset_bottom = 58.0

@@ -16,33 +16,17 @@ var nextScene:String
 var selected:Array = []
 var selectedIcons:Array = []
 var selectedCDs:Array = []
-const units:Array = ["queen", "rook", "bishop", "knight", "pawn", "guards", "wizard", "wall"]
-const items:Array = [
-	"astral projection", "berserk", "I can't stop", "oops", "skipped leg day", 
-	"voodoo", "cowardice", "black hole", "life insurance"
-	]
-const unitIcons:Array = [
-	"res://assets/icons/queen.png", "res://assets/icons/rook.png", 
-	"res://assets/icons/bishop.png", "res://assets/icons/knight.png", 
-	"res://assets/icons/pawn.png", "res://assets/icons/guards.png", 
-	"res://assets/icons/wizard.png", "res://assets/icons/wall.png"
-	]
-const itemIcons:Array = [
-	"res://assets/icons/astral projection.png", "res://assets/icons/berserk.png",
-	"res://assets/icons/I can't stop.png", "res://assets/icons/oops.png",
-	"res://assets/icons/skipped leg day.png", "res://assets/icons/voodoo.png",
-	"res://assets/icons/cowardice.png", "res://assets/icons/black hole.png",
-	"res://assets/icons/life insurance.png"
-	]
+var units:Array = []
+var items:Array = []
 
 func _ready() -> void:
-	setup(ShopInstructions.data)
+	setup()
 	ShopInstructions.back_to_shop.connect(_on_back_to_shop)
 	ShopInstructions.buy_card.connect(_on_card_bought)
 
-func setup(instructions:Dictionary) -> void:
-	nextScene = "res://scenes/" + instructions["next"] + ".tscn"
-	#nextButton.disabled = true
+func setup() -> void:
+	units = global.unitCards.keys()
+	items = global.itemCards.keys()
 	if selected.size() >= 3:
 		selected = []
 		selectedCDs = []
@@ -50,63 +34,50 @@ func setup(instructions:Dictionary) -> void:
 	
 	wSelectionBG.show()
 	while selected.size() < 3:
-		var pick = units.pick_random()
-		if pick not in selected:
-			var index = units.find(pick)
+		var pick:global.unitCards = global.unitCards.values().pick_random()
+		if not selected.has(pick):
 			selected.append(pick)
-			selectedCDs.append(0)
-			selectedIcons.append(unitIcons[index])
+			selectedIcons.append("res://assets/icons/"+units[pick]+".png")
 	
-	UC1.setup(1, selected[0], selectedIcons[0])
-	UC2.setup(1, selected[1], selectedIcons[1])
-	UC3.setup(1, selected[2], selectedIcons[2])
+	UC1.setup(global.cardType.UNIT, selected[0], selectedIcons[0])
+	UC2.setup(global.cardType.UNIT, selected[1], selectedIcons[1])
+	UC3.setup(global.cardType.UNIT, selected[2], selectedIcons[2])
 	selected = []
 	selectedCDs = []
 	selectedIcons = []
 	
 	while selected.size() < 3:
-		var pick = items.pick_random()
-		if pick not in selected:
-			var index = items.find(pick)
+		var pick:global.itemCards = global.itemCards.values().pick_random()
+		if not selected.has(pick):
 			selected.append(pick)
-			selectedCDs.append(0)
-			selectedIcons.append(itemIcons[index])
+			selectedIcons.append("res://assets/icons/"+items[pick]+".png")
 	
-	IC1.setup(0, selected[0], selectedIcons[0])
-	IC2.setup(0, selected[1], selectedIcons[1])
-	IC3.setup(0, selected[2], selectedIcons[2])
+	IC1.setup(global.cardType.ITEM, selected[0], selectedIcons[0])
+	IC2.setup(global.cardType.ITEM, selected[1], selectedIcons[1])
+	IC3.setup(global.cardType.ITEM, selected[2], selectedIcons[2])
 
 func _process(_delta: float) -> void:
 	pass
 
-func FillData(itemID:String, cd:float):
-	ShopInstructions.playerData = {}
-	ShopInstructions.playerData = {
-		"type": ShopInstructions.data["type"],
-		"ID": itemID,
-		"CDs": cd
-	}
-
-func _on_card_bought(type:global.cardType, card:String):
+func _on_card_bought(type:global.cardType, card:Variant):
 	if type == global.cardType.ITEM:
 		InventoryInstructions.heldItems.append(card)
 	else:
 		InventoryInstructions.heldUnits.append(card)
-	
-	FillData(card, 0.0)
 
 func _on_continue_pressed() -> void:
 	ShopInstructions.shop_exit.emit()
+	InventoryInstructions.change_inventory.emit(global.cardType.ITEM)
 	queue_free()
 
 func _on_upgrade_pressed() -> void:
 	hide()
-	InventoryInstructions.change_inventory.emit(1)
+	InventoryInstructions.change_inventory.emit(global.cardType.UNIT)
 
 func _on_reroll_pressed() -> void:
-	setup(ShopInstructions.data)
+	setup()
 	ShopInstructions.reroll_cards.emit()
 
 func _on_back_to_shop():
 	show()
-	InventoryInstructions.change_inventory.emit(0)
+	InventoryInstructions.change_inventory.emit(global.cardType.ITEM)
