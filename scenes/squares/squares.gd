@@ -103,39 +103,39 @@ func _process(_delta: float) -> void:
 	if is_dragging and selected_piece:
 		selected_piece.dragging()
 
-func execute_drop():
-	is_dragging = false
-	if not selected_piece:
-		return
-		
-	if not dropped_square or dropped_square == unaffected_selected_square or dropped_square.piece != null or not validation():
-		selected_piece.reset()
-	else:
-		selected_piece.movecount += 1
-		
-		# 1. Ambil referensi square lama sebelum datanya dihapus
-		var square_lama = unaffected_selected_square
-		var square_baru = dropped_square
-		
-		# 2. Pindahkan data referensi logika board & piece
-		selected_piece.current_square = square_baru  # <--- Ganti current_square pada piece
-		square_lama.piece = null
-		square_baru.piece = selected_piece
-		
-		# 4. Jalankan animasi perpindahan visual
-		selected_piece.is_dragging = false
-		selected_piece.dropping(square_lama, square_baru)
-		
-		# Update matrix piece data
-		var pieces_manager = get_parent().get_node_or_null("pieces")
-		if pieces_manager:
-			pieces_manager.update_matrix()
-		
-	selected_piece = null
-	dropped_square = null
-
-func validation() -> bool:
-	if selected_piece and dropped_square:
-		# Kembalikan nilai true / false secara mutlak (mencegah bug kembalian kosong/null)
-		return selected_piece.check_valid_square().has(dropped_square)
-	return false
+#func execute_drop():
+	#is_dragging = false
+	#if not selected_piece:
+		#return
+		#
+	#if not dropped_square or dropped_square == unaffected_selected_square or dropped_square.piece != null or not validation():
+		#selected_piece.reset()
+	#else:
+		#selected_piece.movecount += 1
+		#
+		## 1. Ambil referensi square lama sebelum datanya dihapus
+		#var square_lama = unaffected_selected_square
+		#var square_baru = dropped_square
+		#
+		## 2. Pindahkan data referensi logika board & piece
+		#selected_piece.current_square = square_baru  # <--- Ganti current_square pada piece
+		#square_lama.piece = null
+		#square_baru.piece = selected_piece
+		#
+		## 4. Jalankan animasi perpindahan visual
+		#selected_piece.is_dragging = false
+		#selected_piece.dropping(square_lama, square_baru)
+		#
+		## Update matrix piece data
+		#var pieces_manager = get_parent().get_node_or_null("pieces")
+		#if pieces_manager:
+			#pieces_manager.update_matrix()
+		#
+	#selected_piece = null
+	#dropped_square = null
+#
+#func validation() -> bool:
+	#if selected_piece and dropped_square:
+		## Kembalikan nilai true / false secara mutlak (mencegah bug kembalian kosong/null)
+		#return selected_piece.check_valid_square().has(dropped_square)
+	#return false
