@@ -4,16 +4,20 @@ class_name InventoryCard
 @onready var itemName:Label = $Label
 @onready var itemIcon:TextureRect = $Icon
 @onready var card: InventoryCard = $"."
+var cardCode:global.unitCards
 var cardName:String
-var cardType:int
+var cardType: global.cardType
 var desc:String
 var descWindow = load("res://scenes/card_details.tscn")
 
-func setup(title:String, type:int):
-	cardType = type
+func setup(title:String, type: global.cardType):
+	# LEFT PARAMETER WILL BE DATA TYPE GLOBAL.ITEMCARD
+	# LEFT PARAMETER SHOULD GO TO CardCode
 	cardName = title
+	cardType = type
 	itemName.text = title
 	itemIcon.texture = load("res://assets/icons/"+title+".png")
+	InventoryInstructions.inventory_card_selected.connect(_on_inventory_card_selected)
 
 func _get_drag_data(at_position: Vector2) -> Variant:
 	var texture = itemIcon.texture

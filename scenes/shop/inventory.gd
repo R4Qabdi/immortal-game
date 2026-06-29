@@ -1,11 +1,11 @@
 extends HBoxContainer
- #ESA'S
+class_name Inventory
 var card = load("res://scenes/cards/invcard.tscn")
 
 func _ready() -> void:
 	InventoryInstructions.change_inventory.connect(_on_inventory_change)
 	ShopInstructions.shop_exit.connect(_on_shop_exit)
-	redrawInv(InventoryInstructions.playerItems, 0)	
+	redrawInv(InventoryInstructions.heldItems, 0)	
 	#var spawnedCard:InventoryCard = card.instantiate()
 	#add_child(spawnedCard)
 	#spawnedCard.setup("cowardice")

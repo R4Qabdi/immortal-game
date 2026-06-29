@@ -87,11 +87,11 @@ func FillData(itemID:String, cd:float):
 		"CDs": cd
 	}
 
-func _on_card_bought(type:int, card:String):
-	if type == 0:
-		InventoryInstructions.playerItems.append(card)
+func _on_card_bought(type:global.cardType, card:String):
+	if type == global.cardType.ITEM:
+		InventoryInstructions.heldItems.append(card)
 	else:
-		InventoryInstructions.playerUnits.append(card)
+		InventoryInstructions.heldUnits.append(card)
 	
 	FillData(card, 0.0)
 
