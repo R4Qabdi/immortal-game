@@ -69,6 +69,12 @@ func hyper_elastic_move(target, destination: Vector2):
 	tween.tween_property(target, "position", overshoot_point, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	tween.tween_property(target, "position", destination, 2).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 
+func set_preview(is_preview: bool) -> void:
+	if is_preview:
+		tile.modulate = Color(1.0, 0.9, 0.3, 0.8)
+	else:
+		tile.modulate = Color(1.0, 1.0, 1.0, 1.0)
+
 func _on_area_mouse_entered() -> void:
 	var current_color = $tile.modulate
 	$tile.modulate = Color.from_rgba8(135, 206, 250, current_color.a*255)
