@@ -100,17 +100,20 @@ func dropping(from_square:Square, to_square: Square):
 	previous_square = from_square
 	#print("new square")
 	current_square = to_square
-	
+	self.global_position = to_square.position
+	texture.global_position = from_square.position
 	# Pindahkan posisi root Node2D milik piece ke square baru
+	texture.scale = SCALE
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_SPRING)
-	tween.tween_property(self, "global_position", to_square.global_position, 0.2)
+	tween.tween_property(texture, "global_position", to_square.global_position + Vector2(0, -16), 0.3)
 	
 	# Kembalikan offset texture secara lokal
-	texture.position = Vector2(0, -16)
-	texture.z_index = 0
-	texture.scale = SCALE
+	tween.tween_callback(func():
+		texture.position = Vector2(0, -16)
+		texture.z_index = 0
+	)
 	update_my_square_layer()
 	deselect()
 
@@ -124,7 +127,8 @@ func reset():
 	tween.tween_property(texture, "position", Vector2(0, -16), 0.15)
 	
 	texture.scale = SCALE
-	deselect()
+	texture.z_index = 0
+	#deselect()
 
 func _draw() -> void:
 	# Gambar semua garis yang terdaftar

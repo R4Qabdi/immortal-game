@@ -76,11 +76,13 @@ func set_preview(is_preview: bool) -> void:
 		tile.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func _on_area_mouse_entered() -> void:
+	$tile.modulate = Color.LIGHT_BLUE
 	is_hovered = true
 	if board:
 		board.hovered_square = self # Catat kotak aktif yang di-hover mouse ke Board
 
 func _on_area_mouse_exited() -> void:
+	$tile.modulate = Color.WHITE
 	is_hovered = false
 	if board and board.hovered_square == self:
 		board.hovered_square = null # Hapus dari catatan Board jika keluar kotakss
