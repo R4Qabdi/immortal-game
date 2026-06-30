@@ -4,14 +4,13 @@ class_name Board
 const dark = preload("res://assets/temporary/darksquare.png")
 const light = preload("res://assets/temporary/lightsquare.png")
 
-@onready var square_scene = preload("res://scenes/squares/square.tscn")
+@onready var square = preload("res://scenes/squares/square.tscn")
 
 var dropped_square: Square
 var selected_square: Square
 var unaffected_selected_square: Square
 var selected_piece: Piece
 var hovered_square: Square = null # VARIABEL BARU: Pelacak posisi mouse
-var highlighted_squares: Array[Square]
 
 var is_dragging: bool = false
 var is_dropping: bool = false
@@ -35,7 +34,6 @@ func print_matrix_pretty():
 
 func _ready() -> void:
 	boardspawn()
-	InventoryInstructions.inventory_card_selected.connect(_on_inventory_card_selected)
 
 func deselect_last_square_with(target_square: Square):
 	var is_same_piece: bool = false
@@ -85,7 +83,7 @@ func boardspawn():
 		is_white = !is_white
 
 func tilespawn(location: Vector2, texture_type: bool, tname: String, row: int):
-	var newsquare: Square = square_scene.instantiate()
+	var newsquare: Square = square.instantiate()
 	add_child(newsquare)
 	newsquare.position = location
 	newsquare.name = tname
@@ -104,37 +102,6 @@ func wait(seconds: float):
 func _process(_delta: float) -> void:
 	if is_dragging and selected_piece:
 		selected_piece.dragging()
-
-func _on_inventory_card_selected(card: InventoryCard) -> void:
-	clear_placeable_preview()
-	if card and card.cardType == global.cardType.UNIT:
-		highlighted_squares = get_highlighting_squares_for_card(card)
-		show_placeable_preview()
-	await get_tree().create_timer(0.5).timeout
-
-func get_highlighting_squares_for_card(_card: InventoryCard) -> Array[Square]:
-	var found_squares: Array[Square] = []
-	# only include bottom 4 squares of the board (row index 0 to 3) that are empty
-	for row in range(4):
-		for square in matrix_board[row]:
-			if square.piece == null:
-				found_squares.append(square)
-	return found_squares
-
-func show_placeable_preview() -> void:
-	for square in highlighted_squares:
-		if square:
-			square.set_preview(true)
-	print_debug("Placeable squares preview shown: ", len(highlighted_squares))
-	for i in range(min(3, len(highlighted_squares))):
-		print_debug("Sample ", i + 1, ": ", highlighted_squares[i])
-
-func clear_placeable_preview() -> void:
-	if not highlighted_squares:
-		return
-	for square in highlighted_squares:
-		square.set_preview(false)
-	highlighted_squares.clear()
 
 #func execute_drop():
 	#is_dragging = false
