@@ -4,7 +4,7 @@ extends ColorRect
 @onready var audioplayer = %audioplayer
 
 func _ready() -> void:
-	current_scene = $"../../current/mainmenu"
+	current_scene = $"../current/mainmenu"
 
 func change_current_scene_to(from, scene:PackedScene):
 	current_scene = from
