@@ -50,3 +50,5 @@ justification_flags = 0
 clip_text = true
 uppercase = true
 script = ExtResource("7_l26bp")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

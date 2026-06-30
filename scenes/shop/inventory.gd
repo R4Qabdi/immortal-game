@@ -1,10 +1,13 @@
 extends HBoxContainer
 class_name Inventory
+
+var selectedCard: InventoryCard = null
 var card = load("res://scenes/cards/invcard.tscn")
 
 func _ready() -> void:
 	InventoryInstructions.change_inventory.connect(_on_inventory_change)
 	redrawInv(InventoryInstructions.heldItems, global.cardType.ITEM)
+	InventoryInstructions.inventory_card_selected.connect(_on_inventory_card_selected)
 
 func redrawInv(ownedCards:Array, type:global.cardType):
 	var spawned:int = 0
@@ -20,6 +23,12 @@ func redrawInv(ownedCards:Array, type:global.cardType):
 		spawnedCard.name = spName
 		spawnedCard.setup(ownedCards[spawned], type)
 		spawned += 1
+
+func _on_inventory_card_selected(card: InventoryCard):
+	if selectedCard and selectedCard != card:
+		selectedCard.deselect_card()
+	selectedCard = card
+	await get_tree().create_timer(0.2).timeout
 
 func clearInv():
 	var spawned:int = 0

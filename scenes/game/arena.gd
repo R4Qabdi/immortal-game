@@ -5,6 +5,9 @@ var shopOverlayLayer
 var shopMenu = load("res://scenes/shop/shop.tscn")
 @onready var shopButton:TextureButton = $"hud/shop button"
 @onready var shopBack:TextureButton = $"hud/Back to Shop"
+@onready var inventory: Inventory = $hud/HBoxContainer
+@onready var squares: Board = $squares
+@onready var pieces: Pieces = $pieces
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -48,3 +51,9 @@ func _on_shop_exit():
 
 func _on_back_to_shop() -> void:
 	ShopInstructions.back_to_shop.emit()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch and not event.pressed:
+		if inventory.selectedCard != null:
+			print_debug("Inventory card deselected due to touch outside")
+			InventoryInstructions.inventory_card_selected.emit(null)

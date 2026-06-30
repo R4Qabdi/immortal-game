@@ -7,7 +7,11 @@ class_name InventoryCard
 var cardName
 var cardType:global.cardType
 var desc:String
+var is_selected: bool = false
+
 var descWindow = load("res://scenes/card_details.tscn")
+var normal_texture = preload("res://assets/bg/card bg.png")
+var selected_texture = preload("res://assets/bg/card bg on.png")
 
 func setup(title:Variant, type:global.cardType):
 	var strTitle
@@ -28,9 +32,20 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	return card
 
 func _on_pressed() -> void:
-	var details:CardDetails = descWindow.instantiate()
-	add_child(details)
-	details.setup(cardType, cardName, desc, 0)
+	set_selected_visual(true)
+	InventoryInstructions.inventory_card_selected.emit(self)
+	is_selected = true
+	# if not get_details_child_idkkkkk:
+	# 	return
+	# var details:CardDetails = descWindow.instantiate()
+	# add_child(details)
+	# details.setup(cardType, cardName, desc, 0)
+
+func set_selected_visual(selected: bool) -> void:
+	if selected: # make different
+		itemIcon.modulate = Color(1, 1, 1, 0.2)
+	else:	# make normal
+		itemIcon.modulate = Color(1, 1, 1, 1)
 
 func card_activated():
 	if cardType == global.cardType.ITEM:
@@ -41,3 +56,8 @@ func card_activated():
 		InventoryInstructions.heldUnits.remove_at(idx)
 	InventoryInstructions.use_card.emit(cardType, cardName)
 	queue_free()
+
+
+func deselect_card(): # triggered by Inventory
+	is_selected = false
+	set_selected_visual(false)
