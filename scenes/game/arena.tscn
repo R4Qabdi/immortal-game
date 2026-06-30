@@ -6,10 +6,7 @@
 [ext_resource type="Script" uid="uid://cq055jw1bjncn" path="res://scenes/pieces/pieces.gd" id="4_lunqa"]
 [ext_resource type="Theme" uid="uid://d4ni16kjtgx7c" path="res://theme/temp.tres" id="5_r0xth"]
 [ext_resource type="Texture2D" uid="uid://bwc1hujwwwbpw" path="res://assets/temporary/UI/pause.png" id="6_0juc1"]
-[ext_resource type="Script" uid="uid://bc440fymnmgld" path="res://scenes/shop/inventory.gd" id="7_cehcd"]
 [ext_resource type="Script" uid="uid://0ed3x38vroe1" path="res://scenes/game/inputsystem.gd" id="7_lunqa"]
-[ext_resource type="Texture2D" uid="uid://k034w3sl384" path="res://assets/icons/SHOP on.png" id="8_k1k1x"]
-[ext_resource type="Texture2D" uid="uid://dcbd28nh0wciq" path="res://assets/icons/return to shop.png" id="9_naajo"]
 
 [node name="arena" type="Node2D" unique_id=491694569]
 script = ExtResource("1_x680a")
@@ -325,6 +322,3 @@ grow_vertical = 2
 
 [node name="inputsystem" type="Node2D" parent="." unique_id=1966660112]
 script = ExtResource("7_lunqa")
-
-[connection signal="pressed" from="hud/shop button" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="hud/Back to Shop" to="." method="_on_back_to_shop"]

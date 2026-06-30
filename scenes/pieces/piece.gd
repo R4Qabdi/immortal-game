@@ -19,8 +19,6 @@ var debug_lines: Array[Dictionary] = []
 var previous_valid_squares: Array[Square]
 var current_valid_squares: Array[Square]
 
-var itemEffect:Dictionary
-
 func _ready() -> void:
 	texture.modulate.a = 0
 	texture.scale = SCALE
@@ -166,9 +164,6 @@ func update_my_square_layer():
 func check_valid_square() -> Array[Square]:
 	#current_valid_squares.clear()
 	current_square.dots.collision_layer = 0
-	
-	
-	
 	match type:
 		"pawn": current_valid_squares = valid_pawn_moves(movecount < 1)
 		"rook": current_valid_squares = valid_rook_moves()
