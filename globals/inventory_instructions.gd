@@ -1,8 +1,6 @@
 extends Node
 
-var heldItems:Array[global.itemCards] = []
-var heldUnits:Array[global.unitCards] = []
+var playerItems:Array = []
+var playerUnits:Array = []
 
-signal change_inventory(type:global.cardType)
-signal inventory_card_selected(card: InventoryCard)
-signal use_card(type:global.cardType, card:Variant)
+signal change_inventory(type:int)
