@@ -20,9 +20,9 @@ config/icon="uid://ngtb3c5v2bld"
 [autoload]
 
 global="*uid://bh26gtf4mm7g7"
-InventoryInstructions="*uid://cf8nne7meg3jq"
-ShopInstructions="*uid://54kadjohm03o"
-ItemEffectsInstructions="*uid://dlci2ohto1eue"
+ShopInstructions="*res://globals/shop_instructions.gd"
+InventoryInstructions="*res://globals/inventory_instructions.gd"
+ItemEffectsInstructions="*uid://di3k2qnjmnrr0"
 
 [display]
 
