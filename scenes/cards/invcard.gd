@@ -3,10 +3,12 @@ class_name InventoryCard
 
 @onready var itemName:Label = $Label
 @onready var itemIcon:TextureRect = $Icon
-@onready var card: InventoryCard = $"."
+
 var cardName
 var cardType:global.cardType
 var cardReq:Array
+var unitType: global.unitCards = global.unitCards.NONE
+var itemType: global.itemCards = global.itemCards.NONE
 var desc:String
 var is_selected: bool = false
 
@@ -17,10 +19,12 @@ var selected_texture = preload("res://assets/bg/card bg on.png")
 func setup(title:Variant, type:global.cardType):
 	var strTitle
 	if type == global.cardType.ITEM:
+		itemType = title as global.itemCards
 		strTitle = global.ItemsData[title].name
 		cardReq = global.ItemsData[title].useOn
 	else:
-		strTitle = global.UnitsData[title].name
+		unitType = title as global.unitCards
+		strTitle = global.unitCardsData[title].name
 	cardName = title
 	cardType = type
 	itemName.text = strTitle
@@ -32,7 +36,7 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	var texture = itemIcon.texture
 	var preview = duplicate()
 	set_drag_preview(preview)
-	return card
+	return self
 
 func _on_pressed() -> void:
 	set_selected_visual(true)

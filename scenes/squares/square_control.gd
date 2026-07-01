@@ -12,8 +12,10 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	return false
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
+	if data is not InventoryCard:
+		return
 	if data.cardType == global.cardType.UNIT:
-		global.piece_requested.emit(data.itemName.text, square, false)
+		InventoryInstructions._unit_drop_attempted.emit(square, data)
 		data.card_activated()
 	else:
 		if square.piece != null:

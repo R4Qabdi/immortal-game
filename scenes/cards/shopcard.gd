@@ -5,6 +5,8 @@ class_name ShopCard
 @onready var itemIcon:TextureRect = $Icon
 var cardName
 var cardType:global.cardType
+var unitType: global.unitCards = global.unitCards.NONE
+var itemType: global.itemCards = global.itemCards.NONE
 var strTitle
 var desc:String
 var detailsOverlayLayer
@@ -18,9 +20,11 @@ func _ready() -> void:
 
 func setup(type:global.cardType, title:Variant, icon:String):
 	if type == global.cardType.ITEM:
+		itemType = title as global.itemCards
 		strTitle = global.ItemsData[title].name
 	else:
-		strTitle = global.UnitsData[title].name
+		unitType = title as global.unitCards
+		strTitle = global.unitCardsData[unitType].name
 	cardName = title
 	cardType = type
 	itemName.text = strTitle

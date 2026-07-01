@@ -4,6 +4,8 @@ class_name Square
 @onready var labubu: Sprite2D = $labubu
 @onready var tile: Sprite2D = $tile
 @onready var dots: Area2D = $dots
+var row: int
+var col: int
 var is_hovered: bool = false
 var piece: Piece = null
 var board: Board

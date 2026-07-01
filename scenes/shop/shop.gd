@@ -3,17 +3,17 @@ class_name Shop
 
 @onready var wSelectionBG:TextureRect = $"Shop BG"
 @onready var nextButton:BaseButton = $"Shop BG/Buttons Container/Continue"
-@onready var UC1:TextureButton = $"Shop BG/Units Container/Unit Card1"
-@onready var UC2:TextureButton = $"Shop BG/Units Container/Unit Card2"
-@onready var UC3:TextureButton = $"Shop BG/Units Container/Unit Card3"
-@onready var IC1:TextureButton = $"Shop BG/Items Container/Item Card1"
-@onready var IC2:TextureButton = $"Shop BG/Items Container/Item Card2"
-@onready var IC3:TextureButton = $"Shop BG/Items Container/Item Card3"
+@onready var UC1:ShopCard = $"Shop BG/Units Container/Unit Card1"
+@onready var UC2:ShopCard = $"Shop BG/Units Container/Unit Card2"
+@onready var UC3:ShopCard = $"Shop BG/Units Container/Unit Card3"
+@onready var IC1:ShopCard = $"Shop BG/Items Container/Item Card1"
+@onready var IC2:ShopCard = $"Shop BG/Items Container/Item Card2"
+@onready var IC3:ShopCard = $"Shop BG/Items Container/Item Card3"
 
 var cards
 var picked:bool
 var nextScene:String
-var selected:Array = []
+var selected:Array[global.itemCards] = []
 var selectedIcons:Array = []
 var selectedCDs:Array = []
 var units:Array = []

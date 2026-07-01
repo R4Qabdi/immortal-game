@@ -41,7 +41,7 @@ func _ready() -> void:
 		squares.get_node_or_null("a8").name,
 	]
 	setup_initial_pieces()
-	global.piece_requested.connect(_on_piece_requested)
+	InventoryInstructions._unit_pieces_requested.connect(_on_unit_pieces_requested)
 
 func setup_initial_pieces():
 	var layout = {
@@ -78,7 +78,7 @@ func update_matrix():
 			matrix_pieces[index].append(j.piece)
 		index += 1
 
-func add_piece(type: String, which_square: Square, is_enemy: bool):
+func add_piece(type: String, which_square: Square, is_enemy: bool, unitPiece: global.UnitCardPieces = null):
 	var newpiece: Piece = piece.instantiate()
 	add_child(newpiece)
 	newpiece.name = type

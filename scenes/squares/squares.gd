@@ -93,6 +93,9 @@ func tilespawn(location: Vector2, texture_type: bool, tname: String, row: int):
 		newsquare.tile.texture = light
 	else: 
 		newsquare.tile.texture = dark
+	var col = matrix_board[row].size()
+	newsquare.row = row
+	newsquare.col = col
 	matrix_board[row].append(newsquare)
 
 func int_to_ascii(index: int):

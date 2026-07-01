@@ -16,7 +16,7 @@ func redrawInv(ownedCards:Array, type:global.cardType):
 		if type == global.cardType.ITEM:
 			spName = global.ItemsData[ownedCards[spawned]].name
 		else:
-			spName = global.UnitsData[ownedCards[spawned]].name
+			spName = global.unitCardsData[ownedCards[spawned]].name
 		
 		var spawnedCard:InventoryCard = card.instantiate()
 		add_child(spawnedCard)

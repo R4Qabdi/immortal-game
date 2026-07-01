@@ -24,9 +24,9 @@ var piecesData: Dictionary[pieceTypes, PieceData] = {
 
 enum cardType {ITEM, UNIT}
 
-enum unitCards {PAWN, ROOK, KNIGHT, BISHOP, QUEEN, GUARDS, WIZARD, WALL}
+enum unitCards {NONE, PAWN, ROOK, KNIGHT, BISHOP, QUEEN, GUARDS, WIZARD, WALL, BOSS}
 
-class UnitData:
+class UnitCardData:
 	var name: String
 	func _init(p_name: String):
 		name = p_name
@@ -42,7 +42,7 @@ var UnitsData: Dictionary[unitCards, UnitData] = {
 }
 
 enum itemCards {
-	ASTRAL_PROJECTION, BERSERK, I_CANT_STOP, OOPS, SKIPPED_LEG_DAY, 
+	NONE, ASTRAL_PROJECTION, BERSERK, I_CANT_STOP, OOPS, SKIPPED_LEG_DAY, 
 	VOODOO, BULLY, BLACK_HOLE, LIFE_INSURANCE
 	}
 
@@ -59,6 +59,11 @@ var ItemsData: Dictionary[itemCards, ItemData] = {}
 
 func _ready() -> void:
 	ItemsData = {
+		itemCards.NONE: ItemData.new(
+			"none", 
+			Callable(),
+			[]
+			),
 		itemCards.ASTRAL_PROJECTION: ItemData.new(
 			"astral projection", 
 			ItemEffectsInstructions.AstralProject,
