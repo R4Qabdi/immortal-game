@@ -309,36 +309,46 @@ grow_vertical = 2
 texture_normal = ExtResource("6_0juc1")
 stretch_mode = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="hud" unique_id=304956678]
-custom_minimum_size = Vector2(180, 40)
-offset_top = 460.0
-offset_right = 180.0
-offset_bottom = 500.0
-scale = Vector2(2, 2)
-size_flags_horizontal = 0
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.0
-theme_override_constants/separation = 2
-script = ExtResource("7_cehcd")
+[node name="cast" type="Panel" parent="hud" unique_id=1954432933]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = -41.5
+offset_right = 113.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="shop button" type="TextureButton" parent="hud" unique_id=22855814]
-offset_top = 584.0
-offset_right = 77.0
-offset_bottom = 612.0
-scale = Vector2(2, 2)
-texture_normal = ExtResource("8_k1k1x")
-texture_pressed = ExtResource("8_k1k1x")
-texture_hover = ExtResource("8_k1k1x")
+[node name="title" type="Label" parent="hud/cast" unique_id=1096985438]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.5
+offset_right = 85.5
+offset_bottom = 59.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "Stage 1"
 
-[node name="Back to Shop" type="TextureButton" parent="hud" unique_id=355116378]
-offset_left = 206.0
-offset_top = 584.0
-offset_right = 283.0
-offset_bottom = 612.0
-scale = Vector2(2, 2)
-texture_normal = ExtResource("9_naajo")
-texture_pressed = ExtResource("9_naajo")
-texture_hover = ExtResource("9_naajo")
+[node name="subtitle" type="Label" parent="hud/cast" unique_id=736648678]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -28.0
+offset_right = 80.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Introduction : Pawn"
 
 [node name="inputsystem" type="Node2D" parent="." unique_id=1966660112]
 script = ExtResource("7_lunqa")
