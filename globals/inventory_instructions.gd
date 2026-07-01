@@ -1,5 +1,6 @@
 extends Node
 
+var maxItems:int = 6
 var heldItems:Array[global.itemCards] = []
 var heldUnits:Array[global.unitCards] = []
 

@@ -12,6 +12,7 @@ var descWindow = load("res://scenes/card_details.tscn")
 
 func _ready() -> void:
 	ShopInstructions.reroll_cards.connect(_on_reroll)
+	ShopInstructions.buy_card.connect(_on_card_bought)
 	detailsOverlayLayer = CanvasLayer.new()
 	
 
@@ -35,3 +36,7 @@ func _on_pressed() -> void:
 
 func _on_reroll():
 	disabled = false
+
+func _on_card_bought(type:global.cardType, title:Variant):
+	if title == cardName:
+		disabled = true

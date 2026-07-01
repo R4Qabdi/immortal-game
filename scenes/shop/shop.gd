@@ -35,7 +35,7 @@ func setup() -> void:
 	wSelectionBG.show()
 	while selected.size() < 3:
 		var pick:global.unitCards = global.unitCards.values().pick_random()
-		if not selected.has(pick) and not InventoryInstructions.heldUnits.has(pick):
+		if not selected.has(pick):
 			selected.append(pick)
 			selectedIcons.append("res://assets/icons/"+units[pick]+".png")
 	
@@ -58,7 +58,8 @@ func setup() -> void:
 
 func _on_card_bought(type:global.cardType, card:Variant):
 	if type == global.cardType.ITEM:
-		InventoryInstructions.heldItems.append(card)
+		if len(InventoryInstructions.heldItems) < InventoryInstructions.maxItems:
+			InventoryInstructions.heldItems.append(card)
 	else:
 		InventoryInstructions.heldUnits.append(card)
 

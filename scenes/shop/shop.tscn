@@ -26,15 +26,16 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.68700004
-offset_bottom = 0.1599884
-scale = Vector2(2, 2)
+offset_right = 180.0
+offset_bottom = 188.15999
 texture = ExtResource("1_lx5au")
 
 [node name="Items Container" type="HBoxContainer" parent="Shop BG" unique_id=319970298]
 layout_mode = 0
-offset_top = 14.0
+offset_top = 25.0
 offset_right = 180.0
-offset_bottom = 100.0
+offset_bottom = 105.0
+scale = Vector2(2, 2)
 theme_override_constants/separation = 5
 alignment = 1
 
@@ -49,9 +50,10 @@ layout_mode = 2
 
 [node name="Units Container" type="HBoxContainer" parent="Shop BG" unique_id=1476853250]
 layout_mode = 0
-offset_top = 114.0
+offset_top = 210.0
 offset_right = 180.0
-offset_bottom = 200.0
+offset_bottom = 290.0
+scale = Vector2(2, 2)
 theme_override_constants/separation = 5
 alignment = 1
 
@@ -66,26 +68,31 @@ layout_mode = 2
 
 [node name="Buttons Container" type="HBoxContainer" parent="Shop BG" unique_id=1635239192]
 layout_mode = 0
-offset_top = 206.0
+offset_top = 370.0
 offset_right = 180.0
-offset_bottom = 216.0
+offset_bottom = 389.0
+scale = Vector2(2, 2)
 theme_override_constants/separation = 6
 alignment = 1
 
 [node name="Reroll" type="TextureButton" parent="Shop BG/Buttons Container" unique_id=1063479622]
 layout_mode = 2
+size_flags_vertical = 4
 texture_normal = ExtResource("4_44xle")
 texture_pressed = ExtResource("5_24it5")
 texture_hover = ExtResource("6_7mqwv")
+stretch_mode = 3
 
 [node name="Upgrade" type="TextureButton" parent="Shop BG/Buttons Container" unique_id=43319480]
 layout_mode = 2
+size_flags_vertical = 4
 texture_normal = ExtResource("7_gobkm")
 texture_pressed = ExtResource("8_j14q8")
 texture_hover = ExtResource("9_5u241")
 
 [node name="Continue" type="TextureButton" parent="Shop BG/Buttons Container" unique_id=1208856024]
 layout_mode = 2
+size_flags_vertical = 4
 texture_normal = ExtResource("10_pqync")
 texture_pressed = ExtResource("11_yuijs")
 texture_hover = ExtResource("12_aa4hd")

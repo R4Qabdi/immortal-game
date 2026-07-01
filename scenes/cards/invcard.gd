@@ -18,13 +18,14 @@ func setup(title:Variant, type:global.cardType):
 	var strTitle
 	if type == global.cardType.ITEM:
 		strTitle = global.ItemsData[title].name
+		cardReq = global.ItemsData[title].useOn
 	else:
 		strTitle = global.UnitsData[title].name
 	cardName = title
 	cardType = type
 	itemName.text = strTitle
 	itemIcon.texture = load("res://assets/icons/"+strTitle+".png")
-	cardReq = global.ItemsData[title].useOn
+	
 	#InventoryInstructions.inventory_card_selected.connect(_on_inventory_card_selected)
 
 func _get_drag_data(at_position: Vector2) -> Variant:
@@ -67,7 +68,8 @@ func get_card_requirements(tile:Square) -> bool:
 			elif tile.piece.is_enemy:
 				return false
 			elif len(cardReq) > 1:
-				if tile.piece.type == global.piecesData[cardReq[0]].name:
+				if tile.piece.type == global.piecesData[cardReq[1]].name:
+					#print_debug(tile.piece.type)
 					return true
 			else:
 				return true
@@ -77,7 +79,7 @@ func get_card_requirements(tile:Square) -> bool:
 			elif not tile.piece.is_enemy:
 				return false
 			elif len(cardReq) > 1:
-				if tile.piece.type == global.piecesData[cardReq[0]].name:
+				if tile.piece.type == global.piecesData[cardReq[1]].name:
 					return true
 			else:
 				return true
