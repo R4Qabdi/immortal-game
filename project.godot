@@ -22,7 +22,7 @@ config/icon="uid://ngtb3c5v2bld"
 global="*uid://bh26gtf4mm7g7"
 ShopInstructions="*res://globals/shop_instructions.gd"
 InventoryInstructions="*res://globals/inventory_instructions.gd"
-ItemEffectsInstructions="*uid://di3k2qnjmnrr0"
+ItemEffectsInstructions="*res://globals/item_effects_instructions.gd"
 
 [display]
 
