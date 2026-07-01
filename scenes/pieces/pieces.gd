@@ -11,7 +11,6 @@ var enemy_spawn_square:Array[String]=[]
 var enemy_onboard :Array[Piece]=[] 
 var enemy_move_count :int = 1
 
-
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.is_echo():
 		# ini khusus buat debug ajaqq
@@ -170,3 +169,8 @@ func resolve_move(selected_piece: Piece, target: Square) -> void:
 	
 	# Update your underlying board data representation
 	update_matrix()
+
+func _on_piece_requested(type: String, which_square: Square, is_enemy: bool):
+	add_piece(type, which_square, is_enemy)
+	update_matrix()
+	global.piece_added.emit(type, which_square, is_enemy)
