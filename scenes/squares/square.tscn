@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bkkm0b2fqvdfo" path="res://scenes/squares/square.gd" id="2_qmd2u"]
 [ext_resource type="Texture2D" uid="uid://dsg8ab7mq46su" path="res://assets/temporary/labubu.png" id="3_0thag"]
-[ext_resource type="Script" uid="uid://blidm4b7jsv4" path="res://scenes/squares/square_control.gd" id="3_v6fib"]
+[ext_resource type="Script" uid="uid://uvrc4ruajyna" path="res://scenes/squares/square_control.gd" id="3_v6fib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0thag"]
 size = Vector2(44, 48)

@@ -5,9 +5,9 @@ var shopOverlayLayer
 var shopMenu = load("res://scenes/shop/shop.tscn")
 @onready var shopButton:TextureButton = $"hud/shop button"
 @onready var shopBack:TextureButton = $"hud/Back to Shop"
-@onready var inventory: Inventory = $hud/HBoxContainer
+@onready var inventory:Inventory = $hud/bottom/cardhandler/HBoxContainer
 @onready var squares: Board = $squares
-@onready var pieces: Pieces = $pieces
+@onready var pieces:Pieces = $pieces
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,7 +23,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_texture_button_pressed() -> void:
+func _on_shop_button_pressed() -> void:
 	var menu = shopMenu.instantiate()
 	shopOverlayLayer.add_child(menu)
 	add_child(shopOverlayLayer)
@@ -47,7 +47,6 @@ func _on_shop_exit():
 		#selected.unselect()
 	#selected = newSquare
 	#selected.select()
-
 
 func _on_back_to_shop() -> void:
 	ShopInstructions.back_to_shop.emit()

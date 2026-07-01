@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://cq055jw1bjncn" path="res://scenes/pieces/pieces.gd" id="4_lunqa"]
 [ext_resource type="Theme" uid="uid://d4ni16kjtgx7c" path="res://theme/temp.tres" id="5_r0xth"]
 [ext_resource type="Texture2D" uid="uid://bwc1hujwwwbpw" path="res://assets/temporary/UI/pause.png" id="6_0juc1"]
-[ext_resource type="Script" uid="uid://bc440fymnmgld" path="res://scenes/shop/inventory.gd" id="7_cehcd"]
+[ext_resource type="Script" uid="uid://bc440fymnmgld" path="res://scenes/shop/inventory.gd" id="6_wi6ek"]
 [ext_resource type="Script" uid="uid://0ed3x38vroe1" path="res://scenes/game/inputsystem.gd" id="7_lunqa"]
-[ext_resource type="Texture2D" uid="uid://k034w3sl384" path="res://assets/icons/SHOP on.png" id="8_k1k1x"]
-[ext_resource type="Texture2D" uid="uid://dcbd28nh0wciq" path="res://assets/icons/return to shop.png" id="9_naajo"]
+[ext_resource type="Texture2D" uid="uid://k034w3sl384" path="res://assets/icons/SHOP on.png" id="9_1x72x"]
+[ext_resource type="Texture2D" uid="uid://dcbd28nh0wciq" path="res://assets/icons/return to shop.png" id="10_lrfrq"]
 
 [node name="arena" type="Node2D" unique_id=491694569]
 script = ExtResource("1_x680a")
@@ -145,6 +145,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="HBoxContainer" type="HBoxContainer" parent="hud/bottom/cardhandler" unique_id=211377581]
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 0
+offset_left = -180.0
+offset_top = -180.0
+offset_bottom = -140.0
+scale = Vector2(2, 2)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 2
+script = ExtResource("6_wi6ek")
+
 [node name="hpbar" type="ColorRect" parent="hud/bottom" unique_id=589049928]
 layout_mode = 1
 anchors_preset = 10
@@ -171,122 +184,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="shop" type="Control" parent="hud" unique_id=66304168]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -232.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="bg" type="ColorRect" parent="hud/shop" unique_id=1988703659]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.6509804, 0.43529412, 0.16470589, 1)
-metadata/_edit_lock_ = true
-
-[node name="header" type="Label" parent="hud/shop" unique_id=214791283]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 64.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
-text = "SHOP"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_lock_ = true
-
-[node name="item" type="Panel" parent="hud/shop" unique_id=1708838752]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 64.0
-offset_bottom = 192.0
-grow_horizontal = 2
-
-[node name="itemcontainer" type="HBoxContainer" parent="hud/shop/item" unique_id=1108176941]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.333
-anchor_right = 1.0
-anchor_bottom = 0.333
-offset_top = 0.031999588
-offset_bottom = 64.032
-grow_horizontal = 2
-
-[node name="Control" type="Control" parent="hud/shop/item/itemcontainer" unique_id=770200403]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control2" type="Control" parent="hud/shop/item/itemcontainer" unique_id=1048847338]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control3" type="Control" parent="hud/shop/item/itemcontainer" unique_id=85424150]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="itemlabel" type="Label" parent="hud/shop/item" unique_id=2032045667]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_right = -232.0
-offset_bottom = 32.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 16
-text = "items"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="units" type="Panel" parent="hud/shop" unique_id=461476131]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 208.0
-offset_bottom = 336.0
-grow_horizontal = 2
-
-[node name="itemcontainer" type="HBoxContainer" parent="hud/shop/units" unique_id=23037015]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.333
-anchor_right = 1.0
-anchor_bottom = 0.333
-offset_top = 0.031999588
-offset_bottom = 64.032
-grow_horizontal = 2
-
-[node name="Control" type="Control" parent="hud/shop/units/itemcontainer" unique_id=1050747235]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control2" type="Control" parent="hud/shop/units/itemcontainer" unique_id=1920987014]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control3" type="Control" parent="hud/shop/units/itemcontainer" unique_id=1171837220]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="unitlabel" type="Label" parent="hud/shop/units" unique_id=2143916706]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_right = -232.0
-offset_bottom = 32.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 16
-text = "units"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="pause" type="Control" parent="hud" unique_id=49474777]
 modulate = Color(1, 1, 1, 0.47058824)
 layout_mode = 3
@@ -308,37 +205,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("6_0juc1")
 stretch_mode = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="hud" unique_id=304956678]
-custom_minimum_size = Vector2(180, 40)
-offset_top = 460.0
-offset_right = 180.0
-offset_bottom = 500.0
-scale = Vector2(2, 2)
-size_flags_horizontal = 0
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.0
-theme_override_constants/separation = 2
-script = ExtResource("7_cehcd")
-
-[node name="shop button" type="TextureButton" parent="hud" unique_id=22855814]
-offset_top = 584.0
-offset_right = 77.0
-offset_bottom = 612.0
-scale = Vector2(2, 2)
-texture_normal = ExtResource("8_k1k1x")
-texture_pressed = ExtResource("8_k1k1x")
-texture_hover = ExtResource("8_k1k1x")
-
-[node name="Back to Shop" type="TextureButton" parent="hud" unique_id=355116378]
-offset_left = 206.0
-offset_top = 584.0
-offset_right = 283.0
-offset_bottom = 612.0
-scale = Vector2(2, 2)
-texture_normal = ExtResource("9_naajo")
-texture_pressed = ExtResource("9_naajo")
-texture_hover = ExtResource("9_naajo")
 
 [node name="cast" type="Panel" parent="hud" unique_id=1954432933]
 visible = false
@@ -381,8 +247,41 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Introduction : Pawn"
 
+[node name="cast2" type="Panel" parent="hud" unique_id=229126150]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = -41.5
+offset_right = 113.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="shop button" type="TextureButton" parent="hud" unique_id=728497527]
+offset_top = 584.0
+offset_right = 77.0
+offset_bottom = 612.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("9_1x72x")
+texture_pressed = ExtResource("9_1x72x")
+texture_hover = ExtResource("9_1x72x")
+
+[node name="Back to Shop" type="TextureButton" parent="hud" unique_id=1779144642]
+offset_left = 206.0
+offset_top = 584.0
+offset_right = 283.0
+offset_bottom = 612.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("10_lrfrq")
+texture_pressed = ExtResource("10_lrfrq")
+texture_hover = ExtResource("10_lrfrq")
+
 [node name="inputsystem" type="Node2D" parent="." unique_id=1966660112]
 script = ExtResource("7_lunqa")
 
-[connection signal="pressed" from="hud/shop button" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="hud/shop button" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="hud/Back to Shop" to="." method="_on_back_to_shop"]
