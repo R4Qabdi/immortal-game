@@ -28,18 +28,56 @@ enum unitCards {NONE, PAWN, ROOK, KNIGHT, BISHOP, QUEEN, GUARDS, WIZARD, WALL, B
 
 class UnitCardData:
 	var name: String
-	func _init(p_name: String):
+	var pieces: Array[UnitCardPieces] = []
+	func _init(p_name: String, p_piecesData: Array[UnitCardPieces] = []): # optional p_piecesData array for multiple pieces.
 		name = p_name
-var UnitsData: Dictionary[unitCards, UnitData] = {
-	unitCards.PAWN: UnitData.new("pawn"),
-	unitCards.ROOK: UnitData.new("rook"),
-	unitCards.KNIGHT: UnitData.new("knight"),
-	unitCards.BISHOP: UnitData.new("bishop"),
-	unitCards.QUEEN: UnitData.new("queen"),
-	unitCards.GUARDS: UnitData.new("guards"),
-	unitCards.WIZARD: UnitData.new("wizard"),
-	unitCards.WALL: UnitData.new("wall")
+		pieces = p_piecesData
+class UnitCardPieces:
+	var rowDistance: int
+	var colDistance: int
+	var pieceType: pieceTypes
+	var pieceAddFunc: Callable
+
+	func _init(p_pieceType: pieceTypes, p_rowDistance: int = 0, p_colDistance: int = 0, p_addFunc: Callable = Callable()):
+		rowDistance = p_rowDistance
+		colDistance = p_colDistance
+		pieceType = p_pieceType
+		pieceAddFunc = p_addFunc
+
+@onready var unitCardsData: Dictionary[unitCards, UnitCardData] = {
+	unitCards.NONE: UnitCardData.new("none"),
+	unitCards.PAWN: UnitCardData.new("pawn", [UnitCardPieces.new(pieceTypes.PAWN)]),
+	unitCards.ROOK: UnitCardData.new("rook", [UnitCardPieces.new(pieceTypes.ROOK)]),
+	unitCards.KNIGHT: UnitCardData.new("knight", [UnitCardPieces.new(pieceTypes.KNIGHT)]),
+	unitCards.BISHOP: UnitCardData.new("bishop", [UnitCardPieces.new(pieceTypes.BISHOP)]),
+	unitCards.QUEEN: UnitCardData.new("queen", [UnitCardPieces.new(pieceTypes.QUEEN)]),
+	unitCards.GUARDS: UnitCardData.new("guards",
+		[
+			UnitCardPieces.new(pieceTypes.PAWN, 0, 0),
+			UnitCardPieces.new(pieceTypes.PAWN, 1, -1),
+			UnitCardPieces.new(pieceTypes.PAWN, 1, 1)
+		]
+	),
+	unitCards.WIZARD: UnitCardData.new("wizard",
+		[
+			UnitCardPieces.new(pieceTypes.BISHOP)
+		]
+	),
+	unitCards.WALL: UnitCardData.new("wall",
+		[
+			UnitCardPieces.new(pieceTypes.ROOK)
+		]
+	),
+	unitCards.BOSS: UnitCardData.new("boss",
+		[
+			UnitCardPieces.new(pieceTypes.QUEEN, 0, 0, addUnitBoss)
+		]
+	)
 }
+
+func addUnitBoss(newpiece: Piece):
+	newpiece.hp *= 10
+	print_debug("add unit boss")
 
 enum itemCards {
 	NONE, ASTRAL_PROJECTION, BERSERK, I_CANT_STOP, OOPS, SKIPPED_LEG_DAY, 

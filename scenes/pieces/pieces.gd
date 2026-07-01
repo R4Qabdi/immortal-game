@@ -89,6 +89,11 @@ func add_piece(type: String, which_square: Square, is_enemy: bool, unitPiece: gl
 	if is_enemy:
 		enemy_onboard.append(newpiece)
 	newpiece.global_position = which_square.global_position
+	#if unitPiece != null:
+		#var unitFunc: Callable = unitPiece.pieceAddFunc
+		#unitFunc.call(newpiece)
+	var unitFunc: Callable = global.addUnitBoss
+	unitFunc.call(newpiece)
 
 func get_enemy_by_wave() -> Dictionary:
 	var available_square = enemy_spawn_square
@@ -171,7 +176,13 @@ func resolve_move(selected_piece: Piece, target: Square) -> void:
 	
 	# Update your underlying board data representation
 
-func _on_piece_requested(type: String, which_square: Square, is_enemy: bool):
-	add_piece(type, which_square, is_enemy)
-	update_matrix()
-	global.piece_added.emit(type, which_square, is_enemy)
+func _on_unit_pieces_requested(squares: Array[Square], unitCard: global.unitCards, is_enemy: bool):
+	var unitCardPieces: Array[global.UnitCardPieces] = global.unitCardsData[unitCard].pieces
+	if unitCardPieces.size() != squares.size():
+		print_debug("Error: Mismatch between number of squares and unit pieces data.")
+		return
+	for i in range(unitCardPieces.size()): # each square corresponds to a piece in the unitCardPieces array
+		var unitPiece = unitCardPieces[i]
+		var square = squares[i]
+		var typeString = global.piecesData[unitPiece.pieceType].name
+		add_piece(typeString, square, is_enemy, unitPiece)

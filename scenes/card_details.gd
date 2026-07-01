@@ -13,7 +13,7 @@ func setup(type:global.cardType, card:Variant, desc:String, where:int):
 	if type == global.cardType.ITEM:
 		strCard = global.ItemsData[card].name
 	else:
-		strCard = global.UnitsData[card].name
+		strCard = global.unitCardsData[card].name
 	
 	if where == 0:
 		useButton.show()

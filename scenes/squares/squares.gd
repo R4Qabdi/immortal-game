@@ -36,6 +36,41 @@ func print_matrix_pretty():
 func _ready() -> void:
 	boardspawn()
 	InventoryInstructions.inventory_card_selected.connect(_on_inventory_card_selected)
+	InventoryInstructions._unit_drop_attempted.connect(_on_unit_drop_attempted)
+
+func _on_unit_drop_attempted(square: Square, card: InventoryCard):
+	var unit_squares: Array[Square] = find_unit_squares(square, card)
+	if unit_squares == []:
+		print_debug("Cannot drop card ", card.name, " on square ", square.name)
+		return
+	var unitCard: global.unitCards = card.unitType
+	InventoryInstructions._unit_pieces_requested.emit(unit_squares, unitCard, false)
+	
+
+func find_unit_squares(square: Square, card: InventoryCard) -> Array[Square]:
+	# get card colDistance and rowDistance from card.unitType
+	print_debug("Finding unit squares for card: ", card.name, " on square: ", square.name)
+	print_debug("Card unit type: ", card.unitType)
+	print_debug("Card pieces data: ", global.unitCardsData[card.unitType].pieces)
+	var cardPieces: Array[global.UnitCardPieces] = global.unitCardsData[card.unitType].pieces
+	var squareRow: int = square.row
+	var squareCol: int = square.col
+
+	var target_squares: Array[Square] = []
+
+	for piece in cardPieces:
+		var targetRow = squareRow + piece.rowDistance
+		var targetCol = squareCol + piece.colDistance
+		print_debug("Checking column: ", targetCol, " row: ", targetRow, " for piece: ", piece.pieceType)
+		if targetRow < 0 or targetRow > 7 or targetCol < 0 or targetCol > 7:
+			print_debug("Piece out of bounds: ", piece.pieceType, " at row: ", targetRow, " col: ", targetCol)
+			return []
+		var targetSquare: Square = matrix_board[targetRow][targetCol]
+		if targetSquare.piece != null:
+			print_debug("Square occupied at row: ", targetRow, " col: ", targetCol)
+			return []
+		target_squares.append(targetSquare)
+	return target_squares
 
 func deselect_last_square_with(target_square: Square):
 	var is_same_piece: bool = false
