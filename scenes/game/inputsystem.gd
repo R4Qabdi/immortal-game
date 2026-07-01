@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var piece_manager = $"../pieces"
 
+#piece inputs
 var previous_square : Square
 var current_square : Square
 var selected_piece : Piece
@@ -10,15 +11,20 @@ var press_pos : Vector2
 var is_dragging : bool
 var piece_was_just_selected : bool = false 
 
+#gamerule general
+var wave_count:int = 1
+var moves:int = 1
+var is_yourturn : bool = true
+
 var overheat_moves : Array[Square]
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
-		if event.pressed:
+		if event.pressed and is_yourturn:
 			_on_press(event.position)
 		else:
 			_on_release(event.position)
-	elif event is InputEventScreenDrag:
+	elif event is InputEventScreenDrag and is_yourturn:
 		_on_drag(event.position)
 
 func _on_press(pos: Vector2) -> void:
@@ -95,6 +101,7 @@ func resolve_move(target : Square) -> void:
 		selected_piece = null
 	else:
 		# Valid move execution path
+		is_yourturn = false
 		selected_piece.movecount += 1
 		selected_piece.current_square = square_baru
 		square_lama.piece = null
@@ -102,6 +109,8 @@ func resolve_move(target : Square) -> void:
 		
 		selected_piece.is_dragging = false
 		selected_piece.dropping(square_lama, square_baru)
+		
+		piece_manager.random_enemy_move()
 		
 		if piece_manager:
 			piece_manager.update_matrix()

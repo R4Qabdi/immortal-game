@@ -211,70 +211,110 @@ func cari_square_di_posisi(posisi_target: Vector2) -> Square:
 # =========================================================================
 func valid_pawn_moves(is_first_move: bool) -> Array[Square]:
 	var valid_moves: Array[Square] = []
-	if is_first_move : 
-		var direction = global_position+ Vector2(0,-88)
-		var space_state = get_world_2d().direct_space_state
-		var excluded = []
-		while true:
-			var query = PhysicsRayQueryParameters2D.create(global_position,direction)
-			query.exclude = excluded
-			query.collide_with_areas = true
-			query.collision_mask = 0b110
-			var results = space_state.intersect_ray(query)
-			if results.is_empty():
-				break
-			
-			if results["collider"].collision_layer & (1 << 2):  # detect a piece
-				#commented because pawn cannot capture forward
-				#if results["collider"].collision_layer & (1 << 1):  # is an enemy piece
-					#valid_moves.append(results["collider"].get_parent())  # valid capture
-					#excluded.append(results["rid"])
-				break  # stop either way
-			
-			valid_moves.append(results["collider"].get_parent())
-			excluded.append(results["rid"])
-	else :
-		var direction = global_position+ Vector2(0,-44)
-		var space_state = get_world_2d().direct_space_state
-		var excluded = []
-		while true:
-			var query = PhysicsRayQueryParameters2D.create(global_position,direction)
-			query.exclude = excluded
-			query.collide_with_areas = true
-			query.collision_mask = 0b110
-			var results = space_state.intersect_ray(query)
-			if results.is_empty():
-				break
-			
-			if results["collider"].collision_layer & (1 << 2):  # detect a piece
-				#commented because pawn cannot capture forward
-				#if results["collider"].collision_layer & (1 << 1):  # is an enemy piece
-					#valid_moves.append(results["collider"].get_parent())  # valid capture
-					#excluded.append(results["rid"])
-				break  # stop either way
-			
-			valid_moves.append(results["collider"].get_parent())
-			excluded.append(results["rid"])
-	#-------
-	#capture logic
-	#-------
-	var capture_direction_left = global_position+ Vector2(-44,-44)
-	var capture_direction_right = global_position+ Vector2(44,-44)
 	var space_state = get_world_2d().direct_space_state
-	var excluded = []
-	var query_left = PhysicsRayQueryParameters2D.create(global_position,capture_direction_left)
-	var query_right = PhysicsRayQueryParameters2D.create(global_position,capture_direction_right)
-	query_left.collide_with_areas = true
-	query_right.collide_with_areas = true
-	query_left.collision_mask = 0b100
-	query_right.collision_mask = 0b100
-	var result_left = space_state.intersect_ray(query_left)
-	var result_right = space_state.intersect_ray(query_right)
-	if result_left :
-		if result_left["collider"].collision_layer == 0b100:
+	
+	if is_enemy: # BLACK PAWN
+		if is_first_move: 
+			var direction = global_position + Vector2(0,88)
+			var excluded = []
+			while true:
+				var query = PhysicsRayQueryParameters2D.create(global_position, direction)
+				query.exclude = excluded
+				query.collide_with_areas = true
+				query.collision_mask = 0b110
+				var results = space_state.intersect_ray(query)
+				if results.is_empty(): break
+				if results["collider"].collision_layer & (1 << 2): break # Blocked by any piece forward
+				valid_moves.append(results["collider"].get_parent())
+				excluded.append(results["rid"])
+		else:
+			var direction = global_position + Vector2(0,44)
+			var excluded = []
+			while true:
+				var query = PhysicsRayQueryParameters2D.create(global_position, direction)
+				query.exclude = excluded
+				query.collide_with_areas = true
+				query.collision_mask = 0b110
+				var results = space_state.intersect_ray(query)
+				if results.is_empty(): break
+				if results["collider"].collision_layer & (1 << 2): break # Blocked by any piece forward
+				valid_moves.append(results["collider"].get_parent())
+				excluded.append(results["rid"])
+				
+		# --- Black Pawn Capture Logic (Targets White: 0b110) ---
+		var capture_direction_left = global_position + Vector2(-44,44)
+		var capture_direction_right = global_position + Vector2(44,44)
+		
+		var query_left = PhysicsRayQueryParameters2D.create(global_position, capture_direction_left)
+		var query_right = PhysicsRayQueryParameters2D.create(global_position, capture_direction_right)
+		query_left.collide_with_areas = true
+		query_right.collide_with_areas = true
+		query_left.collision_mask = 0b110 # Scan for White pieces/squares
+		query_right.collision_mask = 0b110
+		
+		var result_left = space_state.intersect_ray(query_left)
+		var result_right = space_state.intersect_ray(query_right)
+		
+		# --- Left Diagonal Capture ---
+		if result_left:
+			var collider = result_left["collider"]
+			# MUST HAVE the White bit (Layer 2) to be a valid enemy capture target
+			if collider.get_parent().piece:
+				if collider.get_parent().piece.is_enemy == true: 
+					valid_moves.append(collider.get_parent())
+		# --- Right Diagonal Capture ---
+		if result_right:
+			var collider = result_right["collider"]
+			# MUST HAVE the White bit (Layer 2) to be a valid enemy capture target
+			if collider.get_parent().piece:
+				if collider.get_parent().piece.is_enemy == true: 
+					valid_moves.append(collider.get_parent())
+		
+	else: # WHITE PAWN
+		if is_first_move: 
+			var direction = global_position + Vector2(0,-88)
+			var excluded = []
+			while true:
+				var query = PhysicsRayQueryParameters2D.create(global_position, direction)
+				query.exclude = excluded
+				query.collide_with_areas = true
+				query.collision_mask = 0b110
+				var results = space_state.intersect_ray(query)
+				if results.is_empty(): break
+				if results["collider"].collision_layer & (1 << 2): break # Blocked by any piece forward
+				valid_moves.append(results["collider"].get_parent())
+				excluded.append(results["rid"])
+		else:
+			var direction = global_position + Vector2(0,-44)
+			var excluded = []
+			while true:
+				var query = PhysicsRayQueryParameters2D.create(global_position, direction)
+				query.exclude = excluded
+				query.collide_with_areas = true
+				query.collision_mask = 0b110
+				var results = space_state.intersect_ray(query)
+				if results.is_empty(): break
+				if results["collider"].collision_layer & (1 << 2): break # Blocked by any piece forward
+				valid_moves.append(results["collider"].get_parent())
+				excluded.append(results["rid"])
+				
+		# --- White Pawn Capture Logic (Targets Black: 0b100) ---
+		var capture_direction_left = global_position + Vector2(-44,-44)
+		var capture_direction_right = global_position + Vector2(44,-44)
+		
+		var query_left = PhysicsRayQueryParameters2D.create(global_position, capture_direction_left)
+		var query_right = PhysicsRayQueryParameters2D.create(global_position, capture_direction_right)
+		query_left.collide_with_areas = true
+		query_right.collide_with_areas = true
+		query_left.collision_mask = 0b100 # Scan specifically for Black pieces
+		query_right.collision_mask = 0b100
+		
+		var result_left = space_state.intersect_ray(query_left)
+		var result_right = space_state.intersect_ray(query_right)
+		
+		if result_left and not (result_left["collider"].collision_layer & (1 << 1)): # Lacks White bit
 			valid_moves.append(result_left["collider"].get_parent())
-	if result_right:
-		if result_right["collider"].collision_layer == 0b100:
+		if result_right and not (result_right["collider"].collision_layer & (1 << 1)): # Lacks White bit
 			valid_moves.append(result_right["collider"].get_parent())
 	
 	return valid_moves
@@ -282,19 +322,19 @@ func valid_pawn_moves(is_first_move: bool) -> Array[Square]:
 
 # =========================================================================
 # QUEEN MOVES (Ratu)
-## =========================================================================
+# =========================================================================
 func valid_queen_moves() -> Array[Square]:
 	var valid_moves: Array[Square] = []
 	valid_moves.append_array(valid_bishop_moves())
 	valid_moves.append_array(valid_rook_moves())
 	return valid_moves
 
-## =========================================================================
-## KING MOVES (Raja - Deteksi Menggunakan Area2D Lingkaran)
-## =========================================================================
+
+# =========================================================================
+# KING MOVES (Raja)
+# =========================================================================
 func valid_king_moves() -> Array[Square]:
 	var valid_moves: Array[Square] = []
-	
 	var areas = king_area.get_overlapping_areas()
 	
 	for area in areas:
@@ -305,108 +345,120 @@ func valid_king_moves() -> Array[Square]:
 			if jarak > 5 and jarak < 65:
 				if sq.piece == null or (sq.piece.is_enemy != self.is_enemy):
 					valid_moves.append(sq)
-					#tambah_debug_line(global_position, sq.global_position, Color.GREEN)
 					
 	return valid_moves
 
-## =========================================================================
-## KNIGHT / HORSE MOVES (Kuda)
-## =========================================================================
+
+# =========================================================================
+# KNIGHT / HORSE MOVES (Kuda)
+# =========================================================================
 func valid_knight_moves() -> Array[Square]:
 	var valid_moves: Array[Square] = []
 	var kudamove : Array =[
-		Vector2(88, -44),
-		Vector2(-88, -44),
-		Vector2(-88, 44),
-		Vector2(88, 44),
-		Vector2(44, -88),
-		Vector2(-44, -88),
-		Vector2(-44, 88),
-		Vector2(44, 88),
+		Vector2(88, -44), Vector2(-88, -44),
+		Vector2(-88, 44), Vector2(88, 44),
+		Vector2(44, -88), Vector2(-44, -88),
+		Vector2(-44, 88),  Vector2(44, 88),
 	]
+	
+	var space_state = get_world_2d().direct_space_state
+	
 	for i in kudamove :
-		var space_state = get_world_2d().direct_space_state
 		var query = PhysicsPointQueryParameters2D.new()
-		query.position = Vector2(global_position+i)
+		query.position = Vector2(global_position + i)
 		query.collide_with_areas = true
 		query.collision_mask = 0b110
 		var results = space_state.intersect_point(query)
-		#print(results)
+		
 		if results:
-			if results[0]["collider"].collision_layer == 0b10 or results[0]["collider"].collision_layer == 0b100:
+			var layer = results[0]["collider"].collision_layer
+			
+			if layer == 0b010: # Empty walkable square is always valid
 				valid_moves.append(results[0]["collider"].get_parent())
+			elif is_enemy: 
+				if layer == 0b110: # Black Knight targeting a White piece
+					valid_moves.append(results[0]["collider"].get_parent())
+			else: 
+				if layer == 0b100: # White Knight targeting a Black piece
+					valid_moves.append(results[0]["collider"].get_parent())
+					
 	return valid_moves
 
 
-## =========================================================================
-## BISHOP MOVES (Gajah)
-## =========================================================================
+# =========================================================================
+# BISHOP MOVES (Gajah)
+# =========================================================================
 func valid_bishop_moves() -> Array[Square]:
-	#current_valid_squares.clear()
 	var valid_moves: Array[Square] = []
-	
 	var direction :Array[Vector2] = [
-		global_position+Vector2(44*8,44*8),
-		global_position+Vector2(44*8,-44*8),
-		global_position+Vector2(-44*8, 44*8),
-		global_position+Vector2(-44*8, -44*8),
+		global_position + Vector2(44*8, 44*8),
+		global_position + Vector2(44*8, -44*8),
+		global_position + Vector2(-44*8, 44*8),
+		global_position + Vector2(-44*8, -44*8),
 	]
 	var space_state = get_world_2d().direct_space_state
-	var excluded = []
+	
 	for i in direction : 
+		var excluded = []
 		while true:
 			var query = PhysicsRayQueryParameters2D.create(global_position, i)
 			query.exclude = excluded
 			query.collide_with_areas = true
 			query.collision_mask = 0b110
 			var results = space_state.intersect_ray(query)
-			if results.is_empty():
-				break
+			if results.is_empty(): break
 			
 			var layer = results["collider"].collision_layer
-			if layer & (1 << 2):
-				if not (layer & (1 << 1)):  # enemy squares lack the "walkable" bit — true enemy check
-					valid_moves.append(results["collider"].get_parent())
-					excluded.append(results["rid"])
-				break
+			if layer & (1 << 2): # It's a piece!
+				if is_enemy:
+					if layer & (1 << 1): # Black piece hits a White piece (Enemy)
+						valid_moves.append(results["collider"].get_parent())
+				else:
+					if not (layer & (1 << 1)): # White piece hits a Black piece (Enemy)
+						valid_moves.append(results["collider"].get_parent())
+				break # Always break when hitting any piece (friend or enemy)
 			
+			# Empty walkable square processing
 			valid_moves.append(results["collider"].get_parent())
 			excluded.append(results["rid"])
 	
 	return valid_moves
 
-## =========================================================================
-## ROOK MOVES (Benteng)
-## =========================================================================
+
+# =========================================================================
+# ROOK MOVES (Benteng)
+# =========================================================================
 func valid_rook_moves() -> Array[Square]:
-	#current_valid_squares.clear()
 	var valid_moves: Array[Square] = []
-	
 	var direction :Array[Vector2] = [
-		global_position+Vector2(0,44*8),
-		global_position+Vector2(0,-44*8),
-		global_position+Vector2(44*8, 0),
-		global_position+Vector2(-44*8, 0),
+		global_position + Vector2(0, 44*8),
+		global_position + Vector2(0, -44*8),
+		global_position + Vector2(44*8, 0),
+		global_position + Vector2(-44*8, 0),
 	]
 	var space_state = get_world_2d().direct_space_state
-	var excluded = []
+	
 	for i in direction : 
+		var excluded = []
 		while true:
 			var query = PhysicsRayQueryParameters2D.create(global_position, i)
 			query.exclude = excluded
 			query.collide_with_areas = true
 			query.collision_mask = 0b110
 			var results = space_state.intersect_ray(query)
-			if results.is_empty():
-				break
+			if results.is_empty(): break
 			
 			var layer = results["collider"].collision_layer
-			if layer & (1 << 2):
-				if not (layer & (1 << 1)):  # enemy squares lack the "walkable" bit — true enemy check
-					valid_moves.append(results["collider"].get_parent())
-					excluded.append(results["rid"])
-				break
+			if layer & (1 << 2): # It's a piece!
+				if is_enemy:
+					if layer & (1 << 1): # Black piece hits a White piece (Enemy)
+						valid_moves.append(results["collider"].get_parent())
+				else:
+					if not (layer & (1 << 1)): # White piece hits a Black piece (Enemy)
+						valid_moves.append(results["collider"].get_parent())
+				break # Always break when hitting any piece (friend or enemy)
 			
+			# Empty walkable square processing
 			valid_moves.append(results["collider"].get_parent())
 			excluded.append(results["rid"])
 	
