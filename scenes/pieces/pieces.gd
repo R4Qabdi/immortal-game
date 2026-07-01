@@ -2,26 +2,50 @@ extends Node2D
 
 @onready var piece = preload("res://scenes/pieces/piece.tscn")
 @onready var squares = $"../squares"
+@onready var inputsystem = $"../inputsystem"
+
 var matrix_pieces: Array = []
+var wave_count :int = 1
+
+var enemy_spawn_square:Array[String]=[]
+var enemy_onboard :Array[Piece]=[] 
+var enemy_move_count :int = 1
+
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.is_echo():
 		# ini khusus buat debug ajaqq
 		if event.keycode == KEY_Q:
 			print(matrix_pieces)
-		
 
 func _ready() -> void:
+	randomize()
 	
-	await wait(1.5)
+	await wait(2)
+	enemy_spawn_square = [
+		squares.get_node_or_null("a7").name,
+		squares.get_node_or_null("b7").name,
+		squares.get_node_or_null("c7").name,
+		squares.get_node_or_null("d7").name,
+		squares.get_node_or_null("e7").name,
+		squares.get_node_or_null("f7").name,
+		squares.get_node_or_null("g7").name,
+		squares.get_node_or_null("h7").name,
+		squares.get_node_or_null("h8").name,
+		squares.get_node_or_null("g8").name,
+		squares.get_node_or_null("f8").name,
+		squares.get_node_or_null("e8").name,
+		squares.get_node_or_null("d8").name,
+		squares.get_node_or_null("c8").name,
+		squares.get_node_or_null("b8").name,
+		squares.get_node_or_null("a8").name,
+	]
 	setup_initial_pieces()
 
 func setup_initial_pieces():
 	var layout = {
-		"e1": "king", "d1": "queen", "c1": "bishop", "f1": "bishop",
-		"b1": "knight", "g1": "knight", "a1": "rook", "h1": "rook",
-		"a2": "pawn", "b2": "pawn", "c2": "pawn", "d2": "pawn",
-		"e2": "pawn", "f2": "pawn", "g2": "pawn", "h2": "pawn", "e3": "pawn"
+		"e1": "king",
+		"c2": "pawn"
 	}
 	
 	for tile_name in layout:
@@ -29,11 +53,10 @@ func setup_initial_pieces():
 		if origin_tile:
 			add_piece(layout[tile_name], origin_tile, false)
 			await wait(0.05)
-	var enemy_layout = {
-		"a7" : "pawn", 
-		"b4" : "pawn", 
-		"c3" : "pawn"
-	}
+	
+	var enemy_layout :Dictionary = get_enemy_by_wave()
+	print(enemy_layout)
+		#get_enemy_by_wave(wave)
 	for tile_name in enemy_layout:
 		var origin_tile = squares.get_node_or_null(tile_name)
 		if origin_tile:
@@ -59,10 +82,25 @@ func add_piece(type: String, which_square: Square, is_enemy: bool):
 	add_child(newpiece)
 	newpiece.name = type
 	newpiece.type = type
+	which_square.piece = newpiece
 	newpiece.current_square = which_square
 	newpiece.is_enemy = is_enemy
-	which_square.piece = newpiece
+	if is_enemy:
+		enemy_onboard.append(newpiece)
 	newpiece.global_position = which_square.global_position
+
+func get_enemy_by_wave() -> Dictionary:
+	var available_square = enemy_spawn_square
+	var enemies : Dictionary = {}
+	if wave_count < 4:
+		available_square.pop_back()
+		available_square.pop_back()
+		available_square.pop_front()
+		available_square.pop_front()
+		for i in range(wave_count + 2):
+			var enemy : Dictionary = {available_square.pop_at(randi_range(0,available_square.size()-1)) : "pawn"}
+			enemies.merge(enemy)
+	return enemies
 
 func wait(seconds: float):
 	await get_tree().create_timer(seconds).timeout

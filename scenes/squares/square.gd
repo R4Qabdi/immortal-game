@@ -70,13 +70,15 @@ func hyper_elastic_move(target, destination: Vector2):
 	tween.tween_property(target, "position", destination, 2).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 
 func _on_area_mouse_entered() -> void:
-	$tile.modulate = Color.LIGHT_BLUE
+	var current_color = $tile.modulate
+	$tile.modulate = Color.from_rgba8(135, 206, 250, current_color.a*255)
 	is_hovered = true
 	if board:
 		board.hovered_square = self # Catat kotak aktif yang di-hover mouse ke Board
 
 func _on_area_mouse_exited() -> void:
-	$tile.modulate = Color.WHITE
+	var current_color = $tile.modulate
+	$tile.modulate = Color.from_rgba8(255, 255, 255, current_color.a*255)
 	is_hovered = false
 	if board and board.hovered_square == self:
 		board.hovered_square = null # Hapus dari catatan Board jika keluar kotakss
