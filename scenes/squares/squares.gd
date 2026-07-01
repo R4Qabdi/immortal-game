@@ -4,7 +4,7 @@ class_name Board
 const dark = preload("res://assets/temporary/darksquare.png")
 const light = preload("res://assets/temporary/lightsquare.png")
 
-@onready var square = preload("res://scenes/squares/square.tscn")
+@onready var square_scene = preload("res://scenes/squares/square.tscn")
 
 var dropped_square: Square
 var selected_square: Square
@@ -35,6 +35,7 @@ func print_matrix_pretty():
 
 func _ready() -> void:
 	boardspawn()
+	InventoryInstructions.inventory_card_selected.connect(_on_inventory_card_selected)
 
 func deselect_last_square_with(target_square: Square):
 	var is_same_piece: bool = false
@@ -84,7 +85,7 @@ func boardspawn():
 		is_white = !is_white
 
 func tilespawn(location: Vector2, texture_type: bool, tname: String, row: int):
-	var newsquare: Square = square.instantiate()
+	var newsquare: Square = square_scene.instantiate()
 	add_child(newsquare)
 	newsquare.position = location
 	newsquare.name = tname
@@ -134,3 +135,40 @@ func clear_placeable_preview() -> void:
 	for square in highlighted_squares:
 		square.set_preview(false)
 	highlighted_squares.clear()
+
+#func execute_drop():
+	#is_dragging = false
+	#if not selected_piece:
+		#return
+		#
+	#if not dropped_square or dropped_square == unaffected_selected_square or dropped_square.piece != null or not validation():
+		#selected_piece.reset()
+	#else:
+		#selected_piece.movecount += 1
+		#
+		## 1. Ambil referensi square lama sebelum datanya dihapus
+		#var square_lama = unaffected_selected_square
+		#var square_baru = dropped_square
+		#
+		## 2. Pindahkan data referensi logika board & piece
+		#selected_piece.current_square = square_baru  # <--- Ganti current_square pada piece
+		#square_lama.piece = null
+		#square_baru.piece = selected_piece
+		#
+		## 4. Jalankan animasi perpindahan visual
+		#selected_piece.is_dragging = false
+		#selected_piece.dropping(square_lama, square_baru)
+		#
+		## Update matrix piece data
+		#var pieces_manager = get_parent().get_node_or_null("pieces")
+		#if pieces_manager:
+			#pieces_manager.update_matrix()
+		#
+	#selected_piece = null
+	#dropped_square = null
+#
+#func validation() -> bool:
+	#if selected_piece and dropped_square:
+		## Kembalikan nilai true / false secara mutlak (mencegah bug kembalian kosong/null)
+		#return selected_piece.check_valid_square().has(dropped_square)
+	#return false

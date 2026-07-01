@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://6kmekswssdej"]
 
 [ext_resource type="Texture2D" uid="uid://pfhe3cm7ivum" path="res://assets/bg/shop bg.png" id="1_lx5au"]
-[ext_resource type="Script" uid="uid://1a5gh8adbw7b" path="res://scenes/shop/shop.gd" id="1_xfvoa"]
+[ext_resource type="Script" uid="uid://7cfg3lmuxa1h" path="res://scenes/shop/shop.gd" id="1_xfvoa"]
 [ext_resource type="PackedScene" uid="uid://dxhwsnsreygqk" path="res://scenes/cards/shopcard.tscn" id="3_1l46r"]
 [ext_resource type="Texture2D" uid="uid://thpom1248vpp" path="res://assets/icons/reroll off.png" id="4_44xle"]
 [ext_resource type="Texture2D" uid="uid://bh2rimlm4u7qu" path="res://assets/icons/reroll on.png" id="5_24it5"]

@@ -7,7 +7,7 @@ var shopMenu = load("res://scenes/shop/shop.tscn")
 @onready var shopBack:TextureButton = $"hud/Back to Shop"
 @onready var inventory:Inventory = $hud/bottom/cardhandler/HBoxContainer
 @onready var squares: Board = $squares
-#@onready var pieces:Pieces = $pieces
+@onready var pieces:Pieces = $pieces
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

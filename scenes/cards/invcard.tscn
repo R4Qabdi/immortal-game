@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cerj12mnkveki" path="res://scenes/cards/invcard.gd" id="4_mmthk"]
 [ext_resource type="Texture2D" uid="uid://bqhomiav4d5mo" path="res://assets/icons/berserk.png" id="5_f0f3p"]
 [ext_resource type="FontFile" uid="uid://cn0gkpavqq1a8" path="res://assets/font/Pixelit-Regular.ttf" id="6_83p8e"]
+[ext_resource type="Script" uid="uid://cq03ason3faul" path="res://scripts/label.gd" id="7_l26bp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_albav"]
 font = ExtResource("6_83p8e")
@@ -16,6 +17,7 @@ font_color = Color(0.1764706, 0.11372549, 0.05490196, 1)
 anchors_preset = -1
 offset_right = 54.0
 offset_bottom = 68.0
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("1_mmthk")
 texture_pressed = ExtResource("2_rpyal")
 texture_hover = ExtResource("3_ion5y")
@@ -47,3 +49,6 @@ vertical_alignment = 1
 justification_flags = 0
 clip_text = true
 uppercase = true
+script = ExtResource("7_l26bp")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
