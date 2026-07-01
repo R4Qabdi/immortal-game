@@ -110,7 +110,3 @@ func _on_piece_requested(type: String, which_square: Square, is_enemy: bool):
 	add_piece(type, which_square, is_enemy)
 	update_matrix()
 	global.piece_added.emit(type, which_square, is_enemy)
-
-func _on_piece_requested(type: String, which_square: Square, is_enemy: bool):
-	add_piece(type, which_square, is_enemy)
-	update_matrix()
