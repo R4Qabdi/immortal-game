@@ -6,6 +6,7 @@ class_name InventoryCard
 @onready var card: InventoryCard = $"."
 var cardName
 var cardType:global.cardType
+var cardReq:Array
 var desc:String
 var is_selected: bool = false
 
@@ -23,6 +24,7 @@ func setup(title:Variant, type:global.cardType):
 	cardType = type
 	itemName.text = strTitle
 	itemIcon.texture = load("res://assets/icons/"+strTitle+".png")
+	cardReq = global.ItemsData[title].useOn
 	#InventoryInstructions.inventory_card_selected.connect(_on_inventory_card_selected)
 
 func _get_drag_data(at_position: Vector2) -> Variant:
@@ -57,6 +59,36 @@ func card_activated():
 	InventoryInstructions.use_card.emit(cardType, cardName)
 	queue_free()
 
+func get_card_requirements(tile:Square) -> bool:
+	match cardReq[0]:
+		global.useTypes.OWN:
+			if tile.piece == null:
+				return false
+			elif tile.piece.is_enemy:
+				return false
+			elif len(cardReq) > 1:
+				if tile.piece.type == global.piecesData[cardReq[0]].name:
+					return true
+			else:
+				return true
+		global.useTypes.ENEMY:
+			if tile.piece == null:
+				return false
+			elif not tile.piece.is_enemy:
+				return false
+			elif len(cardReq) > 1:
+				if tile.piece.type == global.piecesData[cardReq[0]].name:
+					return true
+			else:
+				return true
+		global.useTypes.SQUARE:
+			if tile.piece != null:
+				return false
+			else:
+				return true
+		global.useTypes.SELF:
+			return true
+	return false
 
 func deselect_card(): # triggered by Inventory
 	is_selected = false

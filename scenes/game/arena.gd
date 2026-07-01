@@ -11,7 +11,7 @@ var shopMenu = load("res://scenes/shop/shop.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#var pick:global.unitCards = global.unitCards.keys().pick_random()
+	#var pick = global.unitCards.values().pick_random()
 	#print_debug(pick)
 	#print_debug(typeof(pick))
 	shopOverlayLayer = CanvasLayer.new()

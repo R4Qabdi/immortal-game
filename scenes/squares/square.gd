@@ -8,6 +8,7 @@ var is_hovered: bool = false
 var piece: Piece = null
 var board: Board
 var soft_select : Piece
+var itemEffect:Array[global.itemCards]
 
 func _ready() -> void:
 	board = get_parent() as Board

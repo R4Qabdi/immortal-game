@@ -19,7 +19,7 @@ var debug_lines: Array[Dictionary] = []
 var previous_valid_squares: Array[Square]
 var current_valid_squares: Array[Square]
 
-var itemEffect:Dictionary
+var itemEffect:Array[global.itemCards]
 
 func _ready() -> void:
 	texture.modulate.a = 0

@@ -35,7 +35,7 @@ func setup() -> void:
 	wSelectionBG.show()
 	while selected.size() < 3:
 		var pick:global.unitCards = global.unitCards.values().pick_random()
-		if not selected.has(pick):
+		if not selected.has(pick) and not InventoryInstructions.heldUnits.has(pick):
 			selected.append(pick)
 			selectedIcons.append("res://assets/icons/"+units[pick]+".png")
 	
@@ -48,16 +48,13 @@ func setup() -> void:
 	
 	while selected.size() < 3:
 		var pick:global.itemCards = global.itemCards.values().pick_random()
-		if not selected.has(pick):
+		if not selected.has(pick) and not InventoryInstructions.heldItems.has(pick):
 			selected.append(pick)
 			selectedIcons.append("res://assets/icons/"+items[pick]+".png")
 	
 	IC1.setup(global.cardType.ITEM, selected[0], selectedIcons[0])
 	IC2.setup(global.cardType.ITEM, selected[1], selectedIcons[1])
 	IC3.setup(global.cardType.ITEM, selected[2], selectedIcons[2])
-
-func _process(_delta: float) -> void:
-	pass
 
 func _on_card_bought(type:global.cardType, card:Variant):
 	if type == global.cardType.ITEM:
